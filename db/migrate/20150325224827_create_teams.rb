@@ -4,6 +4,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string      :name
       t.string      :activity
       t.belongs_to  :captain
+      t.belongs_to  :home_location
 
       t.timestamps null: false
     end

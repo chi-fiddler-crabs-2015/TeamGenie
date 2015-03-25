@@ -3,4 +3,5 @@ class Team < ActiveRecord::Base
   has_many   :games
   has_many   :memberships
   has_many   :players, through: :memberships
+  belongs_to :home_location, class_name: "Location"
 end
