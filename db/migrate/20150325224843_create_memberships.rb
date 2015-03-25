@@ -1,4 +1,4 @@
-class CreateMembers < ActiveRecord::Migration
+class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :members do |t|
 
