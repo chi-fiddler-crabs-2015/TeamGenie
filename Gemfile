@@ -45,3 +45,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'simplecov', :require => false, :group => :test
+
+
