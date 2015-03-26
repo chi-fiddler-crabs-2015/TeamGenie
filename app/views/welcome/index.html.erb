@@ -1,2 +1,10 @@
 <h1>Welcome to TeamGenie</h1>
 <h3>GO TEAM!!</h3>
+<% if current_user %>
+<%= button_to 'log out', logout_path %>
+<% else %>
+<%= link_to 'log in', login_path %>
+<%= link_to 'sign up', new_user_path %>
+<% end %>
+
+
