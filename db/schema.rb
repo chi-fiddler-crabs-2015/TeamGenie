@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325231001) do
+ActiveRecord::Schema.define(version: 20150326181515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,8 +55,12 @@ ActiveRecord::Schema.define(version: 20150325231001) do
     t.string   "activity"
     t.integer  "captain_id"
     t.integer  "home_location_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "team_logo_file_name"
+    t.string   "team_logo_content_type"
+    t.integer  "team_logo_file_size"
+    t.datetime "team_logo_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
