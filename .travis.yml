@@ -8,7 +8,20 @@
 #   - jruby-19mode # JRuby in 1.9 mode
 #   - rbx
 
+# language: ruby
+# rvm:
+#   - 2.0.0
+# sudo: required
+
 language: ruby
 rvm:
   - 2.0.0
-sudo: required
+env:
+  - DB=postgresql
+script:
+  - bundle exec rake spec
+before_script:
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+bundler_args: --binstubs=./bundler_stubs
