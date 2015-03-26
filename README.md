@@ -1,1 +1,2 @@
 # TeamGenie
+David, Kay, Ricardo
