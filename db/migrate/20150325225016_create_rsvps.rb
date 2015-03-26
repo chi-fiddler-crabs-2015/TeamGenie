@@ -3,7 +3,7 @@ class CreateRsvps < ActiveRecord::Migration
     create_table :rsvps do |t|
       t.belongs_to  :game
       t.belongs_to  :membership
-      t.string      :attending
+      t.string      :attending, :default => "pending"
 
       t.timestamps null: false
     end

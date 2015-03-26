@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20150325231001) do
   create_table "rsvps", force: :cascade do |t|
     t.integer  "game_id"
     t.integer  "membership_id"
-    t.string   "attending"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "attending",     default: "pending"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "teams", force: :cascade do |t|
