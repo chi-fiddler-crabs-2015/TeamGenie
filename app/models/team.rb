@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   has_attached_file :team_logo, styles: { thumb: '100x100>', medium: '300x300>' }
 
   validates   :captain, presence: true
-  validates   :home_location, presence: true
+  # validates   :home_location, presence: true
   validates   :activity, presence: true
   validates   :name, presence: true
 

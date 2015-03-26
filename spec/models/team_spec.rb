@@ -11,7 +11,7 @@ RSpec.describe Team, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:captain) }
-    it { should validate_presence_of(:home_location) }
+    # it { should validate_presence_of(:home_location) }
     it { should validate_presence_of(:activity) }
     it { should validate_presence_of(:name) }
 
