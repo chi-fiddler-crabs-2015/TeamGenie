@@ -28,6 +28,11 @@ gem 'rails_12factor'
 # Faker for seed data
 gem 'faker'
 
+# gems to support bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'compass-rails'
+gem 'autoprefixer-rails'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
