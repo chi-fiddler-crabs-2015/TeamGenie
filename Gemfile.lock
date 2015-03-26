@@ -206,12 +206,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
   autoprefixer-rails
-  bootstrap-sass (~> 3.2.0)
-=======
   bcrypt (~> 3.1.7)
->>>>>>> development
+  bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.1.0)
   compass-rails
