@@ -66,8 +66,4 @@ end
 
 gem 'simplecov', :require => false, :group => :test
 
-# Bootstrap core to rails
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-
 
