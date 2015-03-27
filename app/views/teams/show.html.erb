@@ -1,0 +1,14 @@
+<h1>
+  <%= @team.name %>
+</h1>
+<div>
+  <%= image_tag @team.team_logo.url(:medium) %>
+</div>
+
+<div>
+  <% @team.players.each do |player| %>
+    <p><%= player.first_name %> <%= player.last_name %></p>
+  <% end %>
+
+  <%= link_to 'invite new players - not working - invite players path' %>
+</div>
