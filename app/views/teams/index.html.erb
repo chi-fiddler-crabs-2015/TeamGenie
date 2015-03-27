@@ -3,4 +3,6 @@
   <%= image_tag team.team_logo.url(:thumb) %>
   <br>
 <% end %>
-<%= link_to 'Add new team', new_team_path %>
+<%= link_to new_team_path, class: 'btn btn-success' do %>
+  <i class="glyphicon glyphicon-plus"></i> Add Team
+<% end %>
