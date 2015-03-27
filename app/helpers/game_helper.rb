@@ -6,5 +6,6 @@ module GameHelper
   def current_game(game_id)
     Game.find_by(id: game_id)
   end
+
 end
 

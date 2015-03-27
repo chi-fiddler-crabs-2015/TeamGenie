@@ -15,4 +15,16 @@ class Team < ActiveRecord::Base
 
   validates_attachment_content_type :team_logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :team_logo, less_than: 1.megabyte
+
+  def future_games
+    self.games.select do |game|
+      game.future_game?
+    end
+  end
+
+  def recent_games
+    self.games.select do |game|
+      !game.future_game?
+    end
+  end
 end
