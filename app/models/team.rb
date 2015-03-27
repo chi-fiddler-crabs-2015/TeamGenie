@@ -17,18 +17,14 @@ class Team < ActiveRecord::Base
   validates_attachment_size :team_logo, less_than: 1.megabyte
 
   def future_games
-    games = []
-    self.games.each do |game|
-      games << game if game.future_game?
+    self.games.select do |game|
+      game.future_game?
     end
-    games
   end
 
   def recent_games
-    games = []
-    self.games.map do |game|
-      games << game unless game.future_game?
+    self.games.select do |game|
+      !game.future_game?
     end
-    games
   end
 end

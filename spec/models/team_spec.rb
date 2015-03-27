@@ -26,7 +26,7 @@ RSpec.describe Team, type: :model do
   end
 
   describe 'game time methods' do
-      let!(:team) { Team.new() }
+    let!(:team) { Team.new() }
 
     before(:each) do
       3.times { team.games.new(game_time: Time.now() + 100000) }
