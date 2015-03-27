@@ -1,7 +1,21 @@
-<% @teams.each do |team| %>
-  <%= render partial: 'team_summary', locals: { team: team } %>
+<div class='col-xs-2'>
+</div>
 
-<% end %>
-<%= link_to new_team_path, class: 'btn btn-success' do %>
-  <i class="glyphicon glyphicon-plus"></i> Add Team
-<% end %>
+<div class='col-xs-8'>
+  <% @teams.each do |team| %>
+    <div class='col-xs-6'>
+      <%= render partial: 'team_summary', locals: { team: team } %>
+    </div>
+  <% end %>
+
+  <div class='col-xs-12 new-team'>
+    <%= link_to new_team_path, class: 'btn btn-success' do %>
+      <i class="glyphicon glyphicon-plus"></i> Add Team
+    <% end %>
+  </div>
+
+
+</div>
+
+<div class='col-xs-2'>
+</div>
