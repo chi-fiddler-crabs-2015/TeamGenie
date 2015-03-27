@@ -27,3 +27,7 @@ end
 10.times do
   Game.create!(location: Location.all.sample, game_time: Time.now()-rand(100000), team: Team.all.sample)
 end
+
+10.times do
+  Team.last.games.create!(game_time: Time.now() + 1000000, location: Location.all.sample)
+end

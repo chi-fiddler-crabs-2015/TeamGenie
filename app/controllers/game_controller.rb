@@ -44,12 +44,13 @@ class GameController < ApplicationController
     @game.update_attributes(params[:game])
   end
 
+  private
+
+  def game_params
+    params.require(:game).permit(:team, :game_time)
+  end
+
 end
 
 
-private
-
-def game_params
-  params.require(:game).permit(:team, :game_time)
-end
 
