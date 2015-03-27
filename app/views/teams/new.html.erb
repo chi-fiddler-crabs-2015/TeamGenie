@@ -1,0 +1,22 @@
+<h2>Add new team</h2>
+
+<%= form_for :team, url: teams_path, html: { multipart: true }  do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :activity %><br />
+    <%= f.text_field :activity, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :team_logo %><br />
+    <%= f.file_field :team_logo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
