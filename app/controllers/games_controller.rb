@@ -13,8 +13,13 @@ class GamesController < ApplicationController
   end
 
   def create
+    datetime = params[:game]
+    # year = datetime['game_time(1i)'].to_i
+    # month = datetime['game_time(2i)'].to_i
+    game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, datetime['game_time(6i)'].to_i)
     # location = Location.find_by_id(params[:location])
-    game = current_user.games.new(game_params)
+    game = current_user.games.new(game_time: game_time)
+    puts game
     # update_location(game)
     if game.save
       redirect_to games_path
