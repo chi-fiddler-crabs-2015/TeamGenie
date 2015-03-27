@@ -22,9 +22,9 @@ class TeamsController < ApplicationController
     @team = Team.find_by(id: params[:id])
   end
 
-  def update
-    team = Team.find_by(id: params[:id])
-  end
+  # def update
+  #   team = Team.find_by(id: params[:id])
+  # end
 
   private
 

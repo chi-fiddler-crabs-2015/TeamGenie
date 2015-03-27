@@ -1,11 +1,16 @@
 <nav class="navbar navbar-default" role="navigation">
+</nav>
+
+<!-- NAVBAR -->
+<div class="navbar navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Team Genie</a>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Team Genie</a>
+      </div>
     </div>
-
-    <div class="pull-right">
-      <ul class="nav navbar-nav">
+    <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to 'My Teams', teams_path, class: 'btn' %></li>
           <li><%= link_to 'Log Out', logout_path, method: 'post', class: 'btn' %></li>
@@ -14,6 +19,7 @@
           <li><%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
+</div>
+<!-- END NAVBAR -->
