@@ -39,7 +39,12 @@
 </head>
 <body id="top">
 
+  <!-- Get this to render as a partial.  Currently in layouts/_navigation -->
+  <%= render partial: 'shared/navigation' %>
+
+<div class='container'>
 <%= yield %>
 
+</div>
 </body>
 </html>
