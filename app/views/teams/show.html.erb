@@ -1,20 +1,27 @@
+<div>
+  <!-- Render nav bar partial here -->
+</div>
+
 <h1>
   <%= @team.name %>
 </h1>
-<div>
-  <%= image_tag @team.team_logo.url(:medium) %>
+
+<div class='col-xs-5'>
+  <div>
+    <%= image_tag @team.team_logo.url(:medium) %>
+  </div>
 </div>
 
-<div>
+<div class='col-xs-7'>
   <% @team.games.each do |game| %>
     <p><%= game.game_time.strftime("%m/%d/%y at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %></p>
   <% end %>
+
+  <div>
+    <%= link_to new_game_path, class: 'btn btn-success' do %>
+      <i class="glyphicon glyphicon-plus"></i> New Game
+    <% end %>
+  </div>
+
 </div>
 
-<div>
-  <% @team.players.each do |player| %>
-    <p><%= player.first_name %> <%= player.last_name %></p>
-  <% end %>
-
-  <%= link_to 'invite new players - not working - invite players path' %>
-</div>
