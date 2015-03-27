@@ -1,5 +1,472 @@
+<%= javascript_include_tag 'application' %>
+<body id="top">
 <h1>Welcome to TeamGenie</h1>
 <h3>GO TEAM!!</h3>
 
 
+  <!-- NAVBAR -->
+  <div class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+          <span class="sr-only">Menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="index.html" class="navbar-brand">
+          <%= image_tag "download.jpeg" %>
+          <h1 class="hide">Parallax HTML One-Page Template</h1>
+        </a>
+      </div>
+      <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#top">HOME</a></li>
+          <li><a href="#about">ABOUT US</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#works">OUR WORKS</a></li>
+          <li><a href="#team">TEAM</a></li>
+          <li><a href="#contact">CONTACT US</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- END NAVBAR -->
+
+  <!-- HERO UNIT -->
+  <div id="hero-unit" class="hero-unit">
+
+    <div class="slideshow">
+      <div class="hero-content text-center">
+        <!-- Hero text -->
+        <div id="slidecaption" class="slide-caption"></div>
+        <div class="hero-buttons">
+          <a href="#about" id="btn-about" class="btn btn-info btn-lg"><i class="fa fa-arrow-circle-o-down"></i> READ MORE</a>
+          <a href="#contact" id="btn-contact" class="btn btn-primary btn-lg"><i class="fa fa-phone-square"></i> GET IN TOUCH</a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="slide-navigation">
+        <a id="prevslide" class="load-item"><i class="fa fa-angle-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="fa fa-angle-right"></i></a>
+
+        <!-- Slide Pagination -->
+        <ul id="slide-list" class="list-inline"></ul>
+
+        <!-- Control Bar -->
+        <div id="controls-wrapper" class="load-item">
+          <div id="controls">
+            <a id="pauseplay"><i class="fa fa-pause"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END HERO UNIT -->
+
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content" class="main-content">
+
+    <!-- ABOUT -->
+    <div id="about" class="section about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>ABOUT US</h2>
+          <p>A great beginning to know us more</p>
+          <hr />
+        </div>
+        <div class="section-content">
+          <div class="row">
+            <%= image_tag "about-img.png", :alt => "About Us", :class => "img-left" %>
+            <div class="col-lg-9 col-lg-offset-3">
+              <h3>Don't Wait Until Tomorrow</h3>
+              <p>Progressively maintain inexpensive information without intuitive markets. Quickly reconceptualize 2.0 imperatives without next-generation meta-services. Professionally conceptualize plug-and-play metrics without orthogonal information. Appropriately strategize dynamic infrastructures and turnkey channels. Seamlessly synthesize high-quality total linkage without distinctive intellectual capital.</p>
+
+              <p>Completely reinvent business mindshare with superior strategic theme areas. Dramatically build reliable platforms without real-time e-tailers. Competently predominate covalent scenarios rather than future-proof content. Intrinsicly innovate holistic users whereas cost effective partnerships. Objectively transform collaborative outsourcing before an expanded array of services. Monotonectally provide access to next-generation imperatives rather than mission-critical materials. Seamlessly negotiate excellent services rather than web-enabled sources. Quickly actualize proactive niches rather than user friendly catalysts for change. Efficiently negotiate distributed experiences for alternative best practices. Efficiently.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END ABOUT -->
+
+    <!-- SERVICES -->
+    <div id="services" class="section darker services" >
+      <div class="container">
+        <div class="section-heading">
+          <h2>SERVICES</h2>
+          <p>We strive to give the best service to our clients</p>
+          <hr />
+        </div>
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <span class="icon-checkmark2 service-icon"></span>
+                <div class="service-text">
+                  <h3>Elegant Design</h3>
+                  <p>Quickly actualize proactive niches rather than user friendly catalysts for change.</p>
+                  <a href="#" class="read-more"><span>Read more ...</span> <i class="i fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <span class="icon-pen service-icon"></span>
+                <div class="service-text">
+                  <h3>Carefully Handcrafted</h3>
+                  <p>Quickly actualize proactive niches rather than user friendly catalysts for change.</p>
+                  <a href="#" class="read-more"><span>Read more ...</span> <i class="i fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <span class="icon-lab service-icon"></span>
+                <div class="service-text">
+                  <h3>Design Formula</h3>
+                  <p>Quickly actualize proactive niches rather than user friendly catalysts for change.</p>
+                  <a href="#" class="read-more"><span>Read more ...</span> <i class="i fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <span class="icon-phone service-icon"></span>
+                <div class="service-text">
+                  <h3>Responsive</h3>
+                  <p>Quickly actualize proactive niches rather than user friendly catalysts for change.</p>
+                  <a href="#" class="read-more"><span>Read more ...</span> <i class="i fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END SERVICES -->
+
+    <!-- CALL TO ACTION -->
+    <div id="call-to-action" class="section call-to-action most-dark">
+      <p class="wow fadeInUp" data-wow-offset="200">Call us now and get more benefits</p>
+      <p class="wow fadeInUp" data-wow-offset="200"><i class="fa fa-phone"></i> +621 234 5678</p>
+    </div>
+    <!-- END CALL TO ACTION -->
+
+    <!-- WORKS -->
+    <div id="works" class="section works">
+      <div class="section-heading">
+        <h2>WORKS</h2>
+        <p>The best thing is when our work become part of client success</p>
+        <hr />
+      </div>
+      <div class="section-content">
+        <ul class="list-inline work-item-filters">
+          <li><a class="active" href="#" data-filter="*">ALL</a></li>
+          <li><a href="#" data-filter=".design">DESIGN</a></li>
+          <li><a href="#" data-filter=".photography">PHOTOGRAPHY</a></li>
+          <li><a href="#" data-filter=".ui">UI</a></li>
+          <li><a href="#" data-filter=".ux">UX</a></li>
+          <li><a href="#" data-filter=".video">VIDEO</a></li>
+        </ul>
+
+        <div class="work-item-wrapper">
+          <ul class="work-item-list list-col-4">
+            <li class="work-item design">
+              <%= image_tag "portfolio/work1.jpg", :alt => "This is the description"%>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work1-ori.jpg" class="media-popup" title="The Guitar">
+                  <div class="work-item-info">
+                    <h3>The Guitar</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item video">
+              <%= image_tag "portfolio/work2.jpg", :alt => "Just paste the link and go"%>
+              <div class="image-overlay">
+                <a href="https://www.youtube.com/watch?v=ValQcoRwDic" class="mfp-iframe media-popup" title="Video Title">
+                  <div class="work-item-info">
+                    <h3>YouTube</h3>
+                    <p>Just paste the link and go</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item ux">
+              <% image_tag "portfolio/work3.jpg", :alt => "Work item brief description"%>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work3-ori.jpg" class="media-popup" title="Skyscraper">
+                  <div class="work-item-info">
+                    <h3>Skyscraper</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item photography">
+              <%= image_tag "portfolio/work4.jpg", :alt => "Work item brief description"%>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work4-ori.jpg" class="media-popup" title="Heaven">
+                  <div class="work-item-info">
+                    <h3>Heaven</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item design ux">
+              <%= image_tag "portfolio/work5.jpg", :alt => "Work item brief description" %>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work5-ori.jpg" class="media-popup" title="Raining">
+                  <div class="work-item-info">
+                    <h3>Raining</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item ui design">
+              <%= image_tag "portfolio/work6.jpg", :alt => "Work item brief description"%>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work6-ori.jpg" class="media-popup" title="The Edge">
+                  <div class="work-item-info">
+                    <h3>The Edge</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item photography ux">
+              <%= image_tag "portfolio/work7.jpg", :alt => "Work item brief description" %>
+              <div class="image-overlay">
+                <a href="app/assets/images/portfolio/work7-ori.jpg" class="media-popup" title="The Light">
+                  <div class="work-item-info">
+                    <h3>The Light</h3>
+                    <p>Work item brief description</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="work-item video">
+              <%= image_tag "portfolio/work8.jpg", :alt => "Just paste the link and go"%>
+              <div class="image-overlay">
+                <a href="http://vimeo.com/82905738" class="mfp-iframe media-popup" title="Vimeo">
+                  <div class="work-item-info">
+                    <h3>Vimeo</h3>
+                    <p>Just paste the link and go</p>
+                    <i class="fa fa-search-plus"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END WORKS -->
+
+    <!-- TEAM -->
+    <div id="team" class="section team">
+      <div class="container">
+        <div class="section-heading">
+          <h2>MEET THE TEAM</h2>
+          <p>We are a group of skilled individual, various background with the same purpose</p>
+          <hr />
+        </div>
+        <div class="section-content">
+          <div class="col-md-5">
+            <div class="team-member media">
+              <%= image_tag "person1.png", :class => "media-object img-circle pull-left", :alt => "" %>
+              <div class="media-body">
+                <h3 class="media-heading team-name">Michael Summer</h3>
+                <strong>Executive Director</strong>
+                <hr />
+                <p>Dynamically evolve client-based portals through world-class models. Phosfluorescently simplify cross-platform convergence and multimedia based portals. Rapidiously.</p>
+                <ul class="list-inline">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 col-md-offset-2">
+            <div class="team-member media">
+              <%= image_tag "person2.png", :class => "media-object img-circle pull-left", :alt => "" %>
+              <div class="media-body">
+                <h3 class="media-heading team-name">Jane Doe</h3>
+                <strong>Art Director</strong>
+                <hr />
+                <p>Dynamically evolve client-based portals through world-class models. Phosfluorescently simplify cross-platform convergence and multimedia based portals. Rapidiously.</p>
+                <ul class="list-inline">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="team-member media">
+              <%= image_tag "person3.png", :class => "media-object img-circle pull-left", :alt => "" %>
+              <div class="media-body">
+                <h3 class="media-heading team-name">Cindy Marry</h3>
+                <strong>UI Designer</strong>
+                <hr />
+                <p>Dynamically evolve client-based portals through world-class models. Phosfluorescently simplify cross-platform convergence and multimedia based portals. Rapidiously.</p>
+                <ul class="list-inline">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 col-md-offset-2">
+            <div class="team-member media">
+              <%= image_tag "person4.png", :class => "media-object img-circle pull-left", :alt => "" %>
+              <div class="media-body">
+                <h3 class="media-heading team-name">Phillips Abraham</h3>
+                <strong>Front-end Developer</strong>
+                <hr />
+                <p>Dynamically evolve client-based portals through world-class models. Phosfluorescently simplify cross-platform convergence and multimedia based portals. Rapidiously.</p>
+                <ul class="list-inline">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TEAM -->
+
+    <!-- TESTIMONIAL -->
+    <div id="testimonial" class="section testimonial parallax">
+      <div class="container">
+        <div class="flexslider">
+          <ul class="slides">
+            <li>
+              <div class="testimonial-text">
+                <p><i class="fa fa-quote-left quote-left"></i>No wonder that the team has received so many awards and achievements.<i class="fa fa-quote-right quote-right"></i></p>
+              </div>
+              <div class="testimonial-author">
+                <p class="author-name">- Jean</p>
+                <p class="autor-title">Writer, All Design Magazine.</p>
+              </div>
+            </li>
+            <li>
+              <div class="testimonial-text">
+                <p><i class="fa fa-quote-left quote-left"></i>The team is unbelievable awesome. Top-notch professional service.<i class="fa fa-quote-right quote-right"></i></p>
+              </div>
+              <div class="testimonial-author">
+                <p class="author-name">- Alicia Brown</p>
+                <p class="autor-title">CEO, Dreamland Inc.</p>
+              </div>
+            </li>
+            <li>
+              <div class="testimonial-text">
+                <p><i class="fa fa-quote-left quote-left"></i>One word, SUPERB!<i class="fa fa-quote-right quote-right"></i></p>
+              </div>
+              <div class="testimonial-author">
+                <p class="author-name">- Jack</p>
+                <p class="autor-title">Art Director</p>
+              </div>
+            </li>
+            <li>
+              <div class="testimonial-text">
+                <p><i class="fa fa-quote-left quote-left"></i>In case you need more reliable help so that you can do more, just call them.<i class="fa fa-quote-right quote-right"></i></p>
+              </div>
+              <div class="testimonial-author">
+                <p class="author-name">- Albert Doe</p>
+                <p class="autor-title">Freelance UI Designer</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END TESTIMONIAL -->
+
+    <!-- CONTACT -->
+    <div id="contact" class="section contact">
+      <div class="section-heading">
+        <h2>GET IN TOUCH</h2>
+        <p>Now it's time to build a business and relationship</p>
+        <hr />
+      </div>
+      <div class="section-content">
+        <div class="google-map">
+          <div id="map-canvas"></div>
+        </div>
+        <div class="contact-info">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <h3>Address</h3>
+                <p>12345 North Main Street<br />New York, 22334455</p>
+              </div>
+              <div class="col-md-4">
+                <i class="fa fa-envelope"></i>
+                <h3>Contact</h3>
+                <p>+621 234 4567<br /><a href="mailto:hello@yourcompany.com">hello@yourcompany.com</a></p>
+              </div>
+              <div class="col-md-4">
+                <i class="fa fa-user"></i>
+                <h3>Join Us</h3>
+                <p>Send your latest CV to<br /><a href="mailto:career@yourcompany.com">career@yourcompany.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END CONTACT -->
+
+    <!-- TWITTER STREAM -->
+    <div id="twitter-stream" class="section twitter-stream">
+      <div class="container">
+        <div class="twitter-icon">
+          <i class="fa fa-twitter"></i>
+        </div>
+        <div id="tweet"></div>
+      </div>
+    </div>
+    <!-- END TWITTER STREAM -->
+
+  </div>
+  <!-- END MAIN CONTENT -->
+
+  <!-- FOOTER -->
+  <footer id="footer" class="section">
+    <div class="container">
+      <p class="copyright pull-left">&copy; 2014. The Develovers. All Rights Reserved.</p>
+      <ul class="list-inline pull-right social-icon">
+        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+  <div class="back-to-top">
+    <a href="#top"><i class="fa fa-chevron-up"></i></a>
+  </div>
 

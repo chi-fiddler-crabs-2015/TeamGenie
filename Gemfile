@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Use ejs
+gem 'ejs'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,6 +32,11 @@ gem "paperclip", "~> 4.2"
 
 # Faker for seed data
 gem 'faker'
+
+# gems to support bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'compass-rails'
+gem 'autoprefixer-rails'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -58,9 +65,5 @@ group :test do
 end
 
 gem 'simplecov', :require => false, :group => :test
-
-# Bootstrap core to rails
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
 
 
