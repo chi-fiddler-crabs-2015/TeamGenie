@@ -1,6 +1,6 @@
 <% @teams.each do |team| %>
   <%= link_to team.name, team_path(team) %>
-  <%= image_tag team.team_logo.url(:medium) %>
+  <%= image_tag team.team_logo.url(:thumb) %>
   <br>
 <% end %>
 <%= link_to 'Add new team', new_team_path %>
