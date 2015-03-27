@@ -1,4 +1,5 @@
 /* ------------------ BASE STYLES ------------------ */
+
 html, body {
   height: 100%;
   width: 100%;
@@ -4568,9 +4569,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-name: rollOut;
 }
 
-body {
+/*body {
   display: none;
-}
+}*/
 
 #jpreOverlay {
   background-color: #000000;
