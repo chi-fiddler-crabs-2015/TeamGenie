@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   resources :locations
 
+  resources :users, only: [:new, :create, :show]
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
