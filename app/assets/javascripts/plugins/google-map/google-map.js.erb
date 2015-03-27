@@ -1,6 +1,6 @@
 	    var geocoder;
 		var map;
-    
+
 		function initialize() {
 			geocoder = new google.maps.Geocoder();
 
@@ -17,7 +17,7 @@
 			    ]
 			  },{
 			    "featureType": "water",
-			    "stylers": [			      
+			    "stylers": [
 			      { "visibility": "simplified" },
 			      { "color": "#C2E7F5" }
 			    ]
@@ -87,11 +87,11 @@
 			    ]
 			  }
 			];
-			
+
 			var styledMap = new google.maps.StyledMapType(styles, {
 				name: "Styled Map"
 			});
-				
+
 			var mapOptions = {
 				zoom: 15,
 				scrollwheel: false,
@@ -101,21 +101,21 @@
 				  mapTypeIds: []
 				}
 			};
-			
+
 			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			map.mapTypes.set('map_style', styledMap);
-			map.setMapTypeId('map_style');				
-			
+			map.setMapTypeId('map_style');
+
 			codeAddress();
 		}
 
 		function codeAddress() {
-		
+
 			var address = "Google New York, 76 Ninth Ave, New York, NY, USA";
 			geocoder.geocode( { 'address': address}, function(results, status) {
 				if (status == google.maps.GeocoderStatus.OK) {
 					map.setCenter(results[0].geometry.location);
-					var image = new google.maps.MarkerImage("assets/img/location-pin.png", null, null, null, new google.maps.Size(32, 32));
+					var image = new google.maps.MarkerImage('<%= image_path 'location-pin.png' %>', null, null, null, new google.maps.Size(32, 32));
 					var beachMarker = new google.maps.Marker({
 						map: map,
 						icon: image,
@@ -127,7 +127,7 @@
 				}
 			});
 		}
-		
+
 		function loadScript() {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
@@ -135,5 +135,5 @@
 			    'callback=initialize';
 			document.body.appendChild(script);
 		}
-		
+
 		window.onload = loadScript;

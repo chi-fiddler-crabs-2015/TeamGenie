@@ -162,9 +162,13 @@
 				base.options.slideshow = 0;
 			}
 
+		base.getField = function(field){
+			return base.options.slides[vars.current_slide][field];
+		};
+
 			// Set current image
-			imageLink = '(api.getField('url')) ? "href='" + api.getField('url') + "'" : ""';
-			var img = $('<img src="'+api.getField('image')+'"/>');
+			imageLink = (api.getField('url')) ? "href='" + api.getField('url') + "'" : "";
+			var img = $('<%=image_path "'+api.getField('image')+'"%>');
 
 			var slideCurrent= base.el+' li:eq('+vars.current_slide+')';
 			img.appendTo(slideCurrent).wrap('<a ' + imageLink + linkTarget + '></a>').parent().parent().addClass('image-loading activeslide');
