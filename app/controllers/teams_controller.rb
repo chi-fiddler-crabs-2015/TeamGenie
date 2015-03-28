@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
 
   def create
     new_team = current_user.teams.create(team_params)
+    current_user.memberships.create(team: new_team)
     if new_team.save
       redirect_to teams_path
     else
