@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :memberships
+    resources :games do
+      resources :rsvps
+    end
   end
 
-  resources :games do
-    resources :rsvps
-  end
+
 
   resources :locations
 

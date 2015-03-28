@@ -1,27 +1,14 @@
 <h2>Add a new game</h2>
 
-<%= form_for :game, url: games_path  do |f| %>
+<%= form_for :game, url: team_games_path(params[:team_id])  do |f| %>
   <div class="field">
     <%= f.label :game_time %><br />
-    <%= f.text_field :game_time, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.select :state, us_states, autofocus: true %>
+    <%= f.datetime_select :game_time, autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Create Game" %>
   </div>
+
+  Don't forget to add location picker
 <% end %>
