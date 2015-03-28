@@ -5925,6 +5925,10 @@ img.mfp-img {
   height: 300px;
 }
 
+.google-map #loggedin-map-canvas {
+  height: 300px;
+}
+
 .contact-info {
   text-align: center;
 }

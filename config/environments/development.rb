@@ -36,6 +36,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  #load and compile assets
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
