@@ -1,4 +1,6 @@
-<p>
-  <%= player.first_name %> <%= player.last_name %> -
-  <%= player.rsvps.find_by(game: game).attending %>
-</p>
+<div class='col-xs-12'>
+  <p>
+    <%= player.first_name %> <%= player.last_name %> -
+    <%= player.rsvps.find_by(game: game).attending %>
+  </p>
+</div>

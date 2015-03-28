@@ -14,7 +14,7 @@ class Game < ActiveRecord::Base
     false
   end
 
-  def find_rsvp_status(rsvp_status)
+  def count_rsvp_status(rsvp_status)
     self.rsvps.where(attending: rsvp_status).count
   end
 
