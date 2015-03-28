@@ -1,6 +1,7 @@
 <div class='game-view'>
   <h4>
     <%= game.game_time.strftime("%m/%d/%y, beginning at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %>
+    <%= game.find_rsvp_status('attending') %>, <%= game.find_rsvp_status('pending') %>, <%= game.find_rsvp_status('not attending') %>
   </h4>
   <% team.players.each do |player| %>
     <%= render partial: 'rsvps/show', locals: {game: game, player: player}%>

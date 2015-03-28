@@ -19,6 +19,7 @@ class GamesController < ApplicationController
     game = team.games.new(game_time: game_time, location: Location.last)
     # update_location(game)
     if game.save
+      create_rsvps(game)
       redirect_to team_path(team)
     else
       flash[:notice] = "Game was not valid."

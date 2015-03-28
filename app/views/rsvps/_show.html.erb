@@ -1,2 +1,4 @@
-<p><%= player.first_name %> <%= player.last_name %> - <%= Pending %></p>
-<!-- # player.rsvp.where(game: game) -->
+<p>
+  <%= player.first_name %> <%= player.last_name %> -
+  <%= player.rsvps.find_by(game: game).attending %>
+</p>

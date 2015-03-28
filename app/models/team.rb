@@ -27,4 +27,5 @@ class Team < ActiveRecord::Base
       !game.future_game?
     end
   end
+
 end
