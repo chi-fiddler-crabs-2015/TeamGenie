@@ -1,5 +1,5 @@
 <div class='game-view'>
-  <div class='col-xs-8'>
+  <div class='col-xs-8 game-time'>
     <h4>
       <%= game.game_time.strftime("%m/%d/%y, beginning at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %>
     </h4>

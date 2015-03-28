@@ -2,5 +2,8 @@
   <p>
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
+    <% if is_current_user?(player) %>
+      <a>Change RSVP</a>
+    <% end %>
   </p>
 </div>
