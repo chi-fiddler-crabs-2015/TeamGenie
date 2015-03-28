@@ -13,9 +13,9 @@ class GamesController < ApplicationController
   end
 
   def create
-    team = Team.find_by(id: params[:team_id])
+    team = find_team(params[:team_id])
     datetime = params[:game]
-    game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, datetime['game_time(6i)'].to_i)
+    game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
     # location = Location.find_by_id(params[:location])
     game = team.games.new(game_time: game_time, location: Location.find(1))
     puts game.game_time

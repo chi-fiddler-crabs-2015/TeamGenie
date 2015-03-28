@@ -10,9 +10,9 @@ require 'faker'
 team_names = ['Portland Timbers','Los Angeles Galaxy','Seattle Sounders','Houston Dynamo','Real Salt Lake','San Jose Earthquakes','Sporting KC']
 captain = User.create!(first_name: 'Carlos', password: 'hellohello', last_name: 'Dunga', email: 'dunga@dunga.com', username: 'dunga', phone_number: Faker::PhoneNumber.cell_phone, birthday: Faker::Date.between(40.years.ago, 30.years.ago))
 
-10.times do
-  Location.create!(name: Faker::Address.street_name, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip_code: Faker::Address.zip, directions: Faker::Lorem.paragraph)
-end
+Location.create!(name: 'Lincoln Park South Fields', address: '1627 N Stockton Dr', city: 'Chicago', state: 'IL', zip_code: '60614', directions: "Off of LaSalle and Clark, just south of the Lincoln Park Zoo")
+Location.create!(name: 'River Park Field', address: '5100 N Francisco', city: 'Chicago', state: 'IL', zip_code: '60625', directions: "Off of Foster and Francisco, just south of the high school")
+Location.create!(name: 'Toyota Park', address: '7000 Harlem Ave', city: 'Bridgeview', state: 'IL', zip_code: '60455', directions: "Off of Harlem Ave by Argo Community High School")
 
 captain.teams.create!(name: 'Good Times FC', activity: 'Soccer', home_location: Location.all.sample)
 
