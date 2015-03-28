@@ -7,10 +7,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
   end
 
-  def future_game?
-    if self.game_time > Time.now()
-      return true
-    end
-    false
+  def find_team(team_id)
+    Team.find_by(id: team_id)
   end
+
 end
