@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.games
+    team = find_team(params[:team_id])
+    @games = team.games
   end
 
   def new
@@ -28,15 +29,16 @@ class GamesController < ApplicationController
   end
 
   def destroy
+    team = find_team(params[:team_id])
     if current_user
       @game = current_game(params[:id])
       @game.destroy
     end
-    redirect_to team_games_path
+    redirect_to team_games_path(team)
   end
 
   def edit
-    redirect_to edit_team_game_path(params[:id])
+    redirect_to edit_team_game_path(params[:team_id],params[:id])
   end
 
   def show
