@@ -13,14 +13,17 @@ class GamesController < ApplicationController
   end
 
   def create
-    team = find_team(params[:team_id])
+    @user = current_user
+    @team = find_team(params[:team_id])
+    #get array of player emails
     datetime = params[:game]
     game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
     # location = Location.find_by_id(params[:location])
-    game = team.games.new(game_time: game_time, location: Location.find(1))
+    @game = team.games.new(game_time: game_time, location: Location.find(1))
     puts game.game_time
     # update_location(game)
     if game.save
+      GameMailer.delay_until((@game_time - 2.weeks).initial_invitation(@user, @team, @game)
       redirect_to team_path(team)
     else
       flash[:notice] = "Game was not valid."
