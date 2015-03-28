@@ -4,20 +4,22 @@ RSpec.describe UsersController, type: :controller do
   describe "POST create" do
 
     context 'when valid parameters are passed' do
+      let(:user) {create(:user)}
+
       it 'assigns a newly created user as a user' do
-        post :create, { user: {first_name: "fake", last_name: "fakefake", username: "fakefake", email: "fake@fake.com", password: "12345678"} }
+        post :create, { user: user.attributes }
         expect(assigns(:user)).to be_a User
       end
 
       it 'creates a new user' do
         expect {
-          post :create, { user: {first_name: "fake", last_name: "fakefake", username: "fakefake", email: "fake@fake.com", password: "12345678"} }
+          post :create, { user: user.attributes }
         }.to change{User.count}.by(1)
       end
 
       it 'redirects to the teams path' do
         expect(
-          post :create, { user: {first_name: "fake", last_name: "fakefake", username: "fakefake", email: "fake@fake.com", password: "12345678"} }
+          post :create, { user: { username: "fakeyfakey3", first_name: "David", last_name: "V", email: "fake23@fake2.com", password: "123456789012345678901437" } }
         ).to redirect_to teams_path
       end
     end
