@@ -1,6 +1,6 @@
 <h2>Add a new game</h2>
 
-<%= form_for :game, url: games_path  do |f| %>
+<%= form_for :game, url: team_games_path(params[:team_id])  do |f| %>
   <div class="field">
     <%= f.label :game_time %><br />
     <%= f.datetime_select :game_time, autofocus: true %>

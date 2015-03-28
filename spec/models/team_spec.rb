@@ -29,8 +29,8 @@ RSpec.describe Team, type: :model do
     let!(:team) { Team.new() }
 
     before(:each) do
-      3.times { team.games.new(game_time: Time.now() + 100000) }
-      2.times { team.games.new(game_time: Time.now() - 100000) }
+      3.times { team.games.new(game_time: Time.now() + 99999999999999999999999999999) }
+      2.times { team.games.new(game_time: Time.now() - 99999999999999999999999999999) }
     end
 
     it '#future_games should return future games' do

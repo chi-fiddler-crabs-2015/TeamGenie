@@ -14,12 +14,12 @@ RSpec.describe Game, type: :model do
 
   describe '#future_game?' do
     it 'should return true for a future game' do
-      game = Game.new(game_time: Time.now() + 100000)
+      game = Game.new(game_time: Time.now() + 99999999999999999999999999999)
       expect(game.future_game?).to be true
     end
 
     it 'should return false for a past game' do
-      game = Game.new(game_time: Time.now() - 100000)
+      game = Game.new(game_time: Time.now() - 99999999999999999999999999999)
       expect(game.future_game?).to be false
     end
   end
