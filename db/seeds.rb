@@ -23,6 +23,6 @@ end
 10.times do
   game = team1.games.create!(location: Location.all.sample, game_time: Time.now()+(rand(10).weeks))
   team1.players.each do |player|
-    player.memberships.first.rsvps.create!(game: game)
+    player.memberships.first.rsvps.create!(game: game, attending: ['pending', 'not attending', 'attending'].sample)
   end
 end
