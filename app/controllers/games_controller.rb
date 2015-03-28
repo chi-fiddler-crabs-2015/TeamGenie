@@ -19,10 +19,10 @@ class GamesController < ApplicationController
     datetime = params[:game]
     game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
     # location = Location.find_by_id(params[:location])
-    @game = team.games.new(game_time: game_time, location: Location.find(1))
-    puts game.game_time
+    @game = @team.games.new(game_time: game_time, location: Location.find(1))
+    puts @game.game_time
     # update_location(game)
-    if game.save
+    if @game.save
       GameMailer.delay.initial_invitation(@user, @team, @game)
       GameMailer.delay_until(@game_time - 6.days).six_day_invitation(@user, @team, @game)
       GameMailer.delay_until(@game_time - 2.days).two_day_invitation(@user, @team, @game)
