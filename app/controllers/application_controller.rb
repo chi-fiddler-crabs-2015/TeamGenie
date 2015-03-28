@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     Team.find_by(id: team_id)
   end
 
+  def find_location(location_id)
+    Location.find_by(id: location_id)
+  end
+
 end

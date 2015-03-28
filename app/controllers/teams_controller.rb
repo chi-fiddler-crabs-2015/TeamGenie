@@ -18,14 +18,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # Write helper method
     @team = find_team(params[:id])
     @future_games = @team.future_games
     @recent_games = @team.recent_games
   end
 
   # def update
-  #   team = Team.find_by(id: params[:id])
+  #   team = find_team(params[:id])
   # end
 
   private
