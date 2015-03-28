@@ -1,6 +1,6 @@
 http_path = "/"
 css_dir = "app/assets/stylesheets"
-images_dir = "app/assets/img"
+images_dir = "app/assets/images"
 fonts_dir = "app/assets/fonts"
 relative_assets = true
 

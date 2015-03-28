@@ -1,0 +1,7 @@
+<iframe
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDx0b1DBFR9js1e1ckQnhFm0pMRmIloJWk
+    &q=<%= @location.name.split(' ').join('+')  %>,<%=@location.address.split(' ').join('+') %>,<%=@location.city.split(' ').join('+') %>+<%=@location.state%>">
+</iframe>

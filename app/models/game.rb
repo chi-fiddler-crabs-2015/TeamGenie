@@ -5,4 +5,12 @@ class Game < ActiveRecord::Base
 
   validates :game_time, presence: true
   validates :location, presence: true
+
+
+  def future_game?
+    if self.game_time > Time.now()
+      return true
+    end
+    false
+  end
 end
