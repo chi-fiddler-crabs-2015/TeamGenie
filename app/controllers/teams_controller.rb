@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
 
   def create
     new_team = current_user.teams.create(team_params)
+    current_user.memberships.create(team: new_team)
     if new_team.save
       redirect_to teams_path
     else
@@ -18,14 +19,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # Write helper method
-    @team = Team.find_by(id: params[:id])
+    @team = find_team(params[:id])
     @future_games = @team.future_games
     @recent_games = @team.recent_games
   end
 
   # def update
-  #   team = Team.find_by(id: params[:id])
+  #   team = find_team(params[:id])
   # end
 
   private
