@@ -96,6 +96,7 @@ GEM
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0)
+    icalendar (2.2.2)
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -232,8 +233,10 @@ DEPENDENCIES
   ejs
   factory_girl_rails
   faker
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   paperclip (~> 4.2)
   pg
   rails (= 4.2.0)
