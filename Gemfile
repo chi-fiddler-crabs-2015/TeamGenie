@@ -33,6 +33,9 @@ gem "paperclip", "~> 4.2"
 # Faker for seed data
 gem 'faker'
 
+#Factory for spec
+gem 'factory_girl_rails'
+
 # gems to support bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'compass-rails'
