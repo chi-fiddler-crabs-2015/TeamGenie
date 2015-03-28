@@ -1,4 +1,5 @@
 /* ------------------ BASE STYLES ------------------ */
+
 html, body {
   height: 100%;
   width: 100%;
@@ -13,7 +14,7 @@ body {
   line-height: 1.6;
 }
 body.fullscreen-image-background {
-  background-image: url('../img/sliders/slider3.png?1393983498');
+  background-image: url('sliders/slider3.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -34,8 +35,8 @@ h1, h2, h3, h4, h5, h6 {
 /* ------------------ GENERAL STYLES ------------------ */
 @font-face {
   font-family: "brankic";
-  src: url('../fonts/brankic.eot?1392697956');
-  src: url('../fonts/brankic.eot?&1392697956#iefix') format('embedded-opentype'), url('../fonts/brankic.svg?1392697956') format('svg'), url('../fonts/brankic.ttf?1392697956') format('truetype'), url('../fonts/brankic.woff?1392697956') format('woff');
+  src: url('brankic.eot');
+  src: url('brankic.eot') format('embedded-opentype'), url('brankic.svg') format('svg'), url('brankic.ttf') format('truetype'), url('brankic.woff') format('woff');
 }
 /* --------------------- */
 /* NAVIGATION BAR
@@ -371,7 +372,7 @@ img {
   height: 60px;
   margin: -30px 0 0 -30px;
   text-indent: -999em;
-  background: url(../img/progress.gif) no-repeat center center;
+  background: url(../images/progress.gif) no-repeat center center;
 }
 
 #supersized {
@@ -434,7 +435,7 @@ img {
 }
 
 #supersized li.image-loading {
-  background: #111 url(../img/progress.gif) no-repeat center center;
+  background: #111 url(../images/progress.gif) no-repeat center center;
   width: 100%;
   height: 100%;
 }
@@ -4568,9 +4569,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   animation-name: rollOut;
 }
 
-body {
+/*body {
   display: none;
-}
+}*/
 
 #jpreOverlay {
   background-color: #000000;
@@ -5183,7 +5184,7 @@ img.mfp-img {
   opacity: 0.2;
   width: 100%;
   height: 100%;
-  background-image: url('../img/noise_lines_@2X.png?1342797527');
+  background-image: url('noise_lines_@2X.png');
   background-repeat: repeat;
 }
 .hero-unit .hero-content {
@@ -5855,7 +5856,7 @@ img.mfp-img {
 }
 /* ------------------ TESTIMONIAL ------------------ */
 .testimonial {
-  background-image: url('../img/sky.jpg?1394021998');
+  background-image: url('sky.jpg');
   text-align: center;
   color: #fff;
 }
@@ -5921,6 +5922,10 @@ img.mfp-img {
   margin-bottom: 60px;
 }
 .google-map #map-canvas {
+  height: 300px;
+}
+
+.google-map #loggedin-map-canvas {
   height: 300px;
 }
 
@@ -6093,3 +6098,29 @@ img.mfp-img {
   background-color: #8a8a8a;
   color: #fafafa;
 }
+
+/* ------------------ TEAMS ------------------ */
+
+.new-team {
+  margin: 2em;
+  text-align: center;
+}
+
+.team-box {
+  margin-bottom: 2em;
+}
+
+.team-name {
+  margin: 1em;
+  text-align: center;
+}
+
+.team-logo-box {
+  height: 150px;
+  vertical-align: bottom;
+}
+
+.teams_box {
+  text-align: center;
+}
+
