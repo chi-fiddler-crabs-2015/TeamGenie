@@ -23,7 +23,9 @@ class GamesController < ApplicationController
     puts game.game_time
     # update_location(game)
     if game.save
-      GameMailer.delay_until((@game_time - 2.weeks).initial_invitation(@user, @team, @game)
+      GameMailer.delay.initial_invitation(@user, @team, @game)
+      GameMailer.delay_until(@game_time - 6.days).six_day_invitation(@user, @team, @game)
+      GameMailer.delay_until(@game_time - 2.days).two_day_invitation(@user, @team, @game)
       redirect_to team_path(team)
     else
       flash[:notice] = "Game was not valid."
