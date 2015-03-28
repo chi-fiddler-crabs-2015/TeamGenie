@@ -29,6 +29,22 @@
 <script>
   $('.game-view').on('click', '.game-time', function(e) {
     $('.game-view').find(">:last-child").toggleClass('hidden')
-  })
+  });
+
+  $('.change-rsvp').on('click', function(e) {
+    e.preventDefault();
+    var route = $(this).attr('href')
+    $.ajax({
+      url: route,
+      method: "PUT",
+      data: 'boom',
+      success: function(response) {
+        console.log('yay')
+      },
+      fail: function(response) {
+        console.log('nope')
+      }
+    })
+  });
 </script>
 
