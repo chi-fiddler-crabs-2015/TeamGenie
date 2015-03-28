@@ -1,0 +1,2 @@
+class GameMailer < ApplicationMailer
+end
