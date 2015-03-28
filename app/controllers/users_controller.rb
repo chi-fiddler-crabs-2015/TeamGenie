@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      UserMailer.welcome_email(user).deliver_now
+      UserMailer.delay.welcome_email(user)
       session[:user_id] = user.id
       redirect_to teams_path
     else
