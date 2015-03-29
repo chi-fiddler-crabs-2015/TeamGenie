@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_game(game_id)
+    Game.find_by(id: game_id)
+  end
+
 end
