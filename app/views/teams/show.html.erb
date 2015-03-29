@@ -1,3 +1,40 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+  $(document).ready( function() {
+    $(document).on('click', '.game-view', function(e) {
+      $(this).find('>:last-child').removeClass('hidden')
+    });
+
+    $(document).on('click', '.change-rsvp-show', function(e) {
+      e.preventDefault();
+      $(this).find(">:first-child").addClass('hidden')
+      $(this).find(">:last-child").removeClass('hidden')
+    })
+
+    $(document).on('click', '.change-rsvp', function(e) {
+      e.preventDefault();
+      var partial = $(this)
+      var data = $(this).attr('data')
+      var route = $(this).parent().attr('action')
+      var response = $.ajax({
+        url: route,
+        method: "patch",
+        dataType: 'html',
+        data: {attendance: data},
+        "success": function(response) {
+          partial.closest('.game-view').replaceWith(response.responseText)
+        }
+      })
+    });
+
+    $(document).on('click', '.show-new-player-invitation', function() {
+      $('.invite-players').removeClass('hidden')
+    });
+  });
+
+</script>
+
 <div>
   <%= render partial: 'shared/team_nav', locals: {team: @team}%>
 </div>
@@ -10,6 +47,20 @@
   <div>
     <%= image_tag @team.team_logo.url(:medium) %>
   </div>
+  <% if is_captain?(@team) %>
+    <div class='invite-players hidden'>
+      <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
+
+        <div class="form-group email-field">
+          <%= f.email_field 'email',  class: 'form-control', placeholder: 'Email' %>
+        </div>
+
+        <%= f.submit 'Invite Players', class: 'btn btn-success', id: 'invitation-submit-button' %>
+
+      <% end %>
+    </div>
+      <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+  <% end %>
 </div>
 
 <div class='col-xs-7'>
@@ -17,47 +68,21 @@
     <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>
 
-  <div>
-    <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
-      <i class="glyphicon glyphicon-plus"></i> New Game
-    <% end %>
-  </div>
+  <% if is_captain?(@team) %>
+    <div>
+      <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
+        <i class="glyphicon glyphicon-plus"></i> New Game
+      <% end %>
+    </div>
+  <% end %>
 
 </div>
 
 
 
 <!-- Abstract this out -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-<script>
-  $('.game-view').on('click', function(e) {
-    $(this).find(">:last-child").removeClass('hidden')
-  });
-
-  $('.change-rsvp-show').on('click', function(e) {
-    e.preventDefault();
-    $('.change-rsvp-button').addClass('hidden')
-    $(this).find(">:last-child").removeClass('hidden')
-  })
-
-  // Not working yet
-  $('.change-rsvp').on('click', function(e) {
-    e.preventDefault();
-    var route = $(this).attr('href')
-    $.ajax({
-      url: route,
-      method: "patch",
-      data: 'boom',
-      success: function(response) {
-        console.log('yay')
-      },
-      fail: function(response) {
-        console.log('nope')
-      }
-    })
-  });
 
 
-</script>
+
+
 

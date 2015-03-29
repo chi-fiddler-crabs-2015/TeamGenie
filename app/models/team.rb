@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   belongs_to :home_location, class_name: "Location"
   has_attached_file :team_logo,
                     styles: { thumb: '100x100#', medium: '300x300>', team_summary: '150x150' },
-                    :default_url => "system/teams/team_logos/:style/default_team_logo.png"
+                    :default_url => "/system/teams/team_logos/default_team_logo/:style/default_team_logo.png"
 
   validates   :captain, presence: true
   # validates   :home_location, presence: true

@@ -12,4 +12,7 @@ module ApplicationHelper
     current_user == player
   end
 
+  def is_captain?(team)
+    team.captain == current_user
+  end
 end

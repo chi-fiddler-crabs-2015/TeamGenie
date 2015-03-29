@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     @team = find_team(params[:team_id])
     @game_time = create_game_time(params[:game])
     # location = Location.find_by_id(params[:game][:location])
-    @game = team.games.new(game_time: @game_time, location: Location.last)
+    @game = @team.games.new(game_time: @game_time, location: Location.last)
     # update_location(game)
     if @game.save
       create_rsvps(@game)
