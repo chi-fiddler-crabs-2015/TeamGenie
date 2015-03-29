@@ -20,9 +20,9 @@
       var response = $.ajax({
         url: route,
         method: "patch",
-        dataType: 'html',
+        // dataType: 'html',
         data: {attendance: data},
-        "success": function(response) {
+        error: function(response) {
           partial.closest('.game-view').replaceWith(response.responseText)
         }
       })
