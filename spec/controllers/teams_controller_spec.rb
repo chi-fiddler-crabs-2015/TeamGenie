@@ -26,13 +26,14 @@ RSpec.describe TeamsController, type: :controller do
     end
   end
 
-  # context "POST #create" do
-  #   describe 'when valid parameters are passed' do
-  #     it "should create a new team" do
-  #       expect{
-  #         post :create, { team: {name: "DBC", activity: "soccer", home_location: location} } }.to change{Team.count}.by(1)
-  #     end
-  #   end
+  context "POST #create" do
+    describe 'when valid parameters are passed' do
+      it "should create a new team" do
+        expect{
+          post :create, { team: {name: "DBC", activity: "soccer", home_location_id: location.id } } }.to change{Team.count}.by(1)
+      end
+    end
+  end
 
   #   describe 'when invalid parameters are passed' do
   #     it "should render the new team page" do
