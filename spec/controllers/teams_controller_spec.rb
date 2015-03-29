@@ -20,7 +20,23 @@ RSpec.describe TeamsController, type: :controller do
   context "GET #new" do
     describe 'when valid parameters are passed' do
       it 'should render the new template' do
-        expect(get :new).to redirect_to(new_team)
+        expect(get :new).to redirect_to(new_team_path)
+      end
+    end
+  end
+
+  context "POST #create" do
+    describe 'when valid parameters are passed' do
+      it "should create a new team" do
+        expect{
+          post :create, { team: {name: "DBC", activity: "soccer", home_location: location} } }.to change{Team.count}.by(1)
+      end
+    end
+
+    describe 'when invalid parameters are passed' do
+      it "should render the new team page" do
+        expect{
+          post :create, { team: {activity: "soccer", home_location: location} } }.to redirect_to(new_team_path)
       end
     end
   end
