@@ -53,14 +53,28 @@ RSpec.describe GamesController, type: :controller do
   end
 
   context "GET #edit" do
-    describe "when valid parameters are passed" do
-      it "should redirect to the edit team game path" do
-        location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
-        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
-        game = team.games.create!(game_time: DateTime.now, location: location)
-        expect(get :edit, id: game.to_param, team_id: team.to_param).to redirect_to edit_team_game_path(id: game.to_param, team_id: team.to_param)
+    #TEST ON CAPYBARA
+    # describe "when valid parameters are passed" do
+    #   it "should redirect to the edit team game path" do
+    #     location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+    #     team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+    #     game = team.games.create!(game_time: DateTime.now, location: location)
+    #     expect(get :edit, { id: game.id, team_id: team.id}).to redirect_to edit_team_game_path(id: game.id, team_id: team.id)
 
-      end
-    end
+    #   end
+    # end
+  end
+
+  context "GET #show" do
+    #TEST ON CAPYBARA
+    # describe "when valid parameters are passed" do
+    #   it "should redirect to the edit team game path" do
+    #     location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+    #     team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+    #     game = team.games.create!(game_time: DateTime.now, location: location)
+    #     get :show, id: game.to_param, team_id: team.to_param
+    #     expect(response).to redirect_to(team_game_path(team.id, game.id))
+    #   end
+    # end
   end
 end
