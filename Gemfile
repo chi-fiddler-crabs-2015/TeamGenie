@@ -50,6 +50,16 @@ gem 'mail'
 # gem to support mailing calendar invitations
 gem 'icalendar'
 
+# Add sidekiq to handle background tasks including delayed email delivery
+gem 'sidekiq'
+
+# Add sinatra to see sidekiq dashboard
+gem 'sinatra', :require => nil
+
+# # Add Letter Opener and Launchy to test email services
+# gem 'letter_opener'
+# gem 'launchy'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
