@@ -10,6 +10,20 @@
   <div>
     <%= image_tag @team.team_logo.url(:medium) %>
   </div>
+  <% if is_captain?(@team) %>
+    <div class='invite-players hidden'>
+      <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
+
+        <div class="form-group email-field">
+          <%= f.email_field 'email',  class: 'form-control', placeholder: 'Email' %>
+        </div>
+
+        <%= f.submit 'Invite Players', class: 'btn btn-success', id: 'invitation-submit-button' %>
+
+      <% end %>
+    </div>
+      <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+  <% end %>
 </div>
 
 <div class='col-xs-7'>
@@ -17,11 +31,13 @@
     <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>
 
-  <div>
-    <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
-      <i class="glyphicon glyphicon-plus"></i> New Game
-    <% end %>
-  </div>
+  <% if is_captain?(@team) %>
+    <div>
+      <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
+        <i class="glyphicon glyphicon-plus"></i> New Game
+      <% end %>
+    </div>
+  <% end %>
 
 </div>
 
@@ -35,7 +51,7 @@
 <script>
   $(document).ready( function() {
     $(document).on('click', '.game-view', function(e) {
-      $(this).find(">:last-child").removeClass('hidden')
+      $(this).find('>:last-child').removeClass('hidden')
     });
 
     $(document).on('click', '.change-rsvp-show', function(e) {
@@ -49,7 +65,6 @@
       var partial = $(this)
       var data = $(this).attr('data')
       var route = $(this).parent().attr('action')
-      // var response =
       var response = $.ajax({
         url: route,
         method: "patch",
@@ -59,10 +74,13 @@
           partial.closest('.game-view').replaceWith(response.responseText)
         }
       })
-      // $(this).find(">:last-child").addClass('hidden')
     });
 
+    $(document).on('click', '.show-new-player-invitation', function() {
+      $('.invite-players').removeClass('hidden')
+    });
   });
+
 </script>
 
 
