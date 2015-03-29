@@ -6,7 +6,7 @@
   <body>
     <h1><%=@team.name%> Game Invitation: <%=@game.game_time %></h1>
     <p>
-      <%=@team.name%> captain <%=@user.first_name%> invites you to a game on <%=@game.game_time%> at <%=@game.location.name%>, <%=@game.location.address%>. Please login to the site to rsvp <%= @url %>.<br>
+      <%=@team.name%> captain <%= @team.captain.first_name %> invites you to a game on <%=@game.game_time%> at <%=@game.location.name%>, <%=@game.location.address%>. Please login to the site to rsvp <%= @url %>.<br>
     </p>
     <p>
       The TeamGenie Team

@@ -1,8 +1,8 @@
 class GameMailer < ApplicationMailer
     default from: 'TeamGenieSports@gmail.com'
 
-  def initial_invitation(user, team, game)
-    @user = user
+  def initial_invitation(team, game)
+    @captain = current_user
     @team = team
     @game = game
 
@@ -13,7 +13,6 @@ class GameMailer < ApplicationMailer
   end
 
   def six_day_invitation(user, team, game)
-    @user = user
     @team = team
     @game = game
 
@@ -24,7 +23,6 @@ class GameMailer < ApplicationMailer
   end
 
   def two_day_invitation(user, team, game)
-    @user = user
     @team = team
     @game = game
 
