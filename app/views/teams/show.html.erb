@@ -27,16 +27,24 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-  $('.game-view').on('click', '.game-time', function(e) {
-    $('.game-view').find(">:last-child").toggleClass('hidden')
+  $('.game-view').on('click', function(e) {
+    console.log(this)
+    $(this).find(">:last-child").removeClass('hidden')
   });
 
+  $('.change-rsvp-show').on('click', function(e) {
+    e.preventDefault();
+    $('.change-rsvp-button').addClass('hidden')
+    $(this).find(">:last-child").removeClass('hidden')
+  })
+
+  // Not working yet
   $('.change-rsvp').on('click', function(e) {
     e.preventDefault();
     var route = $(this).attr('href')
     $.ajax({
       url: route,
-      method: "PUT",
+      method: "patch",
       data: 'boom',
       success: function(response) {
         console.log('yay')
@@ -46,5 +54,7 @@
       }
     })
   });
+
+
 </script>
 

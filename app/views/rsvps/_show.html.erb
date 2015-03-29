@@ -3,7 +3,13 @@
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
     <% if is_current_user?(player) %>
-      <a class='change-rsvp' href=<%= edit_team_game_rsvp_path(game.team, game, player) %>  >Change RSVP</a>
+      <div class='change-rsvp-show'>
+        <button class='btn change-rsvp-button'>Change My RSVP</button>
+        <div class='col-xs-6 hidden'>
+          <span class="col-xs-6"><%= button_to "I'm attending!", edit_team_game_rsvp_path(game.team, game, player), method: 'put', class: 'change-rsvp btn' %></span>
+          <span class="col-xs-6"><%= button_to "I can't attend", edit_team_game_rsvp_path(game.team, game, player), method: 'put', class: 'change-rsvp btn' %></span>
+        </div>
+      </div>
     <% end %>
   </p>
 </div>
