@@ -1,13 +1,13 @@
-<div class='col-xs-12'>
+<div class='col-xs-12 player'>
   <p>
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
     <% if is_current_user?(player) %>
       <div class='change-rsvp-show'>
         <button class='btn change-rsvp-button'>Change My RSVP</button>
-        <div class='col-xs-6 hidden'>
-          <span class="col-xs-6"><%= button_to "I'm attending!", edit_team_game_rsvp_path(game.team, game, player), method: 'put', class: 'change-rsvp btn' %></span>
-          <span class="col-xs-6"><%= button_to "I can't attend", edit_team_game_rsvp_path(game.team, game, player), method: 'put', class: 'change-rsvp btn' %></span>
+        <div class='col-xs-6 hidden change-rsvp-status'>
+          <span class="col-xs-6"><%= button_to "I'm attending!", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'attending', class: 'change-rsvp btn' %></span>
+          <span class="col-xs-6"><%= button_to "I can't attend", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'not attending', class: 'change-rsvp btn' %></span>
         </div>
       </div>
     <% end %>

@@ -28,36 +28,41 @@
 
 
 <!-- Abstract this out -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
-  $('.game-view').on('click', function(e) {
-    $(this).find(">:last-child").removeClass('hidden')
-  });
+  $(document).ready( function() {
+    $(document).on('click', '.game-view', function(e) {
+      $(this).find(">:last-child").removeClass('hidden')
+    });
 
-  $('.change-rsvp-show').on('click', function(e) {
-    e.preventDefault();
-    $('.change-rsvp-button').addClass('hidden')
-    $(this).find(">:last-child").removeClass('hidden')
-  })
-
-  // Not working yet
-  $('.change-rsvp').on('click', function(e) {
-    e.preventDefault();
-    var route = $(this).attr('href')
-    $.ajax({
-      url: route,
-      method: "patch",
-      data: 'boom',
-      success: function(response) {
-        console.log('yay')
-      },
-      fail: function(response) {
-        console.log('nope')
-      }
+    $(document).on('click', '.change-rsvp-show', function(e) {
+      e.preventDefault();
+      $(this).find(">:first-child").addClass('hidden')
+      $(this).find(">:last-child").removeClass('hidden')
     })
+
+    $(document).on('click', '.change-rsvp', function(e) {
+      e.preventDefault();
+      var partial = $(this)
+      var data = $(this).attr('data')
+      var route = $(this).parent().attr('action')
+      // var response =
+      var response = $.ajax({
+        url: route,
+        method: "patch",
+        dataType: 'html',
+        data: {attendance: data},
+        "success": function(response) {
+          partial.closest('.game-view').replaceWith(response.responseText)
+        }
+      })
+      // $(this).find(">:last-child").addClass('hidden')
+    });
+
   });
-
-
 </script>
+
 
