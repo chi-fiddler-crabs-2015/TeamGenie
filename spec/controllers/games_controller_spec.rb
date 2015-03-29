@@ -26,4 +26,41 @@ RSpec.describe GamesController, type: :controller do
       expect(assigns(:game)).to be_a Game
     end
   end
+
+  context "POST #create" do
+    # TEST WITH CAPYBARA
+    # describe "when valid parameters are passed" do
+    #   it "creates a new game" do
+    #     location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+    #     team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+    #     game = team.games.new(game_time: DateTime.now, location: location)
+    #     expect {
+    #       post :game, { game: game }}.to change{Game.count}.by(1)
+    #   end
+    # end
+  end
+
+  context "POST #destroy" do
+    describe "when valid parameters are passed" do
+      it "should delete a game" do
+        location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+        game = team.games.create!(game_time: DateTime.now, location: location)
+        expect {
+          delete :destroy, id: game.to_param, team_id: team.to_param }.to change{Game.count}.by(-1)
+      end
+    end
+  end
+
+  context "GET #edit" do
+    describe "when valid parameters are passed" do
+      it "should redirect to the edit team game path" do
+        location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+        game = team.games.create!(game_time: DateTime.now, location: location)
+        expect(get :edit, id: game.to_param, team_id: team.to_param).to redirect_to edit_team_game_path(id: game.to_param, team_id: team.to_param)
+
+      end
+    end
+  end
 end
