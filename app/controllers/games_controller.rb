@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.games
+    team = find_team(params[:team_id])
+    @games = team.games
   end
 
   def new
@@ -13,15 +14,19 @@ class GamesController < ApplicationController
   end
 
   def create
-    team = find_team(params[:team_id])
+    @user = current_user
+    @team = find_team(params[:team_id])
+    #get array of player emails
     datetime = params[:game]
-    game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
+    @game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
     # location = Location.find_by_id(params[:location])
-    game = team.games.new(game_time: game_time, location: Location.find(1))
-    puts game.game_time
+    @game = @team.games.new(game_time: @game_time, location: Location.find(1))
     # update_location(game)
-    if game.save
-      redirect_to team_path(team)
+    if @game.save
+      GameMailer.delay.initial_invitation(@user, @team, @game)
+      GameMailer.delay_until(@game_time - 6.days).six_day_invitation(@user, @team, @game)
+      GameMailer.delay_until(@game_time - 2.days).two_day_invitation(@team, @game)
+      redirect_to team_path(@team)
     else
       flash[:notice] = "Game was not valid."
       redirect_to new_team_game_path(team)
@@ -37,7 +42,7 @@ class GamesController < ApplicationController
   end
 
   def edit
-    redirect_to edit_team_game_path(params[:id])
+    # redirect_to edit_team_game_path(params[:id], params[:team_id])
   end
 
   def show

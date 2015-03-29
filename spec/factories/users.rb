@@ -6,7 +6,6 @@ FactoryGirl.define do
     password "abcdefgh12038091823098"
     username Faker::Lorem.characters(10)
     birthday Faker::Date.backward(10)
-
   end
 
 end
