@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.games
+    team = find_team(params[:team_id])
+    @games = team.games
   end
 
   def new
