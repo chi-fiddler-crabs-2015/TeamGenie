@@ -8,11 +8,21 @@ RSpec.describe TeamsController, type: :controller do
   end
   context "GET #index" do
     describe 'when valid parameters are passed' do
-      it 'should redirect to the teams #index' do
+      it 'should assign @teams to all teams' do
         location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
         team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
         get :index
         expect(assigns(:teams)).to eq(Team.all)
+      end
+    end
+  end
+
+  context "GET #new" do
+    describe 'when valid parameters are passed' do
+      it 'should render the new template' do
+        location = Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left")
+        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+        expect(get :new).to redirect_to(new_team)
       end
     end
   end
