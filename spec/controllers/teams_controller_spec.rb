@@ -4,7 +4,7 @@ RSpec.describe TeamsController, type: :controller do
   let(:user) { create(:user) }
 
   before(:each) do
-    allow_any_instance_of(GamesController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(TeamsController).to receive(:current_user).and_return(user)
   end
   context "GET #index" do
     describe 'when valid parameters are passed' do
