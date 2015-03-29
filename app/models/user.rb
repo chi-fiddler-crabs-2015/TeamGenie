@@ -19,4 +19,10 @@ class User < ActiveRecord::Base
     uniqueness: true
   }
 
+  def my_teams
+    self.memberships.map do |membership|
+      membership.team
+    end
+  end
+
 end
