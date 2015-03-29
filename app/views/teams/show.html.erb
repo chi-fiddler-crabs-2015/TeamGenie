@@ -53,13 +53,10 @@
       var response = $.ajax({
         url: route,
         method: "patch",
+        dataType: 'html',
         data: {attendance: data},
         "success": function(response) {
-          // console.log(response)
-        },
-        "error": function(response) {
           partial.closest('.game-view').replaceWith(response.responseText)
-          // Change RSVP button appears again but doesn't work.
         }
       })
       // $(this).find(">:last-child").addClass('hidden')
