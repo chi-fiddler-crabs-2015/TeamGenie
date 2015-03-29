@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TeamsController, type: :controller do
   let(:user) { create(:user) }
-  let(:location) { Location.create!(name: "here", address: "351 west hubbard", city: "chicago", state: "il", zip_code: "60604", directions: "turn right and left") }
+  let(:location) { create(:location) }
   let(:team) { user.teams.create!(name: "DBC", activity: "soccer",  home_location: location) }
 
   before(:each) do
