@@ -18,6 +18,11 @@ RSpec.describe SessionsController, type: :controller do
           post :create, { user: {email: user.email, password: user.password } }
         expect(view).to redirect_to root_path
       end
+
+      it "should assign @user to user" do
+        post :create, { user: {email: user.email, password: user.password } }
+        expect(assigns(:user)).to eq user
+      end
     end
 
     describe "when invalid parameters are passed" do
