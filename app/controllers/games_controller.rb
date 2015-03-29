@@ -16,13 +16,12 @@ class GamesController < ApplicationController
   def create
     @user = current_user
     @team = find_team(params[:team_id])
-    #get array of player emails
-    datetime = params[:game]
-    @game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
-    # location = Location.find_by_id(params[:location])
-    @game = @team.games.new(game_time: @game_time, location: Location.find(1))
+    @game_time = create_game_time(params[:game])
+    # location = Location.find_by_id(params[:game][:location])
+    @game = team.games.new(game_time: @game_time, location: Location.last)
     # update_location(game)
     if @game.save
+      create_rsvps(@game)
       GameMailer.delay.initial_invitation(@user, @team, @game)
       GameMailer.delay_until(@game_time - 6.days).six_day_invitation(@user, @team, @game)
       GameMailer.delay_until(@game_time - 2.days).two_day_invitation(@team, @game)
@@ -34,15 +33,16 @@ class GamesController < ApplicationController
   end
 
   def destroy
+    team = find_team(params[:team_id])
     if current_user
       @game = current_game(params[:id])
       @game.destroy
     end
-    redirect_to team_games_path
+    redirect_to team_games_path(team)
   end
 
   def edit
-    # redirect_to edit_team_game_path(params[:id], params[:team_id])
+    redirect_to edit_team_game_path(params[:team_id],params[:id])
   end
 
   def show
