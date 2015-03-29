@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     Location.find_by(id: location_id)
   end
 
+  def current_game(game_id)
+    Game.find_by(id: game_id)
+  end
+
 end

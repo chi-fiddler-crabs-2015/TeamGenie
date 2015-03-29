@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.games
+    team = find_team(params[:team_id])
+    @games = team.games
   end
 
   def new
@@ -16,10 +17,7 @@ class GamesController < ApplicationController
     team = find_team(params[:team_id])
     datetime = params[:game]
     game_time = DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
-    # location = Location.find_by_id(params[:location])
     game = team.games.new(game_time: game_time, location: Location.find(1))
-    puts game.game_time
-    # update_location(game)
     if game.save
       redirect_to team_path(team)
     else
@@ -37,7 +35,7 @@ class GamesController < ApplicationController
   end
 
   def edit
-    redirect_to edit_team_game_path(params[:id])
+    # redirect_to edit_team_game_path(params[:id], params[:team_id])
   end
 
   def show
