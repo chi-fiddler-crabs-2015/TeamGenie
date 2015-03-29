@@ -29,4 +29,12 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
+  context "POST #destroy" do
+    describe "when user logs out they are redirected to the home page" do
+      it "should redirect to the root path" do
+        expect(delete :destroy).to redirect_to root_path
+      end
+    end
+  end
+
 end
