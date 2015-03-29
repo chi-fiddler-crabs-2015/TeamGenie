@@ -29,4 +29,11 @@ class ApplicationController < ActionController::Base
     Game.find_by(id: game_id)
   end
 
+  def assign_user_to_team(team, invited_user)
+    membership = team.memberships.create(player: invited_user)
+    team.future_games.each do |game|
+      membership.rsvps.create(game: game)
+    end
+  end
+
 end
