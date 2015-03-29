@@ -26,9 +26,15 @@ class TeamsController < ApplicationController
     @recent_games = @team.recent_games
   end
 
-  # def update
-  #   team = find_team(params[:id])
-  # end
+  def edit
+    @team = find_team(params[:id])
+  end
+
+  def update
+    team = find_team(params[:id])
+    team.update(team_params)
+    redirect_to team_path(team)
+  end
 
   private
 

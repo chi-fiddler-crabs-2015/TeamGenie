@@ -1,0 +1,12 @@
+<h2>Edit Team Picture</h2>
+
+<%= form_for :team, url: team_path(@team), method: 'put', html: { multipart: true }  do |f| %>
+  <div class="form-group">
+    <%= f.label :team_logo %><br />
+    <%= f.file_field :team_logo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
