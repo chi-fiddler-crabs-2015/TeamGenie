@@ -18,22 +18,23 @@ RSpec.describe GamesController, type: :controller do
   end
 
   context "GET #new" do
-    it 'instantiates a new game' do
-      team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
-      game = team.games.create!(game_time: DateTime.now, location: location)
-      get :new, :team_id => team.id
-      expect(assigns(:game)).to be_a Game
+    describe "when passed valid parameters" do
+      it 'instantiates a new game' do
+        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+        game = team.games.create!(game_time: DateTime.now, location: location)
+        get :new, :team_id => team.id
+        expect(assigns(:game)).to be_a Game
+      end
     end
   end
 
   context "POST #create" do
-    # TEST WITH CAPYBARA
     # describe "when valid parameters are passed" do
     #   it "creates a new game" do
     #     team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
     #     game = team.games.new(game_time: DateTime.now, location: location)
     #     expect {
-    #       post :game, { game: game }}.to change{Game.count}.by(1)
+    #       post :game, { team: team.id, game: {'game_time(1i)' => "1", 'game_time(2i)' => "1", 'game_time(3i)' => "1", 'game_time(4i)' => "1", 'game_time(5i)' => "1", 0 => "1" } }}.to change{Game.count}.by(1)
     #   end
     # end
   end
@@ -55,8 +56,8 @@ RSpec.describe GamesController, type: :controller do
     #   it "should redirect to the edit team game path" do
     #     team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
     #     game = team.games.create!(game_time: DateTime.now, location: location)
-    #     expect(get :edit, { id: game.id, team_id: team.id}).to redirect_to edit_team_game_path(id: game.id, team_id: team.id)
-
+    #     view = get :edit, { :id => game, :team_id => team }
+    #     expect(view).to redirect_to edit_team_game_path(team_id, game)
     #   end
     # end
   end
