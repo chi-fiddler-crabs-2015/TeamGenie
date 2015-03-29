@@ -2,6 +2,7 @@
   <p>
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
+    <%= button_to 'Text Me', root_path, method: 'get', class: 'btn' %>
     <% if is_current_user?(player) %>
       <div class='change-rsvp-show'>
         <button class='btn change-rsvp-button'>Change My RSVP</button>
