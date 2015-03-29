@@ -10,3 +10,6 @@ $ rails s
 $ redis-server
 
 $ bundle exec sidekiq
+
+
+redis-cli --> help @server --> shutdown nosave

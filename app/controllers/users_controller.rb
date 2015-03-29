@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      UserMailer.delay.welcome_email(user)
-      session[:user_id] = user.id
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.delay.welcome_email(@user)
+      session[:user_id] = @user.id
       redirect_to teams_path
     else
-      @errors = user.errors.full_messages
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end
