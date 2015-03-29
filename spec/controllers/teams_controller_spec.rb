@@ -33,13 +33,12 @@ RSpec.describe TeamsController, type: :controller do
           post :create, { team: {name: "DBC", activity: "soccer", home_location_id: location.id } } }.to change{Team.count}.by(1)
       end
     end
-  end
 
-  #   describe 'when invalid parameters are passed' do
-  #     it "should render the new team page" do
-  #       expect{
-  #         post :create, { team: {activity: "soccer", home_location: location} } }.to redirect_to(new_team_path)
-  #     end
-  #   end
-  # end
+    describe 'when invalid parameters are passed' do
+      it "should render the new team page" do
+          view = post :create, { team: {activity: "soccer", home_location_id: location.id } }
+          expect(view).to render_template("new")
+      end
+    end
+  end
 end
