@@ -8,7 +8,6 @@ class Team < ActiveRecord::Base
                     styles: { thumb: '100x100#', medium: '300x300>', team_summary: '150x150' }
 
   validates   :captain, presence: true
-  # validates   :home_location, presence: true
   validates   :activity, presence: true
   validates   :name, presence: true
 
