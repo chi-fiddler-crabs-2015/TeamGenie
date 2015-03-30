@@ -1,19 +1,17 @@
 <h2>Add a new game</h2>
 
-<%= form_for :game, url: team_games_path(params[:team_id])  do |f| %>
-  <div class="field">
+<%= form_for :game, url: team_games_path(params[:team_id]), role: 'form'  do |f| %>
+  <div class="form-group">
     <%= f.label :game_time %><br />
-    <%= f.datetime_select :game_time, autofocus: true %>
+    <%= f.datetime_select :game_time, autofocus: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br />
-    <%= f.select :location, location_names %>
+    <%= f.select :location, location_names(params[:team_id]), class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Create Game" %>
+    <%= f.submit "Create Game", class: 'btn-success' %>
   </div>
-
-
 <% end %>

@@ -15,4 +15,12 @@ module ApplicationHelper
   def is_captain?(team)
     team.captain == current_user
   end
+
+  def location_names(team_id)
+    locations = [Team.find_by(id: team_id).home_location.name]
+    Location.all.pluck(:name).each do |location_name|
+      locations << location_name unless location_name == locations.first
+    end
+    locations
+  end
 end
