@@ -12,6 +12,19 @@
       $(this).find(">:last-child").removeClass('hidden')
     })
 
+    $(document).on('click', '.text-msg', function(e) {
+      e.preventDefault();
+      var data = {"name": $(this).attr('name'), "phone": $(this).attr('phone')}
+      console.log(data);
+      var response = $.ajax({
+        url: '/send_sms',
+        method: 'post',
+        data: data,
+        "success": function(response) {
+        }
+      })
+    });
+
     $(document).on('click', '.change-rsvp', function(e) {
       e.preventDefault();
       var partial = $(this)

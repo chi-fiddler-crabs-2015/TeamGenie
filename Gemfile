@@ -39,6 +39,9 @@ gem 'factory_girl_rails'
 #clean up database
 gem 'database_cleaner'
 
+# Mobile Messaging
+gem 'twilio-ruby'
+
 # gems to support bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'compass-rails'
