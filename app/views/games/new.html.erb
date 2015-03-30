@@ -11,6 +11,8 @@
     <%= f.select :location, location_names(params[:team_id]), class: 'form-control' %>
   </div>
 
+  <%= link_to "Not on the list? Add location", new_location_path %>
+
   <div class="actions">
     <%= f.submit "Create Game", class: 'btn-success' %>
   </div>
