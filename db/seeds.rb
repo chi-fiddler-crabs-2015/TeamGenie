@@ -7,7 +7,6 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-team_names = ['Portland Timbers','Los Angeles Galaxy','Seattle Sounders','Houston Dynamo','Real Salt Lake','San Jose Earthquakes','Sporting KC']
 captain = User.create!(first_name: 'Carlos', password: 'hellohello', last_name: 'Dunga', email: 'dunga@dunga.com', username: 'dunga', phone_number: '18479977890', birthday: Faker::Date.between(40.years.ago, 30.years.ago))
 
 Location.create!(name: 'Lincoln Park South Fields', address: '1627 N Stockton Dr', city: 'Chicago', state: 'IL', zip_code: '60614', directions: "Off of LaSalle and Clark, just south of the Lincoln Park Zoo")
@@ -15,7 +14,7 @@ Location.create!(name: 'River Park Field', address: '5100 N Francisco', city: 'C
 Location.create!(name: 'Toyota Park', address: '7000 Harlem Ave', city: 'Bridgeview', state: 'IL', zip_code: '60455', directions: "Off of Harlem Ave by Argo Community High School")
 
 # Test the photo on the seeds.
-team1 = captain.teams.create!(name: 'Good Times FC', activity: 'Soccer', home_location: Location.all.sample, team_logo: File.new('public/system/teams/team_logos/default_team_logo/original/default_team_logo.jpg'))
+team1 = captain.teams.create!(name: 'Good Times FC', activity: 'Soccer', home_location: Location.all.sample)
 captain.memberships.create(team: team1)
 User.create!(first_name: 'test1', last_name: 'test1', username: 'test1', email: 't1@t.com', password: 'hellohello')
 User.create!(first_name: 'test2', last_name: 'test2', username: 'test2', email: 't2@t.com', password: 'hellohello')
