@@ -22,16 +22,13 @@
       e.preventDefault();
       var player = $(this)
       player_id = player.attr("id")
-      $(player.attr("value")).addClass('hidden');
       $('.' + player_id).removeClass('hidden');
     })
 
     $(document).on('click', '#text-submit-button', function(e){
       e.preventDefault();
-      $('.text-msg').removeClass('hidden');
-      $('.text-msg-box').addClass('hidden');
+      $('.' + player_id).addClass('hidden');
       var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-      $(".text-msg-box").val('')
       var response = $.ajax({
         url: '/send_sms',
         method: 'post',
@@ -47,7 +44,7 @@
       $('.text-msg-box').addClass('hidden');
       var data = $(this).closest("form").serializeArray()[1].value;
       var message = { "body": data, "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-      $(".text-msg-box").val('')
+      $("textarea.text-msg-box").val('')
       console.log(message)
       var response = $.ajax({
         url: '/send_sms',
