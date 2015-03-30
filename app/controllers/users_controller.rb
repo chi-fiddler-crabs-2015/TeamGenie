@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     @plans = Stripe::Plan.all
   end
 
+  def index
+    @users = User.all
+  end
+
   # Make a one-off payment to the user.
   # See app/assets/javascripts/app/pay.coffee
   def pay
