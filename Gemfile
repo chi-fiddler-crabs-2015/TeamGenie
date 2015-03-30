@@ -33,6 +33,15 @@ gem "paperclip", "~> 4.2"
 # Faker for seed data
 gem 'faker'
 
+#Factory for spec
+gem 'factory_girl_rails'
+
+#clean up database
+gem 'database_cleaner'
+
+# Mobile Messaging
+gem 'twilio-ruby'
+
 # gems to support bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'compass-rails'
@@ -59,6 +68,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
+gem 'capybara'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

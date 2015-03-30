@@ -15,4 +15,25 @@ class ApplicationController < ActionController::Base
     Location.find_by(id: location_id)
   end
 
+  def create_game_time(datetime)
+    DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
+  end
+
+  def create_rsvps(game)
+    game.team.memberships.each do |membership|
+      membership.rsvps.create(game: game)
+    end
+  end
+
+  def current_game(game_id)
+    Game.find_by(id: game_id)
+  end
+
+  def assign_user_to_team(team, invited_user)
+    membership = team.memberships.create(player: invited_user)
+    team.future_games.each do |game|
+      membership.rsvps.create(game: game)
+    end
+  end
+
 end

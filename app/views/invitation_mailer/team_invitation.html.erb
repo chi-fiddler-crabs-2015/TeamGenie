@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You have been invited you to join <%=@team.name%></h1>
+    <p>
+      Visit TeamGenie to see your <%=@team.name%>'s upcoming games.<br>
+      <%= link_to 'Go to TeamGenie!', url: @url %>
+    </p>
+    <p>
+      The TeamGenie Team
+    </p>
+  </body>
+</html>

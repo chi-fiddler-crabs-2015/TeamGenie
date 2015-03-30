@@ -8,4 +8,19 @@ module ApplicationHelper
     ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
   end
 
+  def is_current_user?(player)
+    current_user == player
+  end
+
+  def is_captain?(team)
+    team.captain == current_user
+  end
+
+  def location_names(team_id)
+    locations = [Team.find_by(id: team_id).home_location.name]
+    Location.all.pluck(:name).each do |location_name|
+      locations << location_name unless location_name == locations.first
+    end
+    locations
+  end
 end

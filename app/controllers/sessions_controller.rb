@@ -4,11 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts params
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to root_path
+        redirect_to teams_path
     else
       flash[:notice] = "Your username and password didn't match, please try again or create a new account!"
       render 'new'

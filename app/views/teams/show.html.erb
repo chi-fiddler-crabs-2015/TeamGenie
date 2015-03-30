@@ -1,27 +1,102 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+  $(document).ready( function() {
+    $(document).on('click', '.game-view', function(e) {
+      $(this).find('>:last-child').removeClass('hidden')
+    });
+
+    $(document).on('click', '.change-rsvp-show', function(e) {
+      e.preventDefault();
+      $(this).find(">:first-child").addClass('hidden')
+      $(this).find(">:last-child").removeClass('hidden')
+    })
+
+    $(document).on('click', '.text-msg', function(e) {
+      e.preventDefault();
+      var data = {"name": $(this).attr('name'), "phone": $(this).attr('phone')}
+      console.log(data);
+      var response = $.ajax({
+        url: '/send_sms',
+        method: 'post',
+        data: data,
+        "success": function(response) {
+        }
+      })
+    });
+
+    $(document).on('click', '.change-rsvp', function(e) {
+      e.preventDefault();
+      var partial = $(this)
+      var data = $(this).attr('data')
+      var route = $(this).parent().attr('action')
+      var response = $.ajax({
+        url: route,
+        method: "patch",
+        // dataType: 'html',
+        data: {attendance: data},
+        error: function(response) {
+          partial.closest('.game-view').replaceWith(response.responseText)
+        }
+      })
+    });
+
+    $(document).on('click', '.show-new-player-invitation', function() {
+      $('.invite-players').removeClass('hidden')
+    });
+  });
+
+</script>
+
 <div>
-  <!-- Render nav bar partial here -->
+  <%= render partial: 'shared/team_nav', locals: {team: @team}%>
 </div>
 
-<h1>
-  <%= @team.name %>
-</h1>
+  <div><h1><%= @team.name %></h1></div>
 
-<div class='col-xs-5'>
+<div class='col-xs-5 text-center'>
   <div>
-    <%= image_tag @team.team_logo.url(:medium) %>
+    <%= image_tag @team.team_logo.url(:medium), class: 'img-rounded' %>
   </div>
+  <% if is_captain?(@team) %>
+    <div>
+      <%= link_to 'Update Team Picture', edit_team_path(@team) %>
+    </div>
+    <div class='invite-players hidden'>
+      <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
+
+        <div class="form-group email-field">
+          <%= f.email_field 'email',  class: 'form-control', placeholder: 'Email' %>
+        </div>
+
+        <%= f.submit 'Invite Players', class: 'btn btn-success', id: 'invitation-submit-button' %>
+
+      <% end %>
+    </div>
+      <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+  <% end %>
 </div>
 
 <div class='col-xs-7'>
   <% @future_games.each do |game| %>
-    <p><%= game.game_time.strftime("%m/%d/%y at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %></p>
+    <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>
 
-  <div>
-    <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
-      <i class="glyphicon glyphicon-plus"></i> New Game
-    <% end %>
-  </div>
+  <% if is_captain?(@team) %>
+    <div class='text-center'>
+      <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
+        <i class="glyphicon glyphicon-plus"></i> New Game
+      <% end %>
+    </div>
+  <% end %>
 
 </div>
+
+
+
+<!-- Abstract this out -->
+
+
+
+
 

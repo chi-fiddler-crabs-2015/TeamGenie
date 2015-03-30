@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%=@team.name%> Game Invitation: <%=@game.game_time %></h1>
+    <p>
+      <%=@team.name%> captain <%= @team.captain.first_name %> invites you to a game on <%=@game.game_time%> at <%=@game.location.name%>, <%=@game.location.address%>. Please login to the site to rsvp <%= @url %>.<br>
+    </p>
+    <p>
+      The TeamGenie Team
+    </p>
+  </body>
+</html>
+

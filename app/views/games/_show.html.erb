@@ -1,0 +1,25 @@
+<div class='game-view'>
+  <div class='col-xs-8 game-time'>
+    <h4>
+      <%= game.game_time.strftime("%m/%d/%y, beginning at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %>
+    </h4>
+  </div>
+  <div class='col-xs-4'>
+    <h4>
+      <div class='col-xs-12'>
+          <%= game.count_rsvp_status('attending') %> attending
+      </div>
+      <div class='col-xs-12'>
+        <%= game.count_rsvp_status('pending') %> pending
+      </div>
+      <div class='col-xs-12'>
+        <%= game.count_rsvp_status('not attending') %> not attending
+      </div>
+    </h4>
+  </div>
+  <div class='col-xs-12 hidden'>
+    <% game.team.players.each do |player| %>
+      <%= render partial: 'rsvps/show', locals: {game: game, player: player}%>
+    <% end %>
+  </div>
+</div>
