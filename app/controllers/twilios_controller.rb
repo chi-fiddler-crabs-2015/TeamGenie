@@ -3,10 +3,12 @@ class TwiliosController < ApplicationController
   TEAM_GENIE_PHONE = "+18472304227"
 
   def create
+    body = { "to" => params[:to], "from" => params[:from], "body" => params[:body]}
+    puts body
     client.messages.create({
         from: TEAM_GENIE_PHONE,
         to: params[:phone],
-        body: body(params[:name])
+        body: body(body)
       })
     render :nothing => true
   end
@@ -15,9 +17,13 @@ class TwiliosController < ApplicationController
     @_client ||= Twilio::REST::Client.new
   end
 
-  def body(name)
+  def body(body)
+    puts to = body["to"]
+    puts from = body["from"]
+    puts body = body["body"]
     <<-MSG
-    Hey #{name}, we are just texting you to remind you there is a game tomorrow!  Don't forget!!!!!!!!!!
+    Hey #{to}, #{body}
+    --#{from}
     MSG
   end
 end
