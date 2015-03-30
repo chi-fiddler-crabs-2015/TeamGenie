@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    manager = current_user.manager
-    manager.update_account! params: params
-    redirect_to user_path( current_user )
-  end
+  # def update
+  #   manager = current_user.manager
+  #   manager.update_account! params: params
+  #   redirect_to user_path( current_user )
+  # end
 
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
@@ -110,6 +110,16 @@ class UsersController < ApplicationController
     end
 
     redirect_to user_path( user )
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update_attributes(user_params)
+    session[:user_id] = @user.id
+    redirect_to teams_path
   end
 
   private
