@@ -118,7 +118,7 @@
       <%= form_for :email_all, url: team_email_all_index_path(@team), role: 'form' do |f| %>
 
         <div class="form-group content-field">
-          <%= f.text_area 'Message',  class: 'form-control', placeholder: 'Message' %>
+          <%= f.text_area 'message',  class: 'form-control', placeholder: 'Message' %>
         </div>
         <div class="action">
           <%= f.submit 'Email Team', class: 'btn btn-success', id: 'email-submit-button' %>
