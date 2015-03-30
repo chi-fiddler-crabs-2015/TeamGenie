@@ -110,6 +110,7 @@ class UsersController < ApplicationController
     end
 
     redirect_to user_path( user )
+  end
 
   def edit
     @user = User.find_by(id: params[:id])
