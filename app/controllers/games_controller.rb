@@ -17,9 +17,9 @@ class GamesController < ApplicationController
     @user = current_user
     @team = find_team(params[:team_id])
     @game_time = create_game_time(params[:game])
-    # location = Location.find_by_id(params[:game][:location])
-    @game = @team.games.new(game_time: @game_time, location: Location.last)
-    # update_location(game)
+    location = Location.find_by(name: params[:game][:location])
+    puts location
+    @game = @team.games.new(game_time: @game_time, location: location)
     if @game.save
       create_rsvps(@game)
       GameMailer.delay.initial_invitation(@user, @team, @game)
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
       redirect_to team_path(@team)
     else
       flash[:notice] = "Game was not valid."
-      redirect_to new_team_game_path(team)
+      redirect_to new_team_game_path(@team)
     end
   end
 
