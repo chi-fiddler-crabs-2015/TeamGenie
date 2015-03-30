@@ -20,9 +20,9 @@
 
     $(document).on('click', '.captain-msg', function(e) {
       e.preventDefault();
-      var captain = $(this)
-      var player_id = captain.attr("id")
-      $(captain.attr("value")).addClass('hidden');
+      var player = $(this)
+      player_id = player.attr("id")
+      $(player.attr("value")).addClass('hidden');
       $('.' + player_id).removeClass('hidden');
     })
 
@@ -43,13 +43,12 @@
 
     $(document).on('click', '#text-player-button', function(e){
       e.preventDefault();
-      console.log($(this))
-      var textBox = $(this).closest(".text-message-box")
-      textBox.addClass("hidden")
-      console.log(textBox.val())
-      var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-      console.log(message)
+      $('.text-msg').removeClass('hidden');
+      $('.text-msg-box').addClass('hidden');
+      var data = $(this).closest("form").serializeArray()[1].value;
+      var message = { "body": data, "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
       $(".text-msg-box").val('')
+      console.log(message)
       var response = $.ajax({
         url: '/send_sms',
         method: 'post',
