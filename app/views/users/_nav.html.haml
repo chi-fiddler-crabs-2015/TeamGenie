@@ -10,7 +10,7 @@
         %span.glyphicon.glyphicon-chevron-right
         %span.hidden-xs Logged in as
         %a{ href: user_path( current_user ) }
-          %strong= current_user.name
+          %strong= current_user.first_name
 
     .collapse.navbar-collapse{ id: 'navbar-links' }
       %p.navbar-text.navbar-right
@@ -19,4 +19,4 @@
         - else
           %a.navbar-link{ href: users_path } All Users
         %span.sep &nbsp;|&nbsp;
-        %a.navbar-link{ href: destroy_sessions_path } Logout
+        %a.navbar-link{ href: '/logout' } Logout

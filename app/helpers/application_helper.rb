@@ -15,4 +15,13 @@ module ApplicationHelper
   def is_captain?(team)
     team.captain == current_user
   end
+
+    # Simply checks if the @user instance variable
+  # is the current user. Used to check if we're
+  # looking our own profile page, basically.
+  # See app/views/users/show.html.haml
+  def is_myself?
+    @user == current_user
+  end
+
 end

@@ -67,7 +67,7 @@ class StripeOauth < Struct.new( :user )
     user.publishable_key = data.params['stripe_publishable_key']
     user.secret_key = data.token
     user.currency = default_currency
-
+    puts user.first_name
     user.save!
   end
 
