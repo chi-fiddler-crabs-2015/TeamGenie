@@ -1,7 +1,6 @@
 class TeamsController < ApplicationController
 
   def index
-    # Changed this to show teams for which player is not a captain
     @teams = current_user.my_teams
   end
 

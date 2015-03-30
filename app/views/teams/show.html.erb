@@ -14,16 +14,46 @@
 
     $(document).on('click', '.text-msg', function(e) {
       e.preventDefault();
-      var data = {"name": $(this).attr('name'), "phone": $(this).attr('phone')}
-      console.log(data);
+      $('.text-msg').addClass('hidden');
+      $('.text-msg-box').removeClass('hidden');
+    });
+
+    $(document).on('click', '.captain-msg', function(e) {
+      e.preventDefault();
+      var player = $(this)
+      player_id = player.attr("id")
+      $('.' + player_id).removeClass('hidden');
+    })
+
+    $(document).on('click', '#text-submit-button', function(e){
+      e.preventDefault();
+      $('.' + player_id).addClass('hidden');
+      var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
       var response = $.ajax({
         url: '/send_sms',
         method: 'post',
-        data: data,
+        data: message,
         "success": function(response) {
         }
       })
-    });
+    })
+
+    $(document).on('click', '#text-player-button', function(e){
+      e.preventDefault();
+      $('.text-msg').removeClass('hidden');
+      $('.text-msg-box').addClass('hidden');
+      var data = $(this).closest("form").serializeArray()[1].value;
+      var message = { "body": data, "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
+      $("textarea.text-msg-box").val('')
+      console.log(message)
+      var response = $.ajax({
+        url: '/send_sms',
+        method: 'post',
+        data: message,
+        "success": function(response) {
+        }
+      })
+    })
 
     $(document).on('click', '.change-rsvp', function(e) {
       e.preventDefault();
@@ -62,19 +92,36 @@
     <div>
       <%= link_to 'Update Team Picture', edit_team_path(@team) %>
     </div>
+
     <div class='invite-players hidden'>
       <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
 
         <div class="form-group email-field">
           <%= f.email_field 'email',  class: 'form-control', placeholder: 'Email' %>
         </div>
-
-        <%= f.submit 'Invite Players', class: 'btn btn-success', id: 'invitation-submit-button' %>
+        <div class="action">
+          <%= f.submit 'Invite Players', class: 'btn btn-success', id: 'invitation-submit-button' %>
+        </div>
 
       <% end %>
     </div>
       <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
   <% end %>
+  <div class = "text-message-box">
+    <% if is_captain?(@team) == false %>
+
+      <%= button_to 'Text My Captain', send_sms_path, method: 'post', :remote => true, class: 'text-msg btn' %>
+      <div class = "show-text-box">
+        <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
+            <div class="form-group text-field">
+              <%= f.text_area 'Text Box',  class: 'text-msg-box hidden', placeholder: 'Hey...' %>
+            </div>
+
+            <%= f.submit 'Send Text', class: 'text-msg-box hidden', to: @team.captain.first_name, from: current_user.first_name, phone: @team.captain.phone_number, id: 'text-submit-button' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class='col-xs-7'>

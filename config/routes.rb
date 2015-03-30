@@ -22,8 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :locations
-
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
