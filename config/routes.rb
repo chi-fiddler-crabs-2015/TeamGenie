@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
 
   resources :locations
-
   resources :users, only: [:new, :create, :show]
 
   get '/login' => 'sessions#new'
