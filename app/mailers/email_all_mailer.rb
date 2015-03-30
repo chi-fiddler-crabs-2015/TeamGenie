@@ -6,7 +6,7 @@ class EmailAllMailer < ApplicationMailer
     @player = player
     @team = team
 
-    mail(to: @player.email, subject: "#{@team.captain.first_name} has sent you a message from TeamGenie")
+    mail(to: @player.email, subject: "#{@team.name} has sent you a message via TeamGenie")
   end
 
 end
