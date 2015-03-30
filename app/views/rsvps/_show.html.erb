@@ -2,7 +2,9 @@
   <p>
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
-    <%= button_to 'Text MSG', send_sms_path, method: 'post', name: player.first_name, phone: player.phone_number, :remote => true, :authenticity_token => true, class: 'text-msg btn' %>
+    <% if is_captain?(game.team) %>
+      <%= button_to "Text #{player.first_name}", to: player.first_name, from: current_user.first_name, phone: current_user.phone_number, class: 'captain-msg btn' %>
+    <% end %>
     <% if is_current_user?(player) %>
       <div class='change-rsvp-show'>
         <button class='btn change-rsvp-button'>Change My RSVP</button>
