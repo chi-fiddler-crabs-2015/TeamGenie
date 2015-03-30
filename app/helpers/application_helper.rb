@@ -16,6 +16,14 @@ module ApplicationHelper
     team.captain == current_user
   end
 
+    # Simply checks if the @user instance variable
+  # is the current user. Used to check if we're
+  # looking our own profile page, basically.
+  # See app/views/users/show.html.haml
+  def is_myself?
+    @user == current_user
+  end
+
   def location_names(team_id)
     locations = [Team.find_by(id: team_id).home_location.name]
     Location.all.pluck(:name).each do |location_name|
@@ -23,4 +31,5 @@ module ApplicationHelper
     end
     locations
   end
+
 end
