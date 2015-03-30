@@ -62,6 +62,7 @@
     <div>
       <%= link_to 'Update Team Picture', edit_team_path(@team) %>
     </div>
+
     <div class='invite-players hidden'>
       <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
 
