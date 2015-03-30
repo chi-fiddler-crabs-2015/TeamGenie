@@ -74,6 +74,10 @@
     $(document).on('click', '.show-new-player-invitation', function() {
       $('.invite-players').removeClass('hidden')
     });
+
+    $(document).on('click', '.show-new-email', function() {
+      $('.email-players').removeClass('hidden')
+    });
   });
 
 </script>
@@ -93,6 +97,7 @@
       <%= link_to 'Update Team Picture', edit_team_path(@team) %>
     </div>
 
+    <!-- Invite new players by email -->
     <div class='invite-players hidden'>
       <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
 
@@ -106,6 +111,26 @@
       <% end %>
     </div>
       <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+    <!-- Close invite new players by email -->
+
+    <!-- Email all players -->
+    <div class='email-players hidden'>
+      <%= form_for :email_all, url: team_email_all_index_path(@team), role: 'form' do |f| %>
+
+        <div class="form-group content-field">
+          <%= f.text_area 'Message',  class: 'form-control', placeholder: 'Message' %>
+        </div>
+        <div class="action">
+          <%= f.submit 'Email Team', class: 'btn btn-success', id: 'email-submit-button' %>
+        </div>
+
+      <% end %>
+    </div>
+      <button class='btn btn-success show-new-email'><i class="glyphicon glyphicon-plus"></i> Email All Players</button>
+
+    <!-- Close email all players -->
+
+
   <% end %>
   <div class = "text-message-box">
     <% if is_captain?(@team) == false %>

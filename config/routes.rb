@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :teams do
+    resources :email_all, only: [:create]
     resources :invitations, only: [:create]
     resources :memberships
     resources :games do
