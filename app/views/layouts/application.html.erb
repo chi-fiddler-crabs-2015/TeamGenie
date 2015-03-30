@@ -36,14 +36,16 @@
 
 
 </head>
-<body id="top">
 
-  <!-- Get this to render as a partial.  Currently in layouts/_navigation -->
-  <%= render partial: 'shared/navigation' %>
+  <!-- Renders partial for nav  -->
+  <%if current_user%>
+    <body id="top">
+    <%= render partial: 'shared/navigation' %>
+  <%end%>
 
-<div class='container'>
-<%= yield %>
+  <div class='container'>
+  <%= yield %>
+  </div>
 
-</div>
 </body>
 </html>

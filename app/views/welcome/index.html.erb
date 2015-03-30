@@ -1,36 +1,38 @@
 <%= javascript_include_tag 'application' %>
-<body id="top">
-<h1>Welcome to TeamGenie</h1>
-<h3>GO TEAM!!</h3>
-
-
-  <!-- HERO UNIT -->
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+          <span class="sr-only">Menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <%= link_to "Team Genie", root_path, :class => "navbar-brand"%>
+      </div>
+      <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><%=link_to "HOME", '#top' %></li>
+          <li><%=link_to 'ABOUT', '#about' %></li>
+          <li><%=link_to 'SERVICES', '#services' %></li>
+          <li><%=link_to 'TEAM', '#team' %></li>
+          <li><%=link_to 'SIGN UP', new_user_path %></li>
+          <li><%=link_to 'LOG IN', login_path %></li>
+        </ul>
+      </nav>
+  </div>
+    <!-- HERO UNIT -->
   <div id="hero-unit" class="hero-unit">
-
-    <div class="slideshow">
-      <div class="hero-content text-center">
-        <!-- Hero text -->
-        <div id="slidecaption" class="slide-caption"></div>
-        <div class="hero-buttons">
-          <a href="#about" id="btn-about" class="btn btn-info btn-lg"><i class="fa fa-arrow-circle-o-down"></i> READ MORE</a>
-          <a href="#contact" id="btn-contact" class="btn btn-primary btn-lg"><i class="fa fa-phone-square"></i> GET IN TOUCH</a>
+    <div class="hero-content text-center">
+      <!-- Hero text -->
+      <div id="slidecaption" class="slide-caption">
+        <div class="hero-text">
+          <h2 class="hero-heading">PLAY MORE</h2>
+          <p>TeamGenie takes the pain out of managing your recreational sports teams so you spend more time on the field</p>
         </div>
       </div>
-
-      <!-- Navigation -->
-      <div class="slide-navigation">
-        <a id="prevslide" class="load-item"><i class="fa fa-angle-left"></i></a>
-        <a id="nextslide" class="load-item"><i class="fa fa-angle-right"></i></a>
-
-        <!-- Slide Pagination -->
-        <ul id="slide-list" class="list-inline"></ul>
-
-        <!-- Control Bar -->
-        <div id="controls-wrapper" class="load-item">
-          <div id="controls">
-            <a id="pauseplay"><i class="fa fa-pause"></i></a>
-          </div>
-        </div>
+      <div class="hero-buttons">
+        <a href="#about" id="btn-about" class="btn btn-info btn-lg"><i class="fa fa-arrow-circle-o-down"></i> READ MORE</a>
+        <a href="#contact" id="btn-contact" class="btn btn-primary btn-lg"><i class="fa fa-phone-square"></i> GET IN TOUCH</a>
       </div>
     </div>
   </div>
