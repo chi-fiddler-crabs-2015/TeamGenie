@@ -19,13 +19,6 @@
       // var data = {"player": $(this).attr('player')}
     });
 
-    $(document).on('click', '.captain-msg', function(e) {
-      e.preventDefault();
-      $('.text-msg').addClass('hidden');
-      $('.text-msg-box').removeClass('hidden');
-      // var data = {"player": $(this).attr('player')}
-    });
-
     $(document).on('click', '#text-submit-button', function(e){
       e.preventDefault();
       $('.text-msg').removeClass('hidden');
@@ -96,7 +89,7 @@
   <div id = "text-message-box">
     <% if is_captain?(@team) == false %>
 
-      <%= button_to 'Text My Captain', method: 'post', :remote => true, class: 'text-msg btn' %>
+      <%= button_to 'Text My Captain', send_sms_path, method: 'post', :remote => true, class: 'text-msg btn' %>
       <div class = "show-text-box"
         <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
             <div class="form-group text-field">
@@ -107,17 +100,6 @@
         <% end %>
       </div>
     <% end %>
-    <% if is_captain?(@team) == true %>
-      <div class = "show-text-box"
-        <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
-            <div class="form-group text-field">
-              <%= f.text_area 'Text Box',  class: 'text-msg-box hidden', placeholder: 'Hey...' %>
-            </div>
-
-            <%= f.submit 'Send Text', class: 'text-msg-box hidden', to: "", from: current_user.first_name, phone: @team.captain.phone_number, id: 'text-submit-button' %>
-        <% end %>
-      </div>
-      <% end %>
   </div>
 </div>
 
