@@ -3,7 +3,19 @@
     <%= player.first_name %> <%= player.last_name %> -
     <%= player.rsvps.find_by(game: game).attending %>
     <% if is_captain?(game.team) %>
-      <%= button_to 'Text #{player.first_name}', send_sms_path, method: 'post', player: player, :remote => true, :authenticity_token => true, class: 'captain-msg btn' %>
+      <%= button_to "Text #{player.first_name}", send_sms_path, method: 'post', :remote => true, :authenticity_token => true, id: "#{player.id}",  class: 'captain-msg btn' %>
+      <div class = "text-message-box">
+        <% if is_captain?(@team) %>
+          <div class = "show-text-box">
+            <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
+                <div class="captain-2-player-message">
+                  <%= f.text_area 'Text Box',  class: "#{player.id} hidden", placeholder: 'Hey...' %>
+                  <%= f.submit 'Send Text', class: "text-msg-box #{player.id} hidden", to: player.first_name, from: current_user.first_name, phone: player.phone_number, id: 'text-player-button' %>
+                </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
     <% if is_current_user?(player) %>
       <div class='change-rsvp-show'>

@@ -16,13 +16,37 @@
       e.preventDefault();
       $('.text-msg').addClass('hidden');
       $('.text-msg-box').removeClass('hidden');
-      // var data = {"player": $(this).attr('player')}
     });
+
+    $(document).on('click', '.captain-msg', function(e) {
+      e.preventDefault();
+      var captain = $(this)
+      var player_id = captain.attr("id")
+      $(captain.attr("value")).addClass('hidden');
+      $('.' + player_id).removeClass('hidden');
+    })
 
     $(document).on('click', '#text-submit-button', function(e){
       e.preventDefault();
       $('.text-msg').removeClass('hidden');
       $('.text-msg-box').addClass('hidden');
+      var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
+      $(".text-msg-box").val('')
+      var response = $.ajax({
+        url: '/send_sms',
+        method: 'post',
+        data: message,
+        "success": function(response) {
+        }
+      })
+    })
+
+    $(document).on('click', '#text-player-button', function(e){
+      e.preventDefault();
+      console.log($(this))
+      var textBox = $(this).closest(".text-message-box")
+      textBox.addClass("hidden")
+      console.log(textBox.val())
       var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
       console.log(message)
       $(".text-msg-box").val('')
@@ -86,11 +110,11 @@
     </div>
       <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
   <% end %>
-  <div id = "text-message-box">
+  <div class = "text-message-box">
     <% if is_captain?(@team) == false %>
 
       <%= button_to 'Text My Captain', send_sms_path, method: 'post', :remote => true, class: 'text-msg btn' %>
-      <div class = "show-text-box"
+      <div class = "show-text-box">
         <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
             <div class="form-group text-field">
               <%= f.text_area 'Text Box',  class: 'text-msg-box hidden', placeholder: 'Hey...' %>
