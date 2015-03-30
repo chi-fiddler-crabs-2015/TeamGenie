@@ -17,6 +17,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
+    if @user == current_user || @user.first_name == 'placeholder'
+      render 'edit' and return
+    end
+    redirect_to teams_path
   end
 
   def update
