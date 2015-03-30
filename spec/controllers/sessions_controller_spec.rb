@@ -13,10 +13,10 @@ RSpec.describe SessionsController, type: :controller do
 
   context "POST #create" do
     describe "when valid parameters are passed" do
-      it "should redirect to the root path" do
+      it "should redirect to the teams path" do
         view =
           post :create, { user: {email: user.email, password: user.password } }
-        expect(view).to redirect_to root_path
+        expect(view).to redirect_to teams_path
       end
 
       it "should assign @user to user" do
