@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   def create
     new_team = current_user.teams.create(team_params)
     current_user.memberships.create(team: new_team)
+    new_team.update_attributes(team_logo: File.new('public/system/teams/team_logos/default_team_logo/original/default_team_logo.jpg'))
     if new_team.save
       redirect_to teams_path
     else

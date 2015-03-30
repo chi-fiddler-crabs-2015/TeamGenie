@@ -6,9 +6,14 @@
     <%= f.datetime_select :game_time, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.select :location, location_names %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Create Game" %>
   </div>
 
-  Don't forget to add location picker
+
 <% end %>
