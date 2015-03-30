@@ -1,3 +1,6 @@
+<body id="top" class="fullscreen-image-background">
+
+  <!-- NAVBAR -->
 <div class="navbar navbar-fixed-top">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
@@ -9,18 +12,8 @@
           <%= link_to "Team Genie", root_path, :class => "navbar-brand"%>
       </div>
       <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
-        <ul class="nav navbar-nav navbar-right">
-          <%if current_user%>
           <li><%= link_to 'MY TEAMS', teams_path, class: 'btn' %></li>
           <li><%= button_to 'LOG OUT', logout_path, class: 'btn' %></li>
-          <%else%>
-          <li class="active"><%=link_to "HOME", root_path %></li>
-          <li><%=link_to 'ABOUT', '#about' %></li>
-          <li><%=link_to 'SERVICES', '#services' %></li>
-          <li><%=link_to 'TEAM', '#team' %></li>
-          <li><%=link_to 'SIGN UP', new_user_path %></li>
-          <li><%=link_to 'LOG IN', login_path %></li>
-          <%end%>
         </ul>
       </nav>
   </div>

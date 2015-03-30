@@ -37,11 +37,11 @@
 
 </head>
 
-<body id="top" class="fullscreen-image-background">
-
-
   <!-- Renders partial for nav  -->
-  <%= render partial: 'shared/navigation' %>
+  <%if current_user%>
+    <body id="top">
+    <%= render partial: 'shared/navigation' %>
+  <%end%>
 
   <div class='container'>
   <%= yield %>
