@@ -5959,44 +5959,6 @@ img.mfp-img {
   }
 }
 
-@media screen and (max-width: 480px) {
-  .social-icon {
-    width: 100%;
-    text-align: center;
-  }
-}
-.social-icon li {
-  margin: 0 5px;
-}
-.social-icon li a {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -moz-transition-timing-function: linear;
-  -o-transition-timing-function: linear;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  display: block;
-  width: 36px;
-  height: 36px;
-  font-size: 14px;
-  line-height: 33px;
-  text-align: center;
-  color: #8a8a8a;
-  border: 2px solid #8a8a8a;
-}
-.social-icon li a:hover {
-  background-color: #8a8a8a;
-  color: #fafafa;
-}
 
 /* ------------------ TEAMS ------------------ */
 
