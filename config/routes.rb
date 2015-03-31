@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users do
-    member do
-      post :pay
-      post :subscribe
+    resources :payments do
+      member do
+        post :pay
+      end
     end
   end
 
