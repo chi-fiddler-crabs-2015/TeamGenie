@@ -39,6 +39,7 @@ class TeamsController < ApplicationController
 
   def roster
     @team = find_team(params[:team_id])
+    @memberships = @team.memberships
   end
 
   private

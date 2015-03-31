@@ -1,2 +1,26 @@
-Hello
-<%= @team.name %>
+<div class='table'>
+  <table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Player Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Birthday</th>
+            <th>Amount Owed</th>
+            <th>Mark Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @memberships.each do |membership| %>
+      <tr>
+          <td><%= membership.player.first_name %> <%= membership.player.last_name %></td>
+          <td><%= membership.player.email %></td>
+          <td><%= membership.player.phone_number %></td>
+          <td><%= membership.player.birthday %></td>
+          <td><%= membership.amount_owed %></td>
+          <td><%= button_to 'Mark Paid', root_path, class: 'btn btn-success' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
