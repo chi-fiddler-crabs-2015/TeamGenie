@@ -1,0 +1,33 @@
+.col-md-6.col-md-offset-3.col-xs-12
+  = render partial: 'nav'
+
+  - if flash[:notice]
+    .alert.alert-info
+      %p= flash[:notice].html_safe
+  - if flash[:error]
+    .alert.alert-danger
+      %p= flash[:error].html_safe
+
+  %h1= @user.name
+  %h4= @user.email
+
+  - if @user.connected?
+    - if is_myself?
+      - # you're looking at your own 'profile', so you can
+      - # update/deauthorize/etc your Stripe account
+      = render partial: 'settings'
+    - else
+      = render partial: 'pay'
+
+  - else
+    - if is_myself? && !current_user.connected?
+      - # you're looking at your own 'profile', so you can
+      - # create/connect/etc your Stripe account
+      = render partial: 'connect'
+    - else
+      .panel.panel-danger.not-connected
+        .panel-body
+          %h3 Not Connected
+          %p
+            This user is not connected to Stripe, so
+            you can't pay them.

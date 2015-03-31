@@ -16,6 +16,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use haml for front end (if desired)
+gem 'haml'
+
+# Use thin for faster webhosting
+gem 'thin'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -62,6 +68,10 @@ gem 'sinatra', :require => nil
 # # Add Letter Opener and Launchy to test email services
 # gem 'letter_opener'
 # gem 'launchy'
+
+# Add Stripe and Oauth for payment handling
+gem 'stripe'
+gem 'oauth2'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
