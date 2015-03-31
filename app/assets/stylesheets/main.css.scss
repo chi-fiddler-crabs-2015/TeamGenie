@@ -5909,48 +5909,14 @@ img.mfp-img {
   padding-bottom: 10px;
 }
 
-.back-to-top {
-  display: none;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: 9999;
-}
-@media screen and (max-width: 992px) {
-  .back-to-top {
-    display: none !important;
-  }
-}
-.back-to-top a {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -moz-transition-timing-function: linear;
-  -o-transition-timing-function: linear;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  display: block;
-  width: 25px;
-  height: 25px;
-  color: #fff;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.back-to-top a:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
+// .pull-left #footer {
+//   float: center;
+// }
 
 .copyright {
   font-size: 0.8em;
   line-height: 36px;
+  text-align: center;
 }
 @media screen and (max-width: 480px) {
   .copyright {
