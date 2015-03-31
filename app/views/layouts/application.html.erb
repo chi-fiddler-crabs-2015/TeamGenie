@@ -5,7 +5,7 @@
   <title>TeamGenie</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
-
+  <%= javascript_include_tag 'application' %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Recreational sports league roster management system">
@@ -38,10 +38,9 @@
 </head>
 
   <!-- Renders partial for nav  -->
-  <%if current_user%>
-    <body id="top">
+  <body id="top" class="fullscreen-image-background">
+
     <%= render partial: 'shared/navigation' %>
-  <%end%>
 
   <div class='container'>
   <%= yield %>
