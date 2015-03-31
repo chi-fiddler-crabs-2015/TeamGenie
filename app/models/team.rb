@@ -26,4 +26,8 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def amount_owed
+    self.memberships.pluck(:amount_owed).reduce(:+)
+  end
+
 end
