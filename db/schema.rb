@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150330235115) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "paid",        default: false
-    t.float    "amount_owed"
+    t.float    "amount_owed", default: 0.0
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150330235115) do
     t.integer  "team_logo_file_size"
     t.datetime "team_logo_updated_at"
     t.float    "dues",                   default: 0.0
+    t.float    "paid_dues",              default: 0.0
   end
 
   create_table "users", force: :cascade do |t|

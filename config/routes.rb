@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     get '/roster' => 'teams#roster'
+    put '/distribute_dues' => 'teams#distribute_dues'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
     resources :memberships do
@@ -20,10 +21,6 @@ Rails.application.routes.draw do
       resources :rsvps
     end
   end
-
-
-
-
 
   resources :locations
 
