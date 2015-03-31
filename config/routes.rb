@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     get '/roster' => 'teams#roster'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
-    resources :memberships
+    resources :memberships do
+      put '/mark_paid' => 'memberships#mark_paid'
+    end
     resources :games do
       resources :rsvps
     end
