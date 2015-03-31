@@ -50,4 +50,13 @@ RSpec.describe TeamsController, type: :controller do
       end
     end
   end
+
+  context "GET #edit" do
+    describe 'when valid parameters are passed' do
+      it "should assign @team to team" do
+        get :edit, :id => team.id
+        expect(assigns(:team)).to eq(team)
+      end
+    end
+  end
 end
