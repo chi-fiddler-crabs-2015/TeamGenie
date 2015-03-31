@@ -38,10 +38,9 @@
 </head>
 
   <!-- Renders partial for nav  -->
-  <%if current_user%>
-    <body id="top">
+  <body id="top" class="fullscreen-image-background">
+
     <%= render partial: 'shared/navigation' %>
-  <%end%>
 
   <div class='container'>
   <%= yield %>
