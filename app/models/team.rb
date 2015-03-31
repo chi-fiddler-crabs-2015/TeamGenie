@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
   end
 
   def amount_owed
-    self.dues - self.paid_dues
+    self.dues - self.paid_dues_mem
   end
 
   def outstanding_memberships
