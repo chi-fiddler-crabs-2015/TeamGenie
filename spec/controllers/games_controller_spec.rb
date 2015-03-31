@@ -30,11 +30,11 @@ RSpec.describe GamesController, type: :controller do
 
   context "POST #create" do
     describe "when valid parameters are passed" do
-      xit "creates a new game" do
+      it "creates a new game" do
         team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
         game = team.games.new(game_time: DateTime.now, location: location)
         expect {
-          post :game, { team: team.id, game: {'game_time(1i)' => "1", 'game_time(2i)' => "1", 'game_time(3i)' => "1", 'game_time(4i)' => "1", 'game_time(5i)' => "1", 0 => "1" } }}.to change{Game.count}.by(1)
+          post :create, { team_id: team.id, game: {'game_time(1i)' => "1", 'game_time(2i)' => "1", 'game_time(3i)' => "1", 'game_time(4i)' => "1", 'game_time(5i)' => "1", 0 => 0, location: location.name } }}.to change{Game.count}.by(1)
       end
     end
   end
