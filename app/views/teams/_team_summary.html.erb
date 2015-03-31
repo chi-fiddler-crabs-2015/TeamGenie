@@ -1,13 +1,11 @@
 
 <!-- Make sure the images we upload for demo have square proportions and the text is centered -->
-<div class='col-xs-12 team-logo-box'>
   <%= link_to team_path(team) do %>
     <!-- Consider rounding out the edges -->
     <%= image_tag team.team_logo.url(:team_summary), class: 'team-logo' %>
   <% end %>
-</div>
 
-<div class='col-xs-12 team-name'>
-  <%= link_to team.name, team_path(team) %>
+<div class='team-name alert'>
+  <h4><%= link_to team.name, team_path(team) %></h4>
 </div>
 
