@@ -1,14 +1,5 @@
 jQuery( function($){
 
-	/*----------------------/
-	/* PAGE LOADER
-	/*---------------------*/
-
-	$('body').jpreLoader({
-		showSplash: false,
-		loaderVPos: "50%"
-	});
-
 
 	/*----------------------/
 	/* MAIN NAVIGATION
@@ -57,34 +48,6 @@ jQuery( function($){
 		easing: 'easeInOutExpo'
 	});
 
-
-	/*----------------------/
-	/* HERO UNIT SUPERSIZED
-	/*---------------------*/
-
-	if( $('.slideshow').length > 0 ) {
-		$.supersized({
-
-			// Functionality
-			autoplay: 1,				// Slideshow starts playing automatically
-			slide_interval: 3000,		// Length between transitions
-			transition: 1, 				// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-			transition_speed: 1000,		// Speed of transition
-
-			// Components
-			slide_links: 'blank',		// Individual links for each slide (Options: false, 'num', 'name', 'blank')
-			thumb_links: 0,				// Individual thumb links for each slide
-			slides:  	[				// Slideshow Images
-							{image : '<%= image_path 'sliders/slider1.png' %>', title : '<div class="hero-text"><h2 class="hero-heading">HANDCRAFTED</h2><p>Built to provide great visitor experience</p></div>', thumb : '', url : ''},
-							{image : '<%= image_path 'sliders/slider2.png' %>', title : '<div class="hero-text"><h2 class="hero-heading">PARALLAX</h2><p>Scrolling the page is fun with parallax background</p></div>', thumb : '', url : ''},
-							{image : '<%= image_path 'sliders/slider3.png' %>', title : '<div class="hero-text"><h2 class="hero-heading">BUY ONE FOR TWO</h2><p>Buy one to get both of the agency and personal theme</p></div>', thumb : '', url : ''}
-						],
-		});
-
-		$(".fa-pause, .fa-play").click( function(){
-			$(this).toggleClass("fa-pause fa-play");
-		});
-	}
 
 
 	/*----------------------/
@@ -239,25 +202,6 @@ jQuery( function($){
 		$('.wow').attr('class', '');
 	}
 
-	/*----------------------/
-	/* TOOLTIP
-	/*---------------------*/
-
-	if( $(window).width() > 1024 ) {
-		$('body').tooltip({
-			selector: "[data-toggle=tooltip]",
-			container: "body"
-		});
-	}
-
-	// init scrollspy except on Opera, it doesn't work because body has 100% height
-	if ( !navigator.userAgent.match("Opera/") ) {
-		$('body').scrollspy({
-			target: '#main-nav'
-		});
-	}else {
-		$('#main-nav .nav li').removeClass('active');
-	}
 
 
 });
