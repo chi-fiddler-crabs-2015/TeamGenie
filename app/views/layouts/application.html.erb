@@ -38,8 +38,10 @@
 </head>
 
   <!-- Renders partial for nav  -->
+  <%if current_user%>
     <body id="top">
     <%= render partial: 'shared/navigation' %>
+  <%end%>
 
   <div class='container'>
   <%= yield %>
