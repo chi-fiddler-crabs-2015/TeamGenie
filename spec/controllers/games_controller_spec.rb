@@ -52,11 +52,10 @@ RSpec.describe GamesController, type: :controller do
 
   context "GET #edit" do
     describe "when valid parameters are passed" do
-      xit "should redirect to the edit team game path" do
+      it "should render the edit team game template" do
         team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
-        puts team.id
         game = team.games.create!(game_time: DateTime.now, location: location)
-        view = :edit, { id: game.id, team_id: team.id }
+        view = get :edit, { id: game.id, team_id: team.id }
         expect(view).to render_template("edit")
       end
     end
