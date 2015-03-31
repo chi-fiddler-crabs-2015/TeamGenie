@@ -71,4 +71,15 @@ RSpec.describe GamesController, type: :controller do
       end
     end
   end
+
+  context "POST #update" do
+    describe "when valid parameters are passed" do
+      it "should render the edit team game template" do
+        team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
+        game = team.games.create!(game_time: DateTime.now, location: location)
+        view = get :edit, { id: game.id, team_id: team.id }
+        expect(view).to render_template("edit")
+      end
+    end
+  end
 end
