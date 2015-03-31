@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :teams do
+    resources :email_all, only: [:create]
     resources :invitations, only: [:create]
     resources :memberships
     resources :games do
@@ -24,9 +25,10 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users do
-    member do
-      post :pay
-      post :subscribe
+    resources :payments do
+      member do
+        post :pay
+      end
     end
   end
 
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   post '/send_sms' => 'twilios#create'
+  post '/team_text' => 'twilios#team_text'
 
   mount Sidekiq::Web => '/sidekiq'
 
