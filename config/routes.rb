@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   post '/send_sms' => 'twilios#create'
+  post '/team_text' => 'twilios#team_text'
 
   mount Sidekiq::Web => '/sidekiq'
 
