@@ -1,7 +1,7 @@
 .panel.panel-primary
   .panel-body
     %h3 Connect
-    %p There are 3 ways to create/connect your Stripe account.
+    %p Create/connect your Stripe account.
 
     %ul.list-group
       %li.list-group-item#stripe-oauth
@@ -18,21 +18,3 @@
             %select.country{ name: 'country' }
               - StripeStandalone::COUNTRIES.each do |country|
                 %option{ value: country[:code] }= country[:name]
-
-      - # managed accounts are in public beta
-      - # see services/stripe_managed.rb#ALLOWED
-      - if Stripe::Account.retrieve('self').country.in? StripeManaged::ALLOWED
-        %li.list-group-item#stripe-managed
-          = form_tag stripe_managed_path, method: 'POST' do
-            %input.pull-right.btn.btn-lg.disabled.btn-primary{ type: 'submit', value: 'Create' }
-            %h3 Managed
-            %p
-              %small Create a managed Stripe account in
-              %select.country{ name: 'country' }
-                - StripeManaged::COUNTRIES.each do |country|
-                  %option{ value: country[:code] }= country[:name]
-              %br
-              %label.tos
-                %input{ type: 'checkbox', name: 'tos', checked: false }
-                I accept the
-                %a{ href: 'https://stripe.com/us/terms', target: '_blank' } Stripe Terms of Service

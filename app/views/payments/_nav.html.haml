@@ -9,12 +9,12 @@
       %p.navbar-text
         %span.glyphicon.glyphicon-chevron-right
         %span.hidden-xs Logged in as
-        %a{ href: user_path( current_user ) }
+        %a{ href: user_payment_path( current_user, current_user ) }
           %strong= current_user.first_name
 
     .collapse.navbar-collapse{ id: 'navbar-links' }
       %p.navbar-text.navbar-right
-        - if request.path == users_path
+        - if request.path == user_payments_path
           All Users
         - else
           %a.navbar-link{ href: users_path } All Users

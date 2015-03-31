@@ -35,6 +35,7 @@ class PaymentsController < ApplicationController
 
       case params[:charge_on]
       when 'connected'
+        p charge_attrs
         # Use the user-to-be-paid's access token
         # to make the charge directly on their account
         charge = Stripe::Charge.create( charge_attrs, user.secret_key )
