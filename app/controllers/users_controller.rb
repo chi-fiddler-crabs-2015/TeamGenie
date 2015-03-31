@@ -135,8 +135,10 @@ class UsersController < ApplicationController
   end
 
   def update_phone(user)
-    phone_number = user.phone_number.gsub(/[^0-9]/, '').insert(0, "1")
-    user.update_attributes(phone_number: phone_number)
+    if user.phone_number != nil
+      phone_number = user.phone_number.gsub(/[^0-9]/, '').insert(0, "1")
+      user.update_attributes(phone_number: phone_number)
+    end
   end
 
 end
