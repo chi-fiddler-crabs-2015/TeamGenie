@@ -45,7 +45,12 @@ class TeamsController < ApplicationController
   def distribute_dues
     @team = find_team(params[:team_id])
     @team.outstanding_memberships.each do |membership|
-
+      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      puts membership.amount_owed
+      membership.amount_owed = @team.amount_owed / @team.outstanding_memberships_count
+      puts membership.amount_owed
+      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      membership.save
     end
     redirect_to team_roster_path(@team)
   end
@@ -54,14 +59,6 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :activity, :home_location, :team_logo)
-  end
-
-  def outstanding_memberships
-    self.memberships.where('amount_owed > 0')
-  end
-
-  def outstanding_memberships_count
-    self.outstanding_memberships.count
   end
 
 end

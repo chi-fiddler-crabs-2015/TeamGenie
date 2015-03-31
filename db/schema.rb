@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150330235115) do
     t.datetime "updated_at",                  null: false
     t.boolean  "paid",        default: false
     t.float    "amount_owed", default: 0.0
+    t.float    "amount_paid", default: 0.0
   end
 
   create_table "rsvps", force: :cascade do |t|

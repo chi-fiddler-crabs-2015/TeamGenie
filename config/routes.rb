@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :invitations, only: [:create]
     resources :memberships do
       put '/mark_paid' => 'memberships#mark_paid'
+      put '/mark_unpaid' => 'memberships#mark_unpaid'
     end
     resources :games do
       resources :rsvps

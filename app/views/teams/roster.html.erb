@@ -13,9 +13,9 @@
           <li class="list-group-item"><strong>Team Captain:</strong> <%= @team.captain.first_name %> <%= @team.captain.last_name %></li>
           <li class="list-group-item"><strong>Roster Size:</strong> <%= @team.memberships.count %> players</li>
           <li class="list-group-item"><strong>Home Location:</strong> <%= @team.home_location.name %></li>
-          <li class="list-group-item"><strong>Total Team Dues:</strong> $<%= @team.dues %></li>
-          <li class="list-group-item"><strong>Paid Player Dues:</strong> $<%= @team.paid_dues  %></li>
-          <li class="list-group-item"><strong>Outstanding Player Charged Dues:</strong> $<%= @team.amount_owed %></li>
+          <li class="list-group-item"><strong>Total Team Dues:</strong> $<%= @team.dues.round(2) %></li>
+          <li class="list-group-item"><strong>Paid Player Dues:</strong> $<%= @team.paid_dues_mem.round(2)  %></li>
+          <li class="list-group-item"><strong>Outstanding Player Charged Dues:</strong> $<%= @team.amount_owed.round(2) %></li>
           <li class="list-group-item">
               <%= button_to 'Distribute Dues Evenly Among Outstanding Team Members', team_distribute_dues_path(@team), method: 'put', class: 'btn btn-sm btn-success inline' %>
           </li>
@@ -45,8 +45,14 @@
             <td><%= membership.player.first_name %> <%= membership.player.last_name %></td>
             <td><%= membership.player.email %></td>
             <td><%= membership.player.phone_number %></td>
-            <td><%= membership.amount_owed %></td>
-            <td><%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success' %></td>
+            <td>$<%= membership.amount_owed.round(2) %></td>
+            <td>
+              <% if membership.paid %>
+                <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger' %>
+              <% else %>
+                <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success' %>
+              <% end %>
+            </td>
         </tr>
       <% end %>
     </tbody>

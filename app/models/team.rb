@@ -27,7 +27,19 @@ class Team < ActiveRecord::Base
   end
 
   def amount_owed
-    self.memberships.pluck(:amount_owed).reduce(:+)
+    self.dues - self.paid_dues
+  end
+
+  def outstanding_memberships
+    self.memberships.where('paid = false')
+  end
+
+  def outstanding_memberships_count
+    self.outstanding_memberships.count
+  end
+
+  def paid_dues_mem
+    self.memberships.pluck(:amount_paid).reduce(:+)
   end
 
 end
