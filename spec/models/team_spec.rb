@@ -27,18 +27,17 @@ RSpec.describe Team, type: :model do
 
   describe 'game time methods' do
     let!(:team) { Team.new() }
-
-    before(:each) do
-      3.times { team.games.new(game_time: Time.now() + 99999999999999999999999999999) }
-      2.times { team.games.new(game_time: Time.now() - 99999999999999999999999999999) }
-    end
+    let!(:game1) { team.games.new(game_time: Time.now() + 100.years) }
+    let!(:game2) { team.games.new(game_time: Time.now() - 100.years) }
 
     it '#future_games should return future games' do
-      expect(team.future_games.length).to eq 3
+      expect(game1.future_game?).to eq true
+      expect(team.future_games.length).to eq 1
     end
 
     it '#recent_games should return recent games' do
-      expect(team.recent_games.length).to eq 2
+      expect(game2.future_game?).to eq false
+      expect(team.recent_games.length).to eq 1
     end
   end
 
