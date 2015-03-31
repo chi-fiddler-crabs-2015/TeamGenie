@@ -7,4 +7,10 @@ class MembershipsController < ApplicationController
     redirect_to team_roster_path(membership.team) and return
   end
 
+  def destroy
+    membership = Membership.find_by(id: params[:id])
+    membership.destroy
+    redirect_to team_roster_path(params[:team_id])
+  end
+
 end
