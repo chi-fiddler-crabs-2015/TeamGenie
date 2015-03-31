@@ -18,3 +18,5 @@
             %select.country{ name: 'country' }
               - StripeStandalone::COUNTRIES.each do |country|
                 %option{ value: country[:code] }= country[:name]
+
+
