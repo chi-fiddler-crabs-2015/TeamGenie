@@ -47,8 +47,6 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game = current_game(params[:id])
-    @game.update_attributes(params[:game])
   end
 
   private

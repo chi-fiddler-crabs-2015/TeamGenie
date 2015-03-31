@@ -63,7 +63,7 @@ RSpec.describe GamesController, type: :controller do
 
   context "GET #show" do
     describe "when valid parameters are passed" do
-      it "should redirect to the edit team game path" do
+      it "should show the template 'show'" do
         team = user.teams.create!(name: "DBC", activity: "soccer",  home_location: location)
         game = team.games.create!(game_time: DateTime.now, location: location)
         get :show, id: game.to_param, team_id: team.to_param
