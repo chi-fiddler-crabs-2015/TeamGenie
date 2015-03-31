@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
   end
 
   def roster
-
+    @team = find_team(params[:team_id])
   end
 
   private
