@@ -18,7 +18,10 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
-.vcenter {
-  vertical-align: middle;
-  float: right;
+.comm-button {
+  margin: 10px;
+}
+
+.img-centered {
+  margin: 0 auto;
 }

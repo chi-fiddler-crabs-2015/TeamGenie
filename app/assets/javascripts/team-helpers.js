@@ -60,7 +60,6 @@ $(document).ready( function() {
     var response = $.ajax({
       url: route,
       method: "patch",
-      // dataType: 'html',
       data: {attendance: data},
       error: function(response) {
         partial.closest('.game-view').replaceWith(response.responseText)
@@ -74,6 +73,7 @@ $(document).ready( function() {
 
   $(document).on('click', '.show-new-email', function() {
     $('.email-players').removeClass('hidden')
+    $(this).toggleClass('hidden')
   });
 
   $(document).on('click', '.text-all-players', function() {
