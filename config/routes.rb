@@ -10,17 +10,18 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :teams do
+    get '/roster' => 'teams#roster'
+    put '/distribute_dues' => 'teams#distribute_dues'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
-    resources :memberships
+    resources :memberships do
+      put '/mark_paid' => 'memberships#mark_paid'
+      put '/mark_unpaid' => 'memberships#mark_unpaid'
+    end
     resources :games do
       resources :rsvps
     end
   end
-
-
-
-
 
   resources :locations
 

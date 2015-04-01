@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
   has_many   :players, through: :memberships
   belongs_to :home_location, class_name: "Location"
   has_attached_file :team_logo,
-                    styles: { thumb: '100x100#', medium: '300x300>', team_summary: '150x150' }
+                    styles: { thumb: '100x100#', medium: '300x300>', team_summary: '250x250' }
 
   validates   :captain, presence: true
   validates   :activity, presence: true
@@ -24,6 +24,22 @@ class Team < ActiveRecord::Base
     self.games.select do |game|
       !game.future_game?
     end
+  end
+
+  def amount_owed
+    self.dues - self.paid_dues_mem
+  end
+
+  def outstanding_memberships
+    self.memberships.where('paid = false')
+  end
+
+  def outstanding_memberships_count
+    self.outstanding_memberships.count
+  end
+
+  def paid_dues_mem
+    self.memberships.pluck(:amount_paid).reduce(:+)
   end
 
 end
