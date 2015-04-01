@@ -1,3 +1,6 @@
+require 'rails_helper'
+
+
 RSpec.describe RsvpsController, type: :controller do
   let!(:user) { create(:user) }
   let!(:location) { create(:location) }
