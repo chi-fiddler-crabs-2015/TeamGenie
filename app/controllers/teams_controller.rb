@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
   def distribute_dues
     @team = find_team(params[:team_id])
     @team.outstanding_memberships.each do |membership|
-      membership.amount_owed = @team.amount_owed / @team.outstanding_memberships_count
+      membership.amount_owed = (@team.dues - @team.paid_dues) / @team.outstanding_memberships_count
       membership.save
     end
     redirect_to team_roster_path(@team)

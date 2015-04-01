@@ -16,8 +16,8 @@
           <li class="list-group-item"><strong>Roster Size:</strong> <%= @team.memberships.count %> players</li>
           <li class="list-group-item"><strong>Home Location:</strong> <%= @team.home_location.name %></li>
           <li class="list-group-item"><strong>Total Team Dues:</strong> $<%= @team.dues.round(0) %></li>
-          <li class="list-group-item"><strong>Paid Player Dues:</strong> $<%= @team.paid_dues_mem.round(0)  %></li>
-          <li class="list-group-item"><strong>Outstanding Player Charged Dues:</strong> $<%= (@team.dues - @team.paid_dues_mem).round(0) %></li>
+          <li class="list-group-item"><strong>Paid Player Dues:</strong> $<%= @team.paid_dues.round(0)  %></li>
+          <li class="list-group-item"><strong>Outstanding Player Charged Dues:</strong> $<%= @team.amount_owed.round(0) %></li>
           <li class="list-group-item">
               <%= button_to 'Distribute Dues Evenly', team_distribute_dues_path(@team), method: 'put', class: 'btn btn-sm btn-success inline' %>
           </li>
