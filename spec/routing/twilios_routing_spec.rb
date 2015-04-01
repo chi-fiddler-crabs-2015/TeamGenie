@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe TwiliosController, :type => :routing do
   describe "routing" do
     it "routes to #new" do
-      expect(:get => "/login").to route_to("sessions#new")
+      expect(:post => "/team_text").to route_to("twilios#team_text")
     end
 
     it "routes to #create" do
