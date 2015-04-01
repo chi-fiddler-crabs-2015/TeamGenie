@@ -13,3 +13,6 @@ $ bundle exec sidekiq
 
 
 redis-cli --> help @server --> shutdown nosave
+
+
+PAYMENTS WORKING!!
