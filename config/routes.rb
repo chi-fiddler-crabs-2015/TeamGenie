@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     put '/distribute_dues' => 'teams#distribute_dues'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
-    resources :memberships, except: [:index, :create, :new, :edit, :show, :update] do
+    resources :memberships, except: [:index, :create, :new, :edit, :show] do
       put '/mark_paid' => 'memberships#mark_paid'
       put '/mark_unpaid' => 'memberships#mark_unpaid'
     end
