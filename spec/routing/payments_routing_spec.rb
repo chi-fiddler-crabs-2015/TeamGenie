@@ -1,13 +1,21 @@
 require "rails_helper"
 
-RSpec.describe LocationsController, :type => :routing do
+RSpec.describe PaymentsController, :type => :routing do
   describe "routing" do
-    it "routes to #create" do
-      expect(:post => "/locations").to route_to("locations#create")
+    it "routes to #index" do
+      expect(:get => "/users/1/payments").to route_to("payments#index", :user_id: "1")
     end
 
-    it "routes to #show" do
-      expect(:get => "/locations/1").to route_to("locations#show", :id => "1")
+    it "routes to #index" do
+      expect(:get => "/users/1/payments").to route_to("payments#show", :user_id: "1")
+    end
+
+    it "routes to #index" do
+      expect(:get => "/users/1/payments").to route_to("payments#index", :user_id: "1")
+    end
+
+    it "routes to #index" do
+      expect(:get => "/users/1/payments").to route_to("payments#index", :user_id: "1")
     end
   end
 end
