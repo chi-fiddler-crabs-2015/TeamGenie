@@ -14,19 +14,19 @@ Rails.application.routes.draw do
     put '/distribute_dues' => 'teams#distribute_dues'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
-    resources :memberships do
+    resources :memberships, except: [:index, :create, :new, :edit, :show, :update] do
       put '/mark_paid' => 'memberships#mark_paid'
       put '/mark_unpaid' => 'memberships#mark_unpaid'
     end
     resources :games do
-      resources :rsvps
+      resources :rsvps, only: [:update]
     end
   end
 
-  resources :locations
+  resources :locations, only: [:show, :create]
 
   resources :users do
-    resources :payments do
+    resources :payments, except: [:create, :new, :edit, :destroy] do
       member do
         post :pay
       end
