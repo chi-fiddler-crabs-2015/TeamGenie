@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to teams_path
     else
       @errors = @user.errors.full_messages
-      render 'new'
+      redirect_to 'new'
     end
   end
 
