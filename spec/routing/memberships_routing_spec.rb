@@ -13,5 +13,9 @@ RSpec.describe MembershipsController, :type => :routing do
     it "routes to #destroy" do
       expect(:delete => "/teams/1/memberships/1").to route_to("memberships#destroy", :team_id => "1", :id => "1")
     end
+
+    it "routes to #update" do
+      expect(:put => "/teams/1/memberships/1").to route_to("memberships#update", :team_id => "1", :id => "1")
+    end
   end
 end
