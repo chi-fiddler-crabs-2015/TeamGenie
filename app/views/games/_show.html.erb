@@ -1,7 +1,8 @@
 <div class='game-view'>
   <div class='col-xs-8 game-time'>
     <h4>
-      <%= game.game_time.strftime("%m/%d/%y, beginning at %l:%M %p") %> @ <%= link_to game.location.name, location_path(game.location) %>
+      <%= game.game_time.strftime("%m/%d/%y, beginning at %l:%M %p") %>
+      <br><%= link_to game.location.name, location_path(game.location) %>
     </h4>
   </div>
   <div class='col-xs-4 rsvp-count'>
