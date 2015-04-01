@@ -1,6 +1,6 @@
-<div class='section-header'><h1><%= @team.name %></h1></div>
+<div class='section-header'><h1 class='team-name headers'><%= @team.name %></h1></div>
 
-<div class='col-xs-5 text-center'>
+<div class='col-xs-4 text-center team-left-side'>
   <div>
     <%= image_tag @team.team_logo.url(:medium), class: 'img-rounded' %>
   </div>
@@ -67,8 +67,10 @@
 
   <!-- Pay captain if user, or set up payment if captain -->
   <div>
-    <%= link_to "Set Up Payments", user_payment_path(current_user, current_user), class: 'btn btn-success' if is_captain?(@team) %>
-    <%= link_to "Pay My Dues", user_payment_path(current_user, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
+    <%= link_to "Set Up Payments", team_payment_path(@team, current_user), class: 'btn btn-success' if is_captain?(@team) %>
+    <!-- team_payment_path(@team, current_user) -->
+    <%= link_to "Pay My Dues", team_payment_path(@team, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
+    <!-- team_payment_path(@team, @team.captain) -->
   </div>
 
   <div class = "text-message-box">
@@ -88,7 +90,10 @@
   </div>
 </div>
 
-<div class='col-xs-7'>
+<div class='col-xs-1'>
+</div>
+
+<div class='col-xs-7 team-right-side'>
   <% @future_games.each do |game| %>
     <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>

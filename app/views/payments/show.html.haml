@@ -1,5 +1,8 @@
 .col-md-6.col-md-offset-3.col-xs-12
-  = render partial: 'nav'
+  - if @user == @captain
+    = render partial: 'captain_nav'
+  - else
+    = render partial: 'player_nav'
 
   - if flash[:notice]
     .alert.alert-info
@@ -8,26 +11,22 @@
     .alert.alert-danger
       %p= flash[:error].html_safe
 
-  %h1= @user.first_name
-  %h4= @user.email
+  / %h3= "Pay Team Captain:"
+  / %h2= @captain.first_name
 
-  - if @user.connected?
-    - if is_myself?
-      - # you're looking at your own 'profile', so you can
-      - # update/deauthorize/etc your Stripe account
+  - if @captain.connected?
+    - if @user == @captain
       = render partial: 'settings'
     - else
       = render partial: 'pay'
-
+  - elsif @user == @captain && !current_user.connected?
+    - # you're looking at your own 'profile', so you can
+    - # create/connect/etc your Stripe account
+    = render partial: 'connect'
   - else
-    - if is_myself? && !current_user.connected?
-      - # you're looking at your own 'profile', so you can
-      - # create/connect/etc your Stripe account
-      = render partial: 'connect'
-    - else
-      .panel.panel-danger.not-connected
-        .panel-body
-          %h3 Not Connected
-          %p
-            This user is not connected to Stripe, so
-            you can't pay them.
+    .panel.panel-danger.not-connected
+      .panel-body
+        %h3 #{@captain.first_name} is Not Connected
+        %p
+          Until #{@captain.first_name} connects to Stripe, you
+          won't be able to pay your team dues through TeamGenie.

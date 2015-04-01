@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :teams do
+    resources :payments, except: [:create, :new, :edit, :destroy] do
+      member do
+        post :pay
+      end
+    end
     get '/roster' => 'teams#roster'
     put '/distribute_dues' => 'teams#distribute_dues'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
-    resources :memberships, except: [:index, :create, :new, :edit, :show, :update] do
+    resources :memberships, except: [:index, :create, :new, :edit, :show] do
       put '/mark_paid' => 'memberships#mark_paid'
       put '/mark_unpaid' => 'memberships#mark_unpaid'
     end
@@ -23,15 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :locations, only: [:show, :create]
+  resources :locations, only: [:new, :show, :create]
 
-  resources :users do
-    resources :payments, except: [:create, :new, :edit, :destroy] do
-      member do
-        post :pay
-      end
-    end
-  end
+  resources :users
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

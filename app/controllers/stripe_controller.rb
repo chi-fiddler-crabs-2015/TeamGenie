@@ -3,6 +3,9 @@ class StripeController < ApplicationController
   # Create a manage Stripe account for yourself.
   # Only works on the currently logged in user.
   # See app/services/stripe_managed.rb for details.
+
+  before_action :current_user
+
   def managed
     connector = StripeManaged.new( current_user )
     account = connector.create_account!(
@@ -29,7 +32,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to team_payment_path( params[:team_id], current_user )
   end
 
   # Connect yourself to a Stripe account.
