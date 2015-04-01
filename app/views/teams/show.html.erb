@@ -12,7 +12,7 @@
       <%= link_to 'See Roster and Payments', team_roster_path(@team), class: 'btn btn-success' %>
     </div>
 
-    <!-- Pay captain if user, or set up payment if captain -->
+
 
     <!-- Invite new players by email -->
     <div class='invite-players hidden'>
@@ -65,6 +65,7 @@
 
   <% end %>
 
+  <!-- Pay captain if user, or set up payment if captain -->
   <div>
     <%= link_to "Set Up Payments", user_payment_path(current_user, current_user), class: 'btn btn-success' if is_captain?(@team) %>
     <%= link_to "Pay My Dues", user_payment_path(current_user, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
