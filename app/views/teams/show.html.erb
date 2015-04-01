@@ -1,6 +1,6 @@
-<div class='section-header'><h1><%= @team.name %></h1></div>
+<div class='section-header'><h1 class='team-name headers'><%= @team.name %></h1></div>
 
-<div class='col-xs-5 text-center'>
+<div class='col-xs-4 text-center team-left-side'>
   <div>
     <%= image_tag @team.team_logo.url(:medium), class: 'img-rounded' %>
   </div>
@@ -90,7 +90,10 @@
   </div>
 </div>
 
-<div class='col-xs-7'>
+<div class='col-xs-1'>
+</div>
+
+<div class='col-xs-7 team-right-side'>
   <% @future_games.each do |game| %>
     <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>
