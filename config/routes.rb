@@ -21,17 +21,16 @@ Rails.application.routes.draw do
     resources :games do
       resources :rsvps
     end
-  end
-
-  resources :locations
-
-  resources :users do
     resources :payments do
       member do
         post :pay
       end
     end
   end
+
+  resources :locations
+
+  resources :users
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
