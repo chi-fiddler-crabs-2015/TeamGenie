@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
 
   def update
     team = find_team(params[:id])
-    team_captain(@team)
+    team_captain(team)
     team.update(team_params)
     redirect_to team_path(team)
   end
