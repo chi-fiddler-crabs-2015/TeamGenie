@@ -44,7 +44,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    redirect_to team_game_path(params[:id])
   end
 
   def update
