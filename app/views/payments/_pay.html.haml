@@ -1,19 +1,19 @@
-- if @user.can_accept_charges?
+- if @captain.can_accept_charges?
   .panel.panel-primary
     .panel-body
-      = form_tag pay_user_payment_path( current_user, @user ) do
+      = form_tag pay_team_payment_path( @team, @captain ) do
         .indicator
         = hidden_field_tag :token
-        %button.pull-right.btn.btn-primary.btn-lg.pay-button Pay $10
+        %button.pull-right.btn.btn-primary.btn-lg.pay-button Pay #{@amount_owed}
 
-        %h3 Make a one-off charge
+        %h3 Pay Your Dues
         %p
-          Pay a one-time charge of $10 #{@user.currency.upcase}.
+          Make a one-time payment of #{@amount_owed} #{@captain.currency.upcase} to your team captain, #{@captain.first_name} #{@captain.last_name}.
         %p
-          %small Responsible for fees, refunds and chargebacks?
-          %select{ name: 'charge_on' }
-            %option{ value: 'connected' } Connected Account
-            %option{ value: 'platform' } Platform Account
+          / %small Responsible for fees, refunds and chargebacks?
+          / %select{ name: 'charge_on' }
+          /   %option{ value: 'connected' } Connected Account
+          /   %option{ value: 'platform' } Platform Account
 
 - else
   .panel.panel-danger
@@ -29,4 +29,4 @@
     connected: #{@user.publishable_key.to_json}
   };
   window.currentUserEmail = #{current_user.email.to_json};
-  window.payPath = #{pay_user_payment_path( current_user, @user ).to_json};
+  window.payPath = #{pay_team_payment_path( @team, @captain ).to_json};
