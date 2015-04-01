@@ -27,7 +27,7 @@
 
       <% end %>
     </div>
-      <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+      <button class='btn btn-success show-new-player-invitation'>Invite New Players</button>
     <!-- Close invite new players by email -->
 
     <!-- Email all players -->
@@ -43,7 +43,7 @@
 
       <% end %>
     </div>
-      <button class='btn btn-success show-new-email'><i class="glyphicon glyphicon-plus"></i> Email All Players</button>
+      <button class='btn btn-success show-new-email'></i> Email All Players</button>
 
     <!-- Close email all players -->
 
@@ -60,7 +60,7 @@
 
         <% end %>
       </div>
-        <button class='btn btn-success text-all-players'><i class="glyphicon glyphicon-plus"></i>Text Your Team</button>
+        <button class='btn btn-success text-all-players'>Text Your Team</button>
     <% end %>
 
   <% end %>
@@ -101,7 +101,7 @@
   <% if is_captain?(@team) %>
     <div class='text-center'>
       <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
-        <i class="glyphicon glyphicon-plus"></i> New Game
+        New Game
       <% end %>
     </div>
   <% end %>
