@@ -78,14 +78,18 @@
             <td><%= membership.player.email %></td>
             <td><%= membership.player.phone_number %></td>
             <td>
-              <span class='amount-owed'>$<%= membership.amount_owed.round(0)%></span>
-              <button class='btn btn-sm btn-success edit-amount-owed-button pull-center'>Edit</button>
-              <span class='new-amount-owed hidden'>
-                <%= form_for :membership, url: team_membership_path(@team,membership), method: 'put' do |f| %>
-                  <%= f.text_field :amount_owed, autofocus: true , class: 'form-control'%>
-                  <%= f.submit 'New Amount', class: 'btn btn-sm btn-success' %>
-                <% end %>
-              </span>
+              <div class='col-xs-6'>
+                <span class='amount-owed'>$<%= membership.amount_owed.round(0)%></span>
+              </div>
+              <div class='col-xs-6'>
+                <button class='btn btn-sm btn-success edit-amount-owed-button pull-center'>Edit</button>
+                <span class='edit-amount-owed hidden'>
+                  <%= form_for :membership, url: team_membership_path(@team,membership), method: 'put' do |f| %>
+                      <%= f.text_field :amount_owed, autofocus: true , class: 'form-control input-sm'%>
+                      <%= f.submit 'New Amount', class: 'btn btn-sm btn-success inline' %>
+                  <% end %>
+                </span>
+              </div>
             </td>
             <td>
               <% if membership.paid %>
