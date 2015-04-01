@@ -29,7 +29,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to team_payment_path( params[:team_id], current_user )
   end
 
   # Connect yourself to a Stripe account.

@@ -67,9 +67,9 @@
 
   <!-- Pay captain if user, or set up payment if captain -->
   <div>
-    <%= link_to "Set Up Payments", user_payment_path(@team.captain, current_user), class: 'btn btn-success' if is_captain?(@team) %>
+    <%= link_to "Set Up Payments", team_payment_path(@team, current_user), class: 'btn btn-success' if is_captain?(@team) %>
     <!-- team_payment_path(@team, current_user) -->
-    <%= link_to "Pay My Dues", user_payment_path(@team.captain, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
+    <%= link_to "Pay My Dues", team_payment_path(@team, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
     <!-- team_payment_path(@team, @team.captain) -->
   </div>
 
