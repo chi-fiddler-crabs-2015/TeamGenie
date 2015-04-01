@@ -7,6 +7,8 @@ class GamesController < ApplicationController
   end
 
   def new
+    team = find_team(params[:team_id])
+    team_captain(team)
     if current_user
       @game = Game.new
     else
@@ -18,6 +20,7 @@ class GamesController < ApplicationController
   def create
     @user = current_user
     @team = find_team(params[:team_id])
+    team_captain(@team)
     @game_time = create_game_time(params[:game])
     location = find_location_by_name(params[:game][:location])
     @game = @team.games.new(game_time: @game_time, location: location)
@@ -35,6 +38,7 @@ class GamesController < ApplicationController
 
   def destroy
     team = find_team(params[:team_id])
+    team_captain(team)
     if current_user
       @game = current_game(params[:id])
       @game.destroy
