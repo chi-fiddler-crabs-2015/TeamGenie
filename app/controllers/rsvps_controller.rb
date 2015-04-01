@@ -4,7 +4,11 @@ class RsvpsController < ApplicationController
 
   def update
     rsvp = Rsvp.find_by(id: params[:id])
+    puts "******************************"
+    puts rsvp.attending
     rsvp.attending = params[:attendance]
+    puts "******************************"
+    puts rsvp.attending
     rsvp.save
     respond_to do |format|
       format.js do
