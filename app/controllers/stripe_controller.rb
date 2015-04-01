@@ -40,11 +40,11 @@ class StripeController < ApplicationController
   # See app/services/stripe_oauth.rb for #oauth_url details.
   def oauth
     connector = StripeOauth.new( current_user )
-    url, error = connector.oauth_url( redirect_uri: stripe_confirm_url )
+    url, error = connector.oauth_url( redirect_uri: stripe_confirm_path )
 
     if url.nil?
       flash[:error] = error
-      redirect_to user_payment_path( current_user, current_user )
+      redirect_to session[:saved_url]
     else
       redirect_to url
     end
