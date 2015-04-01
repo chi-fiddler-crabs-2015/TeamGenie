@@ -13,5 +13,9 @@ RSpec.describe GamesController, :type => :routing do
     it "routes to #create" do
       expect(:post => "/teams/1/games").to route_to("games#create", :team_id => "1")
     end
+
+    it "routes to #edit" do
+      expect(:get => "/teams/1/games/1/edit").to route_to("games#edit", :team_id => "1", :id => "1")
+    end
   end
 end
