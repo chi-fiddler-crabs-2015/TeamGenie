@@ -3,13 +3,16 @@ class PaymentsController < ApplicationController
 
   def index
     @users = User.all
+    @team = Team.find(params[:team_id])
   end
 
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
   def show
-    @user = User.find( params[:id] )
+    @user = current_user
+    @team = Team.find(params[:team_id])
+    @captain = @team.captain
     @plans = Stripe::Plan.all
   end
 

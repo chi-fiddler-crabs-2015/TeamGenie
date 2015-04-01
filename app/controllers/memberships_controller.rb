@@ -15,6 +15,12 @@ class MembershipsController < ApplicationController
     redirect_to team_roster_path(membership.team) and return
   end
 
+  def update
+    membership = Membership.find_by(id: params[:id])
+    membership.update_attributes(amount_owed: params[:membership][:amount_owed])
+    redirect_to :back
+  end
+
   def destroy
     membership = Membership.find_by(id: params[:id])
     membership.destroy
