@@ -48,5 +48,4 @@ RSpec.describe MembershipsController, type: :controller do
       end
     end
   end
-
 end
