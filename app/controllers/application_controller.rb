@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def no_page_found
+    redirect_to :back
+  end
+
   def current_user
     @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
   end
@@ -18,8 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   def team_captain(team)
-    if team.captain.find_by(captain: current_user) == nil
-      redirect_to :back
+    if team.captain != current_user
+      redirect_to "/teams/#{team.id}"
     end
   end
 
