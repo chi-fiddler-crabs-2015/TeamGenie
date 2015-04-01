@@ -23,19 +23,11 @@ RSpec.describe UsersController, :type => :routing do
     end
 
     it "routes to #update" do
-      expect(:put => "/teams/1").to route_to("teams#update", :id => "1")
+      expect(:put => "/users/1").to route_to("users#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/teams/1").to route_to("teams#destroy", :id => "1")
-    end
-
-    it "routes to #roster" do
-      expect(:get => "/teams/1/roster").to route_to("teams#roster", :team_id => "1")
-    end
-
-    it "routes to ##distribute_dues" do
-      expect(:put => "/teams/1/distribute_dues").to route_to("teams#distribute_dues", :team_id => "1")
+      expect(:delete => "/users/1").to route_to("users#destroy", :id => "1")
     end
   end
 end
