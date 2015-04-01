@@ -25,11 +25,7 @@ module ApplicationHelper
   end
 
   def location_names(team_id)
-    locations = [Team.find_by(id: team_id).home_location.name]
-    Location.all.pluck(:name).each do |location_name|
-      locations << location_name unless location_name == locations.first
-    end
-    locations
+    Location.all.pluck(:name)
   end
 
 end
