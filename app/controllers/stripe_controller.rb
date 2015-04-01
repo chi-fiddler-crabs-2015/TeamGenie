@@ -17,7 +17,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
   # Create a standalone Stripe account for yourself.
@@ -32,7 +32,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to team_payment_path( params[:team_id], current_user )
+    redirect_to session[:saved_url]
   end
 
   # Connect yourself to a Stripe account.
@@ -67,7 +67,7 @@ class StripeController < ApplicationController
       flash[:error] = "Authorization request denied."
     end
 
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
   # Deauthorize the application from accessing
@@ -77,7 +77,7 @@ class StripeController < ApplicationController
     connector = StripeOauth.new( current_user )
     connector.deauthorize!
     flash[:notice] = "Account disconnected from Stripe."
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
 end
