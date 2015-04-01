@@ -1,15 +1,30 @@
 [![Build Status](https://travis-ci.org/chi-fiddler-crabs-2015/TeamGenie.svg?branch=development)](https://travis-ci.org/chi-fiddler-crabs-2015/TeamGenie)
-David, Kay, Ricardo
 
-Access Redis
-redis-server /usr/local/etc/redis.conf
+TeamGenie
+=========
 
-to start mailers
-$ rails s
+[Live on Heroku](https://teamgenie.herokuapp.com/)
 
-$ redis-server
+TeamGenie is a Dev Bootcamp Phase 3 final project created by Ricardo Fleury, Kay Lindenberg, and David Vaynshteyn.  This project was completed over an 8-day time period to showcase the skills learned over a 9 week time period onsite.
 
-$ bundle exec sidekiq
+TeamGenie is a complete sports management platform that takes the pain out of organizing recreational sports teams by providing easy roster management and enabling seamless communication and payment collection.
 
 
-redis-cli --> help @server --> shutdown nosave
+#### Technologies
+* Ruby on Rails
+* pg
+* bootstrap
+* Stripe API
+* Google Maps API
+* Twilio API
+
+#### Testing
+* Travis
+* SimpleCov
+* RSpec
+
+#### Configuration
+* The database is configured for PostgreSQL.  Clone this repo and setup the database.  Start the serve by running ```rails server ```.
+
+#### Testing
+* The test suite can be run with the command ```rspec spec/```.

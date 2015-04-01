@@ -1,88 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-  $(document).ready( function() {
-    $(document).on('click', '.game-view', function(e) {
-      $(this).find('>:last-child').removeClass('hidden')
-    });
-
-    $(document).on('click', '.change-rsvp-show', function(e) {
-      e.preventDefault();
-      $(this).find(">:first-child").addClass('hidden')
-      $(this).find(">:last-child").removeClass('hidden')
-    })
-
-    $(document).on('click', '.text-msg', function(e) {
-      e.preventDefault();
-      $('.text-msg').addClass('hidden');
-      $('.text-msg-box').removeClass('hidden');
-    });
-
-    $(document).on('click', '.captain-msg', function(e) {
-      e.preventDefault();
-      var player = $(this)
-      player_id = player.attr("id")
-      $('.' + player_id).removeClass('hidden');
-    })
-
-    $(document).on('click', '#text-submit-button', function(e){
-      e.preventDefault();
-      $('.' + player_id).addClass('hidden');
-      var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-      var response = $.ajax({
-        url: '/send_sms',
-        method: 'post',
-        data: message,
-        "success": function(response) {
-        }
-      })
-    })
-
-    $(document).on('click', '#text-player-button', function(e){
-      e.preventDefault();
-      $('.text-msg').removeClass('hidden');
-      $('.text-msg-box').addClass('hidden');
-      var data = $(this).closest("form").serializeArray()[1].value;
-      var message = { "body": data, "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-      $("textarea.text-msg-box").val('')
-      console.log(message)
-      var response = $.ajax({
-        url: '/send_sms',
-        method: 'post',
-        data: message,
-        "success": function(response) {
-        }
-      })
-    })
-
-    $(document).on('click', '.change-rsvp', function(e) {
-      e.preventDefault();
-      var partial = $(this)
-      var data = $(this).attr('data')
-      var route = $(this).parent().attr('action')
-      var response = $.ajax({
-        url: route,
-        method: "patch",
-        // dataType: 'html',
-        data: {attendance: data},
-        error: function(response) {
-          partial.closest('.game-view').replaceWith(response.responseText)
-        }
-      })
-    });
-
-    $(document).on('click', '.show-new-player-invitation', function() {
-      $('.invite-players').removeClass('hidden')
-    });
-  });
-
-</script>
-
-<div>
-  <%= render partial: 'shared/team_nav', locals: {team: @team}%>
-</div>
-
-  <div class='section-header'><h1><%= @team.name %></h1></div>
+<div class='section-header'><h1><%= @team.name %></h1></div>
 
 <div class='col-xs-5 text-center'>
   <div>
@@ -90,9 +6,15 @@
   </div>
   <% if is_captain?(@team) %>
     <div>
-      <%= link_to 'Update Team Picture', edit_team_path(@team) %>
+      <%= link_to 'Update Team Picture', edit_team_path(@team), class: 'btn btn-success' %>
+    </div>
+    <div>
+      <%= link_to 'See Roster and Payments', team_roster_path(@team), class: 'btn btn-success' %>
     </div>
 
+
+
+    <!-- Invite new players by email -->
     <div class='invite-players hidden'>
       <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
 
@@ -106,7 +28,49 @@
       <% end %>
     </div>
       <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+    <!-- Close invite new players by email -->
+
+    <!-- Email all players -->
+    <div class='email-players hidden'>
+      <%= form_for :email_all, url: team_email_all_index_path(@team), role: 'form' do |f| %>
+
+        <div class="form-group content-field">
+          <%= f.text_area 'message',  class: 'form-control', placeholder: 'Message' %>
+        </div>
+        <div class="action">
+          <%= f.submit 'Email Team', class: 'btn btn-success', id: 'email-submit-button' %>
+        </div>
+
+      <% end %>
+    </div>
+      <button class='btn btn-success show-new-email'><i class="glyphicon glyphicon-plus"></i> Email All Players</button>
+
+    <!-- Close email all players -->
+
+    <% if is_captain?(@team) %>
+      <div class='col-xs-4 text-players hidden'>
+        <%= form_for :team_text, remote: true, url: team_text_path, role: 'form' do |f| %>
+
+          <div class="form-group email-field">
+            <%= f.text_area 'team-msg',  class: 'form-control', placeholder: 'Message' %>
+          </div>
+          <div class="action">
+            <%= f.submit 'Send', team: @team.id, class: 'btn btn-success text-button' %>
+          </div>
+
+        <% end %>
+      </div>
+        <button class='btn btn-success text-all-players'><i class="glyphicon glyphicon-plus"></i>Text Your Team</button>
+    <% end %>
+
   <% end %>
+
+  <!-- Pay captain if user, or set up payment if captain -->
+  <div>
+    <%= link_to "Set Up Payments", user_payment_path(current_user, current_user), class: 'btn btn-success' if is_captain?(@team) %>
+    <%= link_to "Pay My Dues", user_payment_path(current_user, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
+  </div>
+
   <div class = "text-message-box">
     <% if is_captain?(@team) == false %>
 
