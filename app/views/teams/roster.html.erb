@@ -86,7 +86,7 @@
                 <span class='edit-amount-owed hidden'>
                   <%= form_for :membership, url: team_membership_path(@team,membership), method: 'put' do |f| %>
                       <%= f.text_field :amount_owed, autofocus: true , class: 'form-control input-sm'%>
-                      <%= f.submit 'New Amount', class: 'btn btn-sm btn-success inline' %>
+                      <%= f.submit 'New Amount', class: 'btn btn-sm btn-success' %>
                   <% end %>
                 </span>
               </div>
