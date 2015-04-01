@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
   src: url('brankic.eot');
   src: url('brankic.eot') format('embedded-opentype'), url('brankic.svg') format('svg'), url('brankic.ttf') format('truetype'), url('brankic.woff') format('woff');
 }
+
+.main-content {
+  margin-top: 4em;
+}
 /* --------------------- */
 /* NAVIGATION BAR
 /* --------------------- */
@@ -136,8 +140,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 .navbar.navbar-light {
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #eee;
+  // background-color: #f7f7f7;
+  // border-bottom: 1px solid #eee;
 }
 .navbar.navbar-light .navbar-nav.nav-text-light > li > a {
   color: #646464;
