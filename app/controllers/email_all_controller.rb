@@ -6,8 +6,7 @@ class EmailAllController < ApplicationController
     @team.players.each do |player|
       EmailAllMailer.delay.email_all(@message, player, @team)
     end
-    render nothing: true
-    # redirect_to :back
+    redirect_to :back
   end
 
 end
