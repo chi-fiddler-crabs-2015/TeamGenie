@@ -1,7 +1,7 @@
 - if @user.can_accept_charges?
   .panel.panel-primary
     .panel-body
-      = form_tag pay_user_payment_path( current_user, @user ) do
+      = form_tag pay_team_payment_path( @team, @captain ) do
         .indicator
         = hidden_field_tag :token
         %button.pull-right.btn.btn-primary.btn-lg.pay-button Pay $10
@@ -29,4 +29,4 @@
     connected: #{@user.publishable_key.to_json}
   };
   window.currentUserEmail = #{current_user.email.to_json};
-  window.payPath = #{pay_user_payment_path( current_user, @user ).to_json};
+  window.payPath = #{pay_team_payment_path( @team, @captain ).to_json};
