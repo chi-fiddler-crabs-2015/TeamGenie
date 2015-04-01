@@ -11,8 +11,8 @@ class Team < ActiveRecord::Base
   validates   :activity, presence: true
   validates   :name, presence: true
 
-  validates_attachment_content_type :team_logo, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_size :team_logo, less_than: 1.megabyte
+  # validates_attachment_content_type :team_logo, :content_type => /\Aimage\/.*\Z/
+  # validates_attachment_size :team_logo, less_than: 1.megabyte
 
   def future_games
     self.games.select do |game|
