@@ -15,11 +15,11 @@ RSpec.describe RsvpsController, type: :controller do
 
   context "UPDATE rsvps#update" do
     it 'to change rsvp from pending to attending' do
-      expect(membership.paid).to be false
+      expect(rsvp.attending).to eq "pending"
       # expect{
       #   put :mark_paid, { membership_id: membership.id, team_id: team.id } }.to change{membership.paid}.from(false).to(true)
       expect(
-        put :update, { team_id: team.id, game_id: game.id, id: rsvp.id } ).to render_template('games/show')
+        put :update, { team_id: team.id, game_id: game.id, id: rsvp.id , :format => 'js' } ).to render_template("games/_show")
     end
   end
 
