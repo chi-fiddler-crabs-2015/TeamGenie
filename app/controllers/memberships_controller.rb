@@ -1,5 +1,7 @@
 class MembershipsController < ApplicationController
 
+  before_action :current_user
+
   def mark_paid
     membership = Membership.find_by(id: params[:membership_id])
     team = Team.find_by(id: params[:team_id])
@@ -22,6 +24,8 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    team = Team.find_by(id: params[:team_id])
+    team_captain(team)
     membership = Membership.find_by(id: params[:id])
     membership.destroy
     redirect_to team_roster_path(params[:team_id])
