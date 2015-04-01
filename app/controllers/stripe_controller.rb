@@ -3,6 +3,9 @@ class StripeController < ApplicationController
   # Create a manage Stripe account for yourself.
   # Only works on the currently logged in user.
   # See app/services/stripe_managed.rb for details.
+
+  before_action :current_user
+
   def managed
     connector = StripeManaged.new( current_user )
     account = connector.create_account!(

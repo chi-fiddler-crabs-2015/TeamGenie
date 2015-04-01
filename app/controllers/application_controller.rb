@@ -7,6 +7,22 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
   end
 
+  def current_user_redirect
+    redirect_to "/login" unless current_user
+  end
+
+  def current_team_member(team)
+    if team.memberships.find_by(player: current_user) == nil
+      redirect_to "/teams"
+    end
+  end
+
+  def team_captain(team)
+    if team.captain.find_by(captain: current_user) == nil
+      redirect_to :back
+    end
+  end
+
   def find_team(team_id)
     Team.find_by(id: team_id)
   end

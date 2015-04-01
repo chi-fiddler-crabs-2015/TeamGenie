@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :current_user
+
   def index
     team = find_team(params[:team_id])
     @games = team.games

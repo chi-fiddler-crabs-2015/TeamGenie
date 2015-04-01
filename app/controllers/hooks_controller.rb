@@ -3,6 +3,8 @@ class HooksController < ApplicationController
   # So disable that feature entirely for this controller.
   skip_before_action :verify_authenticity_token
 
+  before_action :current_user
+
   def stripe
     # If the request has a 'user_id' key, then this is a webhook
     # event sent regarding a connected user, and not to a webhook

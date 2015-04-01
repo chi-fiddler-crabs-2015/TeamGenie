@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
 
+  before_action :current_user
+
   def show
     @location = find_location(params[:id])
   end

@@ -1,5 +1,7 @@
 class InvitationsController < ApplicationController
 
+  before_action :current_user
+
   def create
     @invited_user = User.find_by(email: params[:invitation][:email])
     @team = find_team(params[:team_id])

@@ -2,6 +2,8 @@ class RsvpsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
+  before_action :current_user
+
   def update
     rsvp = Rsvp.find_by(id: params[:id])
     rsvp.attending = params[:attendance]

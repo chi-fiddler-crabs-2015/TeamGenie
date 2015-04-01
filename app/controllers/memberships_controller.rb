@@ -1,5 +1,7 @@
 class MembershipsController < ApplicationController
 
+  before_action :current_user
+
   def mark_paid
     membership = Membership.find_by(id: params[:membership_id])
     team = Team.find_by(id: params[:team_id])
