@@ -10,6 +10,12 @@ RSpec.describe LocationsController, type: :controller do
     end
   end
 
+  describe 'NEW' do
+    it 'assigns renders the new template' do
+      expect(get :new).to render_template "new"
+    end
+  end
+
   describe 'CREATE' do
     it 'does not create a new location for invalid location' do
       expect{post :create, location: { name: 'hello', state: 'IL', city: 'Chicago' } }.to_not change{Location.count}
