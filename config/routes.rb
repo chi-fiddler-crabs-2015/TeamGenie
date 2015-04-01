@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :locations, only: [:show, :create]
+  resources :locations, only: [:new, :show, :create]
 
   resources :users
 

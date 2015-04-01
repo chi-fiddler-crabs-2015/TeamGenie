@@ -1,5 +1,8 @@
 class LocationsController < ApplicationController
 
+  def new
+  end
+
   def show
     @location = find_location(params[:id])
   end

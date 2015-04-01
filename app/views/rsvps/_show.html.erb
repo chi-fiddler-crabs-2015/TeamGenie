@@ -10,16 +10,8 @@
     <% if is_captain?(game.team) %>
       <%= button_to "Text #{player.first_name}", send_sms_path, method: 'post', :remote => true, :authenticity_token => true, id: "#{player.id}",  class: 'captain-msg btn btn-success' %>
     <% end %>
-    <% if is_current_user?(player) %>
-      <div class='change-rsvp-show'>
-        <button class='btn change-rsvp-button'>Change My RSVP</button>
-        <div class='col-xs-6 hidden change-rsvp-status'>
-          <span class="col-xs-6"><%= button_to "I'm attending!", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'attending', class: 'change-rsvp btn' %></span>
-          <span class="col-xs-6"><%= button_to "I can't attend", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'not attending', class: 'change-rsvp btn' %></span>
-        </div>
-      </div>
-    <% end %>
   </div>
+
 
   <div class='col-xs-12 text-message-box'>
     <div class = "show-text-box">
@@ -31,5 +23,17 @@
         <%= f.submit 'Send Text', class: "text-msg-box #{player.id} hidden btn btn-success", to: player.first_name, from: current_user.first_name, phone: player.phone_number, id: 'text-player-button' %>
       <% end %>
     </div>
+  </div>
+
+  <div class='col-xs-12 text-center'>
+    <% if is_current_user?(player) %>
+      <div class='change-rsvp-show'>
+        <button class='btn btn-success btn-lg change-rsvp-button'>Change My RSVP</button>
+        <div class='hidden change-rsvp-status'>
+          <span class="col-xs-6"><%= button_to "I'm attending!", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'attending', class: 'change-rsvp btn btn-success btn-lg' %></span>
+          <span class="col-xs-6"><%= button_to "I can't attend", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'not attending', class: 'change-rsvp btn btn-danger btn-lg' %></span>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
