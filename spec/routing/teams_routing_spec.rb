@@ -7,11 +7,11 @@ RSpec.describe TeamsController, :type => :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/teams/new").to route_to("teams#new", :id => "1")
+      expect(:get => "/teams/new").to route_to("teams#new")
     end
 
     it "routes to #create" do
-      expect(:post => "/teams").to route_to("teams#create", :id => "1")
+      expect(:post => "/teams").to route_to("teams#create")
     end
 
     it "routes to #edit" do
@@ -28,6 +28,10 @@ RSpec.describe TeamsController, :type => :routing do
 
     it "routes to #destroy" do
       expect(:delete => "/teams/1").to route_to("teams#destroy", :id => "1", :id => "1")
+    end
+
+    it "routes to #roster" do
+      expect(:get => "/teams/1/roster").to route_to("teams#roster", :team_id => "1")
     end
   end
 end
