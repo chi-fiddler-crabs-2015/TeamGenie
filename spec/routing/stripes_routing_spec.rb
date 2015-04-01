@@ -13,5 +13,13 @@ RSpec.describe StripeController, :type => :routing do
     it "routes to #deauthorize" do
       expect(:get => "/connect/deauthorize").to route_to("stripe#deauthorize")
     end
+
+    it "routes to #managed" do
+      expect(:post => "/connect/managed").to route_to("stripe#managed")
+    end
+
+    it "routes to #standalone" do
+      expect(:post => "/connect/standalone").to route_to("stripe#standalone")
+    end
   end
 end
