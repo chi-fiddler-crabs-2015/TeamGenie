@@ -15,19 +15,19 @@ RSpec.describe TeamsController, :type => :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/teams/1/edit").to route_to("teams#edit", :id => "1", :id => "1")
+      expect(:get => "/teams/1/edit").to route_to("teams#edit", :id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/teams/1").to route_to("teams#show", :id => "1", :id => "1")
+      expect(:get => "/teams/1").to route_to("teams#show", :id => "1")
     end
 
     it "routes to #update" do
-      expect(:put => "/teams/1").to route_to("teams#update", :id => "1", :id => "1")
+      expect(:put => "/teams/1").to route_to("teams#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/teams/1").to route_to("teams#destroy", :id => "1", :id => "1")
+      expect(:delete => "/teams/1").to route_to("teams#destroy", :id => "1")
     end
 
     it "routes to #roster" do
