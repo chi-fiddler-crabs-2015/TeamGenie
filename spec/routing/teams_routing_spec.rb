@@ -33,5 +33,9 @@ RSpec.describe TeamsController, :type => :routing do
     it "routes to #roster" do
       expect(:get => "/teams/1/roster").to route_to("teams#roster", :team_id => "1")
     end
+
+    it "routes to ##distribute_dues" do
+      expect(:put => "/teams/1/distribute_dues").to route_to("teams#distribute_dues", :team_id => "1")
+    end
   end
 end
