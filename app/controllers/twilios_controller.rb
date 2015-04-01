@@ -2,6 +2,8 @@ class TwiliosController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   TEAM_GENIE_PHONE = "+18472304227"
 
+  before_action :current_user
+
   def create
     body = { "to" => params[:to], "from" => params[:from], "body" => params[:body]}
     client.messages.create({

@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
 
+  before_filter :current_user_redirect
+
   def index
     @teams = current_user.my_teams
   end
@@ -25,27 +27,32 @@ class TeamsController < ApplicationController
 
   def show
     @team = find_team(params[:id])
+    current_team_member(@team)
     @future_games = @team.future_games
     @recent_games = @team.recent_games
   end
 
   def edit
     @team = find_team(params[:id])
+    team_captain(@team)
   end
 
   def update
     team = find_team(params[:id])
+    team_captain(@team)
     team.update(team_params)
     redirect_to team_path(team)
   end
 
   def roster
     @team = find_team(params[:team_id])
+    team_captain(@team)
     @memberships = @team.memberships
   end
 
   def distribute_dues
     @team = find_team(params[:team_id])
+    team_captain(@team)
     @team.outstanding_memberships.each do |membership|
       membership.amount_owed = (@team.dues - @team.paid_dues) / @team.outstanding_memberships_count
       membership.save
