@@ -1,8 +1,4 @@
-<div>
-  <%= render partial: 'shared/team_nav', locals: {team: @team}%>
-</div>
-
-  <div class='section-header'><h1><%= @team.name %></h1></div>
+<div class='section-header'><h1><%= @team.name %></h1></div>
 
 <div class='col-xs-5 text-center'>
   <div>
@@ -10,11 +6,13 @@
   </div>
   <% if is_captain?(@team) %>
     <div>
-      <%= link_to 'Update Team Picture', edit_team_path(@team) %>
+      <%= link_to 'Update Team Picture', edit_team_path(@team), class: 'btn btn-success' %>
     </div>
     <div>
-      <%= link_to 'See Roster and Payments', team_roster_path(@team) %>
+      <%= link_to 'See Roster and Payments', team_roster_path(@team), class: 'btn btn-success' %>
     </div>
+
+    <!-- Pay captain if user, or set up payment if captain -->
 
     <!-- Invite new players by email -->
     <div class='invite-players hidden'>
@@ -66,6 +64,12 @@
     <% end %>
 
   <% end %>
+
+  <div>
+    <%= link_to "Set Up Payments", user_payment_path(current_user, current_user), class: 'btn btn-success' if is_captain?(@team) %>
+    <%= link_to "Pay My Dues", user_payment_path(current_user, @team.captain), class: 'btn btn-success' if !is_captain?(@team) %>
+  </div>
+
   <div class = "text-message-box">
     <% if is_captain?(@team) == false %>
 
