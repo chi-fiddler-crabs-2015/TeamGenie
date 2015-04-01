@@ -17,7 +17,7 @@ class GamesController < ApplicationController
     @user = current_user
     @team = find_team(params[:team_id])
     @game_time = create_game_time(params[:game])
-    location = Location.find_by(name: params[:game][:location])
+    location = find_location_by_name(params[:game][:location])
     @game = @team.games.new(game_time: @game_time, location: location)
     if @game.save
       create_rsvps(@game)
@@ -41,11 +41,9 @@ class GamesController < ApplicationController
   end
 
   def edit
-    redirect_to edit_team_game_path(params[:team_id],params[:id])
   end
 
   def show
-    redirect_to team_game_path(params[:id])
   end
 
   def update
@@ -54,6 +52,10 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def create_game_time(datetime)
+    DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
+  end
 
   def game_params
     params.require(:game).permit(:team, :game_time)

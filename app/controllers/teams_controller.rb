@@ -11,8 +11,10 @@ class TeamsController < ApplicationController
   def create
     new_team = current_user.teams.create(team_params)
     current_user.memberships.create(team: new_team)
+    location_name = find_location_by_name(params[:team][:home_location])
     default_image = File.new('public/system/teams/team_logos/default_team_logo/original/default_team_logo.jpg')
     new_team.update_attributes(team_logo: default_image) if new_team.team_logo.url == '/team_logos/original/missing.png'
+    new_team.update_attributes(home_location: location_name)
     if new_team.save
       redirect_to teams_path
     else
@@ -37,10 +39,24 @@ class TeamsController < ApplicationController
     redirect_to team_path(team)
   end
 
+  def roster
+    @team = find_team(params[:team_id])
+    @memberships = @team.memberships
+  end
+
+  def distribute_dues
+    @team = find_team(params[:team_id])
+    @team.outstanding_memberships.each do |membership|
+      membership.amount_owed = @team.amount_owed / @team.outstanding_memberships_count
+      membership.save
+    end
+    redirect_to team_roster_path(@team)
+  end
+
   private
 
   def team_params
-    params.require(:team).permit(:name, :activity, :home_location, :team_logo)
+    params.require(:team).permit(:name, :activity, :team_logo)
   end
 
 end

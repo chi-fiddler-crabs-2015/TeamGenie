@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
 
       it 'redirects to the teams path' do
         expect(
-          post :create, { user: { username: "fakeyfakey3", first_name: "David", last_name: "V", email: "fake23@fake2.com", password: "123456789012345678901437" } }
+          post :create, { user: { username: "fakeyfakey3", first_name: "David", last_name: "V", email: "fake23@fake2.com", password: "123456789012345678901437", phone_number: "1234567890" } }
         ).to redirect_to teams_path
       end
     end

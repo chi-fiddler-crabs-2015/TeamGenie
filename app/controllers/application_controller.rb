@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     Location.find_by(id: location_id)
   end
 
-  def create_game_time(datetime)
-    DateTime.new(datetime['game_time(1i)'].to_i, datetime['game_time(2i)'].to_i, datetime['game_time(3i)'].to_i, datetime['game_time(4i)'].to_i, datetime['game_time(5i)'].to_i, 0)
+  def find_location_by_name(location_name)
+    Location.find_by(name: location_name)
   end
 
   def create_rsvps(game)
