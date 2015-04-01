@@ -13,8 +13,12 @@ RSpec.describe MembershipsController, type: :controller do
   context "PUT #mark_paid" do
     it 'to change membership from unpaid to paid' do
       expect(membership.paid).to be false
-      expect{
-        put :mark_paid, { membership_id: membership.id, team_id: team.id } }.to change{membership.paid}.from(false).to(true)
+      put :mark_paid, membership_id: membership.id, team_id: team.id
+      membership.reload
+      expect(membership.paid).to eq true
+    end
+
+    it 'should redirect to team roster path' do
       expect(
         put :mark_paid, { membership_id: membership.id, team_id: team.id } ).to redirect_to team_roster_path(membership.team)
     end
@@ -25,8 +29,12 @@ RSpec.describe MembershipsController, type: :controller do
       membership.paid = true
       membership.save
       expect(membership.paid).to be true
-      expect{
-        put :mark_unpaid, { membership_id: membership.id, team_id: team.id } }.to change{membership.paid}.from(true).to(false)
+      put :mark_unpaid, membership_id: membership.id, team_id: team.id
+      membership.reload
+      expect(membership.paid).to be false
+    end
+
+    it 'should redirect to the team roster path' do
       expect(
         put :mark_unpaid, { membership_id: membership.id, team_id: team.id } ).to redirect_to team_roster_path(membership.team)
     end
