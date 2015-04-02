@@ -56,7 +56,7 @@ gem 'autoprefixer-rails'
 # gem to support Action Mailer with additional functionality
 gem 'mail'
 
-gem 'unicorn'
+# gem 'unicorn'
 
 # gem to support mailing calendar invitations
 gem 'icalendar'
