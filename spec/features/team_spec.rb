@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature "Team navigation:" do
   let!(:user) {create(:user)}
+  let!(:location) { create(:location) }
+  let!(:team) { user.teams.create!(name: "DBC", activity: "soccer",  home_location: location) }
 
   before(:each) do
     allow_any_instance_of(TeamsController).to receive(:current_user).and_return(user)
@@ -20,11 +22,17 @@ feature "Team navigation:" do
   scenario "when user fills in form information a new team is added" do
     visit new_team_path
     expect {
-      fill_in "Name", :with => "Cosmos"
-      fill_in "Activity", :with => "Activity"
+      fill_in "Name", :with => team.name
+      fill_in "Activity", :with => team.activity
       click_button("Sign up")
       }.to change(Team, :count).by(1)
-    expect(page).to have_content "Cosmos"
+    expect(page).to have_content team.name
+  end
+
+  scenario "when user clicks team name they are taken to the team homepage" do
+    visit teams_path
+    click_link(team.name)
+    expect(page).to have_content("Manage Your Team:")
   end
 
 end
