@@ -1,7 +1,11 @@
 require 'rails_helper'
 
-feature "User navigating to the home page" do
+feature "User navigation:" do
   let!(:user) {create(:user)}
+
+  before(:each) do
+    allow_any_instance_of(UsersController).to receive(:current_user).and_return(user)
+  end
 
   scenario "when user visits homepage user can navigate to login/signup" do
     visit root_path
@@ -46,6 +50,14 @@ feature "User navigating to the home page" do
 
   scenario "when the user opens the edit form after an email invitation to join" do
     visit edit_user_path(id: user.id)
-    expect(page).to have_content("SIGN UP")
+    expect(page).to have_content("Birthday")
+  end
+
+  scenario "user will be redirected to their teams page after editing information" do
+    visit edit_user_path(id: user.id)
+    fill_in "Password", :with => "newpassword"
+    click_button("Sign up")
+    expect(page).to have_content("MY TEAMS")
+    expect(page).to have_content("LOG OUT")
   end
 end
