@@ -25,7 +25,7 @@ feature "User navigating to the home page" do
     expect(page).to have_content("LOG OUT")
   end
 
-  scenario "when user enters information in the login form they are redirected to my teams" do
+  scenario "when user enters information in the login screen incorrectly content stays the same" do
     visit "/login"
     fill_in "Email", :with => user.email
     fill_in "Password", :with => "wrongpassword"
@@ -34,4 +34,13 @@ feature "User navigating to the home page" do
     expect(page).to have_content("Password")
   end
 
+  scenario "when a user logs out they are redirected back home" do
+    visit "/login"
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
+    click_button("Log in")
+    click_link("LOG OUT")
+    expect(page).to have_content("LOG IN")
+    expect(page).to have_content("SIGN UP")
+  end
 end
