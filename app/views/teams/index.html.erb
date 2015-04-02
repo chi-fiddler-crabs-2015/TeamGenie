@@ -3,15 +3,24 @@
 </div>
 
 <div class='col-xs-8 teams-box'>
+
   <% @teams.each do |team| %>
     <div class='col-xs-6 team-box text-center'>
       <%= render partial: 'team_summary', locals: { team: team } %>
     </div>
   <% end %>
 
-  <div class='new-team text-center bottom-aligned-text'>
-    <%= link_to new_team_path, class: 'btn btn-success' do %>
-      Add Team
-    <% end %>
+  <div class='col-xs-12 teams-box'>
+    <div class='new-team text-center bottom-aligned-text'>
+      <%= link_to new_team_path, class: 'btn btn-success' do %>
+        Add Team
+      <% end %>
+    </div>
   </div>
 </div>
+
+<div class='col-xs-2'>
+</div>
+
+
+
