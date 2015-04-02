@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-content {
-  margin-top: 4em;
+  margin-top: 4.5em;
 }
 /* --------------------- */
 /* NAVIGATION BAR
@@ -5424,6 +5424,12 @@ img.mfp-img {
   .team {
     padding-bottom: 0;
   }
+}
+
+#team-center {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* ------------------ TESTIMONIAL ------------------ */
 .testimonial {
