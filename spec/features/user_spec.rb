@@ -43,4 +43,9 @@ feature "User navigating to the home page" do
     expect(page).to have_content("LOG IN")
     expect(page).to have_content("SIGN UP")
   end
+
+  scenario "when the user opens the edit form after an email invitation to join" do
+    visit edit_user_path(id: user.id)
+    expect(page).to have_content("SIGN UP")
+  end
 end
