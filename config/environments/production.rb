@@ -58,7 +58,8 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -68,8 +69,8 @@ Rails.application.configure do
   :address        => 'smtp.gmail.com',
   :domain         => 'mail.google.com',
   :port           => 587,
-  :user_name      => 'teamgeniesports@gmail.com',
-  :password       => 'sportscentral',
+  :user_name      => ENV["GMAIL_USERNAME"],
+  :password       => ENV["GMAIL_PASSWORD"],
   :authentication => :plain,
   :enable_starttls_auto => true
 }
@@ -86,4 +87,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.serve_static_assets = true
+  config.assets.compile = true
 end

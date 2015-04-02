@@ -18,7 +18,7 @@ RSpec.describe Team, type: :model do
     describe 'team_logo' do
       it { should have_attached_file(:team_logo) }
       it { should validate_attachment_size(:team_logo).
-                    less_than(1.megabytes) }
+                    less_than(10.megabytes) }
       it { should validate_attachment_content_type(:team_logo).
                     allowing('image/png', 'image/gif')
                     }

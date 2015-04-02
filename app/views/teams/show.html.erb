@@ -1,21 +1,40 @@
-<div>
-  <%= render partial: 'shared/team_nav', locals: {team: @team}%>
-</div>
+<div class='section-header'><h1 class='team-name headers'><%= @team.name %></h1></div>
 
-  <div class='section-header'><h1><%= @team.name %></h1></div>
-
-<div class='col-xs-5 text-center'>
-  <div>
+<div class='col-xs-4 text-center team-left-side'>
+  <div class='team-shield-image'>
     <%= image_tag @team.team_logo.url(:medium), class: 'img-rounded' %>
   </div>
-  <% if is_captain?(@team) %>
-    <div>
-      <%= link_to 'Update Team Picture', edit_team_path(@team) %>
-    </div>
-    <div>
-      <%= link_to 'See Roster and Payments', team_roster_path(@team) %>
-    </div>
 
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <% if is_captain?(@team) %>
+        <li class="list-group-item"><strong>Manage Your Team:</strong></li>
+        <li class="list-group-item"><%= link_to 'Update Team Picture', edit_team_path(@team), class: 'btn btn-success' %></li>
+        <li class="list-group-item"><%= link_to 'See Roster and Payments', team_roster_path(@team), class: 'btn btn-success' %></li>
+        <li class="list-group-item"><button class='btn btn-success show-new-player-invitation'>Invite New Players</button></li>
+        <li class="list-group-item text-all-players"><button class='btn btn-success text-all-players'>Text Your Team</button></li>
+        <li class="list-group-item show-new-email"><button class='btn btn-success show-new-email'></i> Email All Players</button></li>
+      <% else %>
+        <li class="list-group-item text-msg"><%= button_to 'Text My Captain', send_sms_path, method: 'post', :remote => true, class: 'text-msg btn btn-success' %></li>
+      <% end %>
+
+      <li class="list-group-item">
+        <%= link_to "Set Up Payments", team_payment_path(@team, current_user), class: 'btn btn-primary' if is_captain?(@team) %>
+        <%= link_to "Pay My Dues", team_payment_path(@team, @team.captain), class: 'btn btn-primary' if !is_captain?(@team) %>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+  <!-- Pay captain if user, or set up payment if captain -->
+
+
+  <% if is_captain?(@team) %>
     <!-- Invite new players by email -->
     <div class='invite-players hidden'>
       <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
@@ -29,7 +48,7 @@
 
       <% end %>
     </div>
-      <button class='btn btn-success show-new-player-invitation'><i class="glyphicon glyphicon-plus"></i> Invite New Players</button>
+
     <!-- Close invite new players by email -->
 
     <!-- Email all players -->
@@ -45,30 +64,44 @@
 
       <% end %>
     </div>
-      <button class='btn btn-success show-new-email'><i class="glyphicon glyphicon-plus"></i> Email All Players</button>
+
 
     <!-- Close email all players -->
 
-
+    <% if is_captain?(@team) %>
+      <div class='col-xs-4 text-players hidden'>
+        <%= form_for :team_text, remote: true, url: team_text_path, role: 'form' do |f| %>
+          <div class="form-group email-field">
+            <%= f.text_area 'team-msg',  class: 'form-control', placeholder: 'Message' %>
+          </div>
+          <div class="action">
+            <%= f.submit 'Send', team: @team.id, class: 'btn btn-success text-button' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-  <div class = "text-message-box">
-    <% if is_captain?(@team) == false %>
 
-      <%= button_to 'Text My Captain', send_sms_path, method: 'post', :remote => true, class: 'text-msg btn' %>
+  <div class = "text-message-box">
+    <% if !is_captain?(@team) %>
       <div class = "show-text-box">
         <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
             <div class="form-group text-field">
               <%= f.text_area 'Text Box',  class: 'text-msg-box hidden', placeholder: 'Hey...' %>
             </div>
 
-            <%= f.submit 'Send Text', class: 'text-msg-box hidden', to: @team.captain.first_name, from: current_user.first_name, phone: @team.captain.phone_number, id: 'text-submit-button' %>
+            <%= f.submit 'Send Text', class: 'text-msg-box hidden btn btn-success', to: @team.captain.first_name, from: current_user.first_name, phone: @team.captain.phone_number, id: 'text-submit-button' %>
         <% end %>
       </div>
     <% end %>
   </div>
+
 </div>
 
-<div class='col-xs-7'>
+<div class='col-xs-1'>
+</div>
+
+<div class='col-xs-7 team-right-side'>
   <% @future_games.each do |game| %>
     <%= render partial: 'games/show', locals: {game: game, team: @team}%>
   <% end %>
@@ -76,30 +109,11 @@
   <% if is_captain?(@team) %>
     <div class='text-center'>
       <%= link_to new_team_game_path(@team), class: 'btn btn-success' do %>
-        <i class="glyphicon glyphicon-plus"></i> New Game
+        New Game
       <% end %>
     </div>
   <% end %>
-
 </div>
-<% if is_captain?(@team) %>
-  <div class='col-xs-4 text-players hidden'>
-    <%= form_for :team_text, remote: true, url: team_text_path, role: 'form' do |f| %>
-
-      <div class="form-group email-field">
-        <%= f.text_area 'team-msg',  class: 'form-control', placeholder: 'Message' %>
-      </div>
-      <div class="action">
-        <%= f.submit 'Send', team: @team.id, class: 'btn btn-success text-button' %>
-      </div>
-
-    <% end %>
-  </div>
-    <button class='btn btn-success text-all-players'><i class="glyphicon glyphicon-plus"></i>Text Your Team</button>
-<% end %>
-
-
-<!-- Abstract this out -->
 
 
 

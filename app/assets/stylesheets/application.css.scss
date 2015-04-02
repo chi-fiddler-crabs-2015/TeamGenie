@@ -27,8 +27,9 @@
 }
 
 .teams-box {
-  background-color: #DDDDDD;
+  background-color: #f5f5f5;
   opacity: 0.9;
+  padding-top: 40px
 }
 
 .team-link {
@@ -36,3 +37,59 @@
   font-size: 20px;
 }
 
+.team-left-side {
+  opacity: 0.9;
+  background-color: #f5f5f5;
+}
+
+.team-name {
+  font-family: "Dosis", sans-serif;
+  opacity: 0.9;
+  background-color: #f5f5f5;
+  margin: 30px 0px;
+  padding: 10px 0px
+}
+
+.headers {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+}
+
+.team-right-side {
+  opacity: 0.9;
+  background-color: #f5f5f5;
+}
+
+.game-view {
+  font-family: "Dosis", sans-serif;
+  margin-top: 20px
+}
+
+.game-time h4 {
+  font-size: 24px;
+}
+
+.rsvp-count {
+  margin: 0 0 30px 0;
+}
+
+.rsvp-count h4 {
+  font-size: 23px;
+}
+
+.player {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.section-header {
+  margin: auto 0;
+}
+
+.text-message-box {
+  margin-top: 20px;
+}
+
+.team-shield-image {
+  padding: 30px;
+}

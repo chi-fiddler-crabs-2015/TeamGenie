@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
   validates   :name, presence: true
 
   validates_attachment_content_type :team_logo, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_size :team_logo, less_than: 1.megabyte
+  validates_attachment_size :team_logo, less_than: 10.megabytes
 
   def future_games
     self.games.select do |game|
@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
   end
 
   def amount_owed
-    self.dues - self.paid_dues_mem
+    self.memberships.pluck(:amount_owed).reduce(:+)
   end
 
   def outstanding_memberships
@@ -38,7 +38,7 @@ class Team < ActiveRecord::Base
     self.outstanding_memberships.count
   end
 
-  def paid_dues_mem
+  def paid_dues
     self.memberships.pluck(:amount_paid).reduce(:+)
   end
 

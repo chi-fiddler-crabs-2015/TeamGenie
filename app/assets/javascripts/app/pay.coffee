@@ -38,6 +38,6 @@ $(document).ready ->
     form.addClass( 'processing' )
 
     handler.open
-      name: 'Rails Connect Example'
-      description: '$10 w/ 10% fees'
-      amount: 1000
+      name: 'Pay Team Dues'
+      description: "with 2.9% Stripe processing fee"
+      amount: payButton.val()

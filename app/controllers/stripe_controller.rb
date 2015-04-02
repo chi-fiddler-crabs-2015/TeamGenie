@@ -3,6 +3,9 @@ class StripeController < ApplicationController
   # Create a manage Stripe account for yourself.
   # Only works on the currently logged in user.
   # See app/services/stripe_managed.rb for details.
+
+  before_action :current_user
+
   def managed
     connector = StripeManaged.new( current_user )
     account = connector.create_account!(
@@ -14,7 +17,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
   # Create a standalone Stripe account for yourself.
@@ -29,7 +32,7 @@ class StripeController < ApplicationController
     else
       flash[:error] = "Unable to create Stripe account!"
     end
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
   # Connect yourself to a Stripe account.
@@ -37,11 +40,13 @@ class StripeController < ApplicationController
   # See app/services/stripe_oauth.rb for #oauth_url details.
   def oauth
     connector = StripeOauth.new( current_user )
+    p connector
     url, error = connector.oauth_url( redirect_uri: stripe_confirm_url )
+    p error
 
     if url.nil?
       flash[:error] = error
-      redirect_to user_payment_path( current_user, current_user )
+      redirect_to session[:saved_url]
     else
       redirect_to url
     end
@@ -64,7 +69,7 @@ class StripeController < ApplicationController
       flash[:error] = "Authorization request denied."
     end
 
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
   # Deauthorize the application from accessing
@@ -74,7 +79,7 @@ class StripeController < ApplicationController
     connector = StripeOauth.new( current_user )
     connector.deauthorize!
     flash[:notice] = "Account disconnected from Stripe."
-    redirect_to user_payment_path( current_user, current_user )
+    redirect_to session[:saved_url]
   end
 
 end

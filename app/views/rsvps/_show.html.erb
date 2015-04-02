@@ -1,27 +1,39 @@
 <div class='col-xs-12 player'>
-  <p>
-    <%= player.first_name %> <%= player.last_name %> -
+  <div class='col-xs-4'>
+    <%= player.first_name %> <%= player.last_name %>
+  </div>
+  <div class='col-xs-4'>
     <%= player.rsvps.find_by(game: game).attending %>
-    <% if is_captain?(game.team) %>
-      <%= button_to "Text #{player.first_name}", send_sms_path, method: 'post', :remote => true, :authenticity_token => true, id: "#{player.id}",  class: 'captain-msg btn' %>
-        <div class = "show-text-box">
-          <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
-            <div class="form-group text-field">
-              <%= f.text_area 'Text Box',  class: "text-msg-box #{player.id} hidden", placeholder: 'Hey...' %>
-            </div>
+  </div>
 
-            <%= f.submit 'Send Text', class: "text-msg-box #{player.id} hidden btn btn-success", to: player.first_name, from: current_user.first_name, phone: player.phone_number, id: 'text-player-button' %>
-          <% end %>
-        </div>
+  <div class='col-xs-4 pull-right'>
+    <% if is_captain?(game.team) %>
+      <%= button_to "Text #{player.first_name}", send_sms_path, method: 'post', :remote => true, :authenticity_token => true, id: "#{player.id}",  class: 'captain-msg btn btn-success' %>
     <% end %>
+  </div>
+
+
+  <div class='col-xs-12 text-message-box'>
+    <div class = "show-text-box">
+      <%= form_for :text, url: send_sms_path, :remote => true, role: 'form' do |f| %>
+        <div class="form-group text-field">
+          <%= f.text_area 'Text Box', cols: 60, class: "text-msg-box #{player.id} hidden", placeholder: 'Hey...' %>
+        </div>
+
+        <%= f.submit 'Send Text', class: "text-msg-box #{player.id} hidden btn btn-success", to: player.first_name, from: current_user.first_name, phone: player.phone_number, id: 'text-player-button' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='col-xs-12 text-center'>
     <% if is_current_user?(player) %>
       <div class='change-rsvp-show'>
-        <button class='btn change-rsvp-button'>Change My RSVP</button>
-        <div class='col-xs-6 hidden change-rsvp-status'>
-          <span class="col-xs-6"><%= button_to "I'm attending!", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'attending', class: 'change-rsvp btn' %></span>
-          <span class="col-xs-6"><%= button_to "I can't attend", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'not attending', class: 'change-rsvp btn' %></span>
+        <button class='btn btn-success btn-lg change-rsvp-button'>Change My RSVP</button>
+        <div class='hidden change-rsvp-status'>
+          <span class="col-xs-6"><%= button_to "I'm attending!", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'attending', class: 'change-rsvp btn btn-success btn-lg' %></span>
+          <span class="col-xs-6"><%= button_to "I can't attend", team_game_rsvp_path(game.team, game, player.rsvps.find_by(game: game)), method: 'put', data: 'not attending', class: 'change-rsvp btn btn-danger btn-lg' %></span>
         </div>
       </div>
     <% end %>
-  </p>
+  </div>
 </div>

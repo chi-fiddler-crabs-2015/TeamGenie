@@ -6,19 +6,18 @@
       <%= link_to "Team Genie", root_path, :class => "navbar-brand"%>
   </div>
   <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
-    <ul class="nav navbar-nav navbar-right">
-
-    <% if current_user %>
-      <li><%= link_to 'MY TEAMS', teams_path %></li>
-      <li><%= link_to 'LOG OUT', logout_path, method: 'post' %></li>
-    <% else %>
-      <li><%=link_to "HOME", '#top' %></li>
-      <li><%=link_to 'SERVICES', '#services' %></li>
-      <li><%=link_to 'ABOUT', '#about' %></li>
-      <li><%=link_to 'OUR TEAM', '#team' %></li>
-      <li><%=link_to 'SIGN UP', new_user_path %></li>
-      <li><%=link_to 'LOG IN', login_path %></li>
-    <% end %>
+    <ul class="nav navbar-nav navbar-right navigation-items">
+      <% if current_user %>
+        <li class='navigation-item'><%= link_to 'MY TEAMS', teams_path %></li>
+        <li class='navigation-item'><%= link_to 'LOG OUT', logout_path, method: 'post' %></li>
+      <% else %>
+        <li class='navigation-item'><%=link_to "HOME", '#top' %></li>
+        <li class='navigation-item'><%=link_to 'SERVICES', '#services' %></li>
+        <li class='navigation-item'><%=link_to 'ABOUT', '#about' %></li>
+        <li class='navigation-item'><%=link_to 'OUR TEAM', '#team' %></li>
+        <li class='navigation-item'><%=link_to 'SIGN UP', new_user_path %></li>
+        <li class='navigation-item'><%=link_to 'LOG IN', login_path %></li>
+      <% end %>
     </ul>
   </nav>
 </div>
