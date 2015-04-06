@@ -1,3 +1,24 @@
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-header">
+        <%= link_to "TeamGenie", root_path, :class => "navbar-brand"%>
+    </div>
+    <nav class="navbar-collapse collapse" id="main-nav" role="navigation">
+      <ul class="nav navbar-nav navbar-right navigation-items">
+        <% if current_user %>
+          <li class='navigation-item'><%= link_to 'MY TEAMS', teams_path %></li>
+          <li class='navigation-item'><%= link_to 'LOG OUT', logout_path, method: 'post' %></li>
+        <% else %>
+          <li class='navigation-item'><%=link_to "HOME", '#top' %></li>
+          <li class='navigation-item'><%=link_to 'SERVICES', '#services' %></li>
+          <li class='navigation-item'><%=link_to 'ABOUT', '#about' %></li>
+          <li class='navigation-item'><%=link_to 'OUR TEAM', '#team' %></li>
+          <li class='navigation-item'><%=link_to 'SIGN UP', new_user_path %></li>
+          <li class='navigation-item'><%=link_to 'LOG IN', login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
   <!-- MAIN CONTENT -->
   <div id="main-content" class="main-content">
 
@@ -79,7 +100,7 @@
       <div class="container">
         <div class="section-heading">
           <h2>ABOUT TeamGenie</h2>
-          <p>An introduction to the app the the project</p>
+          <p>An introduction to the app and the project</p>
           <hr />
         </div>
         <div class="section-content">
