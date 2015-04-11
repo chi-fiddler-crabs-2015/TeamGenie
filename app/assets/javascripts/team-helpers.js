@@ -71,6 +71,10 @@ $(document).ready( function() {
     $('.invite-players').removeClass('hidden')
   });
 
+  $(document).on('click', '#invitation-submit-button', function () {
+    $('.invite-players').addClass('hidden')
+  })
+
   $(document).on('click', '.show-new-email', function() {
     $('.email-players').removeClass('hidden')
     $(this).toggleClass('hidden')

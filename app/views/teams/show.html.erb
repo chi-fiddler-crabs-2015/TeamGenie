@@ -38,7 +38,7 @@
   <% if is_captain?(@team) %>
     <!-- Invite new players by email -->
     <div class='invite-players hidden'>
-      <%= form_for :invitation, url: team_invitations_path(@team), role: 'form' do |f| %>
+      <%= form_for :invitation, url: team_invitations_path(@team), :remote => true, role: 'form' do |f| %>
 
         <div class="form-group email-field">
           <%= f.email_field 'email',  class: "form-control", placeholder: 'Email' %>
