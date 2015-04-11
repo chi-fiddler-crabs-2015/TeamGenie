@@ -1,7 +1,8 @@
 $(document).ready( function() {
-  $(document).on('click', '.game-view', function(e) {
-    $(this).find('>:last-child').removeClass('hidden')
-  });
+
+  $(document).on('click', '.game-time', function(e) {
+    $(this).siblings(':last').toggleClass('hidden')
+  })
 
   $(document).on('click', '.change-rsvp-show', function(e) {
     e.preventDefault();
