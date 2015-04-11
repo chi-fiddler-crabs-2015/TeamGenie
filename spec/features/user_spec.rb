@@ -61,3 +61,4 @@ feature "User navigation:" do
     expect(page).to have_content("LOG OUT")
   end
 end
+
