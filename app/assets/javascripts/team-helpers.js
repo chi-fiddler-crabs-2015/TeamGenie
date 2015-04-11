@@ -76,6 +76,11 @@ $(document).ready( function() {
     $(this).toggleClass('hidden')
   });
 
+  $(document).on('click', '#email-submit-button', function() {
+    $('.email-players').addClass('hidden')
+    $('.show-new-email').toggleClass('hidden')
+  });
+
   $(document).on('click', '.text-all-players', function() {
     $('.text-players').removeClass('hidden')
     $(this).addClass('hidden')
