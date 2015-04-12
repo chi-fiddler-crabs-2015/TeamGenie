@@ -15,9 +15,9 @@
         
         <%if request.env['PATH_INFO'] == root_path %>
         
-        <li class='navigation-item'><%=link_to 'SERVICES', '#services' %></li>
-        <li class='navigation-item'><%=link_to 'ABOUT', '#about' %></li>
-        <li class='navigation-item'><%=link_to 'OUR TEAM', '#team' %></li>
+        <li class='navigation-item'><%=link_to 'SERVICES', root_path(:anchor => 'services') %></li>
+        <li class='navigation-item'><%=link_to 'ABOUT', root_path(:anchor => 'about') %></li>
+        <li class='navigation-item'><%=link_to 'OUR TEAM', root_path(:anchor => 'team') %></li>
 
         <%end%>
 
