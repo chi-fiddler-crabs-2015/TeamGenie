@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
         assign_user_to_team(@team, new_user)
       end
     end
-    redirect_to team_path(@team)
+    render :nothing => true
   end
 
 end

@@ -1,7 +1,8 @@
 $(document).ready( function() {
-  $(document).on('click', '.game-view', function(e) {
-    $(this).find('>:last-child').removeClass('hidden')
-  });
+
+  $(document).on('click', '.game-time', function(e) {
+    $(this).siblings(':last').toggleClass('hidden')
+  })
 
   $(document).on('click', '.change-rsvp-show', function(e) {
     e.preventDefault();
@@ -71,9 +72,18 @@ $(document).ready( function() {
     $('.invite-players').removeClass('hidden')
   });
 
+  $(document).on('click', '#invitation-submit-button', function () {
+    $('.invite-players').addClass('hidden')
+  })
+
   $(document).on('click', '.show-new-email', function() {
     $('.email-players').removeClass('hidden')
     $(this).toggleClass('hidden')
+  });
+
+  $(document).on('click', '#email-submit-button', function() {
+    $('.email-players').addClass('hidden')
+    $('.show-new-email').toggleClass('hidden')
   });
 
   $(document).on('click', '.text-all-players', function() {
