@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to teams_path
     else
-      flash[:notice] = @user.errors.full_messages
-      redirect_to new_user_path
+      @errors = @user.errors.full_messages
+      render 'new'
     end
   end
 
