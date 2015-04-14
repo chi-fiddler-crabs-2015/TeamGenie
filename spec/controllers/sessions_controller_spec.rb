@@ -29,7 +29,7 @@ RSpec.describe SessionsController, type: :controller do
       it "should re-render the new page" do
         view =
           post :create, { user: {email: user.email, password: "brokenpassword" } }
-        expect(view).to render_template("new")
+        expect(view).to redirect_to login_path
       end
     end
   end
