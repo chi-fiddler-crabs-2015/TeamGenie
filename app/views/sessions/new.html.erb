@@ -4,11 +4,9 @@
 
   <% if flash[:notice] %>
     <div class="alert alert-warning" role="alert">
-      <span><%= flash[:notice] %></span>
+      <span><%= flash.now[:notice] %></span>
     </div>
   <% end %>
-
-
 
   <%= form_for :user, url: login_path, role: 'form' do |f| %>
     <div class="form-group">
