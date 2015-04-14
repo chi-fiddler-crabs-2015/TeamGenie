@@ -5,7 +5,10 @@
 
   <% if flash[:notice] %>
     <div class="alert alert-warning" role="alert">
-      <span><%= flash[:notice] %></span>
+      <span><% flash[:notice].each do |error| %>
+        <p><%= error %></p>
+        <% end %>
+      </span>
     </div>
   <% end %>
 
@@ -46,7 +49,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: 'btn-primary' %>
+      <%= f.submit "Sign up", class: 'btn-success btn' %>
     </div>
   <% end %>
 </div>
