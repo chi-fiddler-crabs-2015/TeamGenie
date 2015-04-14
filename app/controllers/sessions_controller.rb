@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         redirect_to teams_path
     else
       flash[:notice] = "Your username and password didn't match, please try again or create a new account!"
-      render 'new'
+        redirect_to login_path
     end
   end
 

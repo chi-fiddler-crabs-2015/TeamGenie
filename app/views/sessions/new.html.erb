@@ -2,6 +2,12 @@
 <div class="col-xs-12">
   <h2>Log in</h2>
 
+  <% if flash[:notice] %>
+    <div class="alert alert-warning" role="alert">
+      <span><%= flash.now[:notice] %></span>
+    </div>
+  <% end %>
+
   <%= form_for :user, url: login_path, role: 'form' do |f| %>
     <div class="form-group">
       <%= f.label :email %>
@@ -14,7 +20,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in", class: 'btn-success' %>
+      <%= f.submit "Log in", class: 'btn-success btn' %>
     </div>
   <% end %>
 </div>
