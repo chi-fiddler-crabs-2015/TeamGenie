@@ -82,7 +82,7 @@ RSpec.describe UsersController, type: :controller do
       it "re-renders the 'new' template" do
         expect(
           post :create, { user: { username: '1' } }
-        ).to redirect_to new_user_path
+        ).to render_template 'new'
       end
     end
   end
