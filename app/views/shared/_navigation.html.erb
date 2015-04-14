@@ -12,11 +12,23 @@
         <li class='navigation-item'><%= link_to 'LOG OUT', logout_path, method: 'post' %></li>
       <% else %>
         <li class='navigation-item'><%=link_to "HOME", root_path %></li>
-        <li class='navigation-item'><%=link_to 'SERVICES', '#services' %></li>
-        <li class='navigation-item'><%=link_to 'ABOUT', '#about' %></li>
-        <li class='navigation-item'><%=link_to 'OUR TEAM', '#team' %></li>
+        
+        <%if request.env['PATH_INFO'] == root_path %>
+        
+        <li class='navigation-item'><%=link_to 'SERVICES', root_path(:anchor => 'services') %></li>
+        <li class='navigation-item'><%=link_to 'ABOUT', root_path(:anchor => 'about') %></li>
+        <li class='navigation-item'><%=link_to 'OUR TEAM', root_path(:anchor => 'team') %></li>
+
+        <%end%>
+
+        <% unless request.env['PATH_INFO'] == new_user_path %>
         <li class='navigation-item'><%=link_to 'SIGN UP', new_user_path %></li>
+
+        <%end%>
+
+        <%unless request.env['PATH_INFO'] == login_path%>
         <li class='navigation-item'><%=link_to 'LOG IN', login_path %></li>
+        <%end%>
       <% end %>
     </ul>
   </nav>
