@@ -1,8 +1,20 @@
-<h1><%= @location.name %></h1>
+<div class='main-content'>
+  <div class='col-xs-12 location-background'>
+    <div class='col-xs-4'>
+      <h1><%= @location.name %></h1>
 
-<p><%= @location.address %></p>
-<p><%= @location.city %>, <%= @location.state %></p>
+      <h2>Address:</h2>
+      <p><%= @location.name %></p>
+      <p><%= @location.address %></p>
+      <p><%= @location.city %>, <%= @location.state %></p>
 
-<%= render 'map' %>
-<br>
-<%= link_to "Back to Team", :back %>
+      <h2>Directions:</h2>
+      <p><%= @location.directions %></p>
+      <%= link_to "Back to Team", :back %>
+    </div>
+
+    <div class='col-xs-8'>
+      <%= render 'map' %>
+    </div>
+  </div>
+</div>
