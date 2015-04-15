@@ -99,9 +99,9 @@
             </td>
             <td>
               <% if membership.paid %>
-                <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger' %>
+                <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger mark-unpaid' %>
               <% else %>
-                <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success' %>
+                <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success mark-paid' %>
               <% end %>
             </td>
         </tr>
