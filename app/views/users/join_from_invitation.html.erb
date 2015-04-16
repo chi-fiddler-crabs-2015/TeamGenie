@@ -1,0 +1,65 @@
+<div class="col-xs-3"></div>
+
+<div class="col-xs-6">
+  <h2>Sign up</h2>
+
+  <% if @errors %>
+    <div class="alert alert-warning" role="alert">
+      <span><% @errors.each do |error| %>
+        <p><%= error %></p>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form_for :user, url: users_path, role: 'form' do |f| %>
+      <div class="form-group hidden">
+        <%= f.label :team_id %><br />
+        <%= f.text_field :team_id, autofocus: true, class: 'form-control', value: @team.id %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :birthday %><br />
+        <%= f.date_field :birthday, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone_number, class: 'form-control', placeholder: "847-123-4567" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: 'btn-success btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-xs-3"></div>
+
