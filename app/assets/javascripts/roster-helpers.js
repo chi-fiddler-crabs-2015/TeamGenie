@@ -116,11 +116,12 @@ $(document).ready(function() {
   //   $(this).next().removeClass('hidden')
   // });
 
-  $(document).on('click', '.member', function(e) {
-    e.preventDefault();
+  $(document).on('click', '.member', function() {
     $(this).toggleClass('active-player')
-    $(this).find('.hidden').toggleClass('hidden')
-    
+    $(this).find('.edit-amount-owed').toggleClass('hidden')
+    $(this).find('.remove-player').toggleClass('hidden')
+    $(this).find('.mark-unpaid').toggleClass('hidden')
+    $(this).find('.mark-paid').toggleClass('hidden')
     console.log(this.id)
   });
 

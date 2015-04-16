@@ -3,7 +3,7 @@
       <% @memberships.each do |membership| %>
         <tr class= 'member' id=<%=membership.player.id%>>
             <% if membership.player != @team.captain %>
-              <td><%= button_to 'Remove Player', team_membership_path(@team, membership), method: 'delete', class: 'btn btn-danger btn-sm hidden' %></td>
+              <td><%= button_to 'Remove Player', team_membership_path(@team, membership), method: 'delete', class: 'btn btn-danger btn-sm remove-player hidden' %></td>
             <% else %>
               <td></td>
             <% end %>
