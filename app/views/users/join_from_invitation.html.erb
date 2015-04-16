@@ -13,7 +13,7 @@
   <% end %>
 
   <div>
-    <%= form_for :user, url: users_path, role: 'form' do |f| %>
+    <%= form_for :user, url: team_join_from_invitation_path(@team), role: 'form' do |f| %>
       <div class="form-group hidden">
         <%= f.label :team_id %><br />
         <%= f.text_field :team_id, autofocus: true, class: 'form-control', value: @team.id %>

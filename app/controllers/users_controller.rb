@@ -22,22 +22,16 @@ class UsersController < ApplicationController
   end
 
   def create_user_from_invitation
-
-  end
-
-  def edit
-    @user = User.find_by(id: params[:id])
-    if @user == current_user || @user.first_name == 'placeholder'
-      render 'edit' and return
+    user = User.new(user_params)
+    @team = find_team(params[:user][:team_id])
+    if user.save && @team
+      assign_user_to_team(@team, user)
+      session[:user_id] = user.id
+      redirect_to team_path(@team)
+    else
+      @errors = user.errors.full_messages
+      render 'join_from_invitation'
     end
-    redirect_to teams_path
-  end
-
-  def update
-    @user = User.find_by(id: params[:id])
-    @user.update_attributes(user_params)
-    session[:user_id] = @user.id
-    redirect_to teams_path
   end
 
   private
