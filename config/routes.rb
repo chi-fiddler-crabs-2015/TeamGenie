@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
     get '/roster' => 'teams#roster'
     put '/distribute_dues' => 'teams#distribute_dues'
+    get '/join_from_invitation' => 'users#join_from_invitation'
+    post '/join_from_invitation' => 'users#create_user_from_invitation'
     resources :email_all, only: [:create]
     resources :invitations, only: [:create]
     resources :memberships, except: [:index, :create, :new, :edit, :show] do
