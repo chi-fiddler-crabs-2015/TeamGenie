@@ -110,12 +110,17 @@ $(document).ready(function() {
   // });
 
 
-  $(document).on('click', '.edit-amount-owed-button', function() {
-    $(this).toggleClass('hidden')
-    $(this).next().removeClass('hidden')
-  });
 
-  $(document).on('click', '.member', function() {
+  // $(document).on('click', '.edit-amount-owed-button', function() {
+  //   $(this).toggleClass('hidden')
+  //   $(this).next().removeClass('hidden')
+  // });
+
+  $(document).on('click', '.member', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('active-player')
+    $(this).find('.hidden').toggleClass('hidden')
+    
     console.log(this.id)
   });
 

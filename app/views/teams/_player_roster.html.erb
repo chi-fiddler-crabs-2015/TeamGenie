@@ -1,10 +1,9 @@
 <tbody>
 	  <% n = 0 %>
       <% @memberships.each do |membership| %>
-        <% n+=1 %>
-        <tr class= 'member' id=<%=n%>>
+        <tr class= 'member' id=<%=membership.player.id%>>
             <% if membership.player != @team.captain %>
-              <td><%= button_to 'Remove Player', team_membership_path(@team, membership), method: 'delete', class: 'btn btn-danger btn-sm' %></td>
+              <td><%= button_to 'Remove Player', team_membership_path(@team, membership), method: 'delete', class: 'btn btn-danger btn-sm hidden' %></td>
             <% else %>
               <td></td>
             <% end %>
@@ -18,7 +17,6 @@
                 <span class='amount-owed'>$<%= membership.amount_owed.round(0)%></span>
               </div>
               <div class='col-xs-6'>
-                <button class='btn btn-sm btn-success edit-amount-owed-button pull-center'>Edit</button>
                 <span class='edit-amount-owed hidden'>
                   <%= form_for :membership, url: team_membership_path(@team,membership), method: 'put' do |f| %>
                       <%= f.text_field :amount_owed, autofocus: true , class: 'form-control input-sm'%>
@@ -29,9 +27,9 @@
             </td>
             <td>
               <% if membership.paid %>
-                <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger mark-unpaid' %>
+                <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger mark-unpaid hidden' %>
               <% else %>
-                <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success mark-paid' %>
+                <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success mark-paid hidden' %>
               <% end %>
             </td>
         </tr>
