@@ -115,10 +115,6 @@ $(document).ready( function() {
     $(this).next().removeClass('hidden')
   });
 
-  $(document).on('click', 'mark-paid', function() {
-  	$(this).toggleClass('hidden')
-    $(this).next().removeClass('hidden')
-  })
 
 
 });
