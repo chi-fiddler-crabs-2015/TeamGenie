@@ -16,6 +16,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def join_from_invitation
+    @team = find_team(params[:team_id])
+    render 'join_from_invitation'
+  end
+
+  def create_user_from_invitation
+
+  end
+
   def edit
     @user = User.find_by(id: params[:id])
     if @user == current_user || @user.first_name == 'placeholder'
