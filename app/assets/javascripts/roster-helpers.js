@@ -1,4 +1,4 @@
-$(document).ready( function() {
+$(document).ready(function() {
 
   // $(document).on('click', '.game-time', function(e) {
   //   $(this).siblings(':last').toggleClass('hidden')
@@ -113,6 +113,10 @@ $(document).ready( function() {
   $(document).on('click', '.edit-amount-owed-button', function() {
     $(this).toggleClass('hidden')
     $(this).next().removeClass('hidden')
+  });
+
+  $(document).on('click', '.member', function() {
+    console.log(this.id)
   });
 
 
