@@ -117,12 +117,22 @@ $(document).ready(function() {
   // });
 
   $(document).on('click', '.member', function() {
-    $(this).toggleClass('active-player')
-    $(this).find('.edit-amount-owed').toggleClass('hidden')
-    $(this).find('.remove-player').toggleClass('hidden')
-    $(this).find('.mark-unpaid').toggleClass('hidden')
-    $(this).find('.mark-paid').toggleClass('hidden')
-    console.log(this.id)
+    var activePlayerId = this.id
+
+    $(this).toggleClass('active-player');
+    $(this).find('.edit-amount-owed').toggleClass('hidden');
+    $(this).find('.remove-player').toggleClass('hidden');
+    $(this).find('.mark-unpaid').toggleClass('hidden');
+    $(this).find('.mark-paid').toggleClass('hidden');
+    $(this).find('.amount-owed-div').toggleClass('display-none');
+    $(this).find('.mark-paid-div').toggleClass('display-none');
+    $(this).find('.mark-unpaid-div').toggleClass('display-none');
+
+    // $(this).on('click', '.mark-paid', function(e){
+    //   e.preventDefault();
+    //   console.log(this)
+    // });
+    // console.log(activePlayerId)
   });
 
 

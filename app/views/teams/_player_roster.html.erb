@@ -13,13 +13,13 @@
             <td><%= membership.player.email %></td>
             <td><%= membership.player.phone_number %></td>
             <td>
-              <div class='col-xs-6'>
+              <div class='col-xs-6 amount-owed-div'>
                 <span class='amount-owed'>$<%= membership.amount_owed.round(0)%></span>
               </div>
               <div class='col-xs-6'>
                 <span class='edit-amount-owed hidden'>
                   <%= form_for :membership, url: team_membership_path(@team,membership), method: 'put' do |f| %>
-                      <%= f.text_field :amount_owed, autofocus: true , class: 'form-control input-sm'%>
+                      <%= f.text_field :amount_owed, autofocus: true , value: membership.amount_owed.round(0), class: 'form-control input-sm'%>
                       <%= f.submit 'New Amount', class: 'btn btn-sm btn-success' %>
                   <% end %>
                 </span>
@@ -27,8 +27,14 @@
             </td>
             <td>
               <% if membership.paid %>
+               <div class='col-xs-6 mark-paid-div'>
+                <span>Paid</span>
+              </div>  
                 <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-danger mark-unpaid hidden' %>
               <% else %>
+              <div class='col-xs-6 mark-unpaid-div'>
+                <span>Unpaid</span>
+              </div> 
                 <%= button_to 'Mark Paid', team_membership_mark_paid_path(@team, membership), method: 'put', class: 'btn btn-sm btn-success mark-paid hidden' %>
               <% end %>
             </td>
