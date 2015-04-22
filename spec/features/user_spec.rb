@@ -48,13 +48,20 @@ feature "User navigation:" do
     expect(page).to have_content("SIGN UP")
   end
 
-  scenario "when the user opens the edit form after an email invitation to join" do
-    visit edit_user_path(id: user.id)
+  scenario "when the user opens the team join form after an email invitation to join" do
+    team = user.teams.create!(name: 'test', activity: 'test')
+    visit team_join_from_invitation_path(team)
     expect(page).to have_content("Birthday")
   end
 
   scenario "user will be redirected to their teams page after editing information" do
-    visit edit_user_path(id: user.id)
+    team = user.teams.create!(name: 'test', activity: 'test')
+    visit team_join_from_invitation_path(team)
+    fill_in "Email", :with => "email@email.com"
+    fill_in "Username", :with => "testuser"
+    fill_in "user[first_name]", :with => "testuser"
+    fill_in "user[last_name]", :with => "testuser"
+    fill_in "user[phone_number]", :with => "1234567890"
     fill_in "Password", :with => "newpassword"
     click_button("Sign up")
     expect(page).to have_content("MY TEAMS")
