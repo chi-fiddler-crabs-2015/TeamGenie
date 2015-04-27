@@ -116,6 +116,16 @@ $(document).ready(function() {
   //   $(this).next().removeClass('hidden')
   // });
 
+  $(document).on('click', '.edit-amount-owed', function(e) {
+    e.stopPropagation();
+  });
+
+  $(document).on('click', '.mark-unpaid', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(this);
+  });
+
   $(document).on('click', '.member', function() {
     var activePlayerId = this.id
 
@@ -128,12 +138,15 @@ $(document).ready(function() {
     $(this).find('.mark-paid-div').toggleClass('display-none');
     $(this).find('.mark-unpaid-div').toggleClass('display-none');
 
+    });
+
+
     // $(this).on('click', '.mark-paid', function(e){
     //   e.preventDefault();
     //   console.log(this)
     // });
     // console.log(activePlayerId)
-  });
+
 
 
 
