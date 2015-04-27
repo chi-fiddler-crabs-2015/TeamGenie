@@ -1,19 +1,23 @@
-<h2>Add a new game</h2>
+<div class='location-background'>
+  <h2>Add a new game</h2>
 
-<%= form_for :game, url: team_games_path(params[:team_id]), role: 'form'  do |f| %>
-  <div class="form-group">
-    <%= f.label :game_time %><br />
-    <%= f.datetime_select :game_time, autofocus: true, ampm: true, :default => { :hour => 20, :minute => 0 }, class: 'form-control' %>
-  </div>
+  <%= form_for :game, url: team_games_path(params[:team_id]), role: 'form'  do |f| %>
+    <div class="input-lg form-group">
+      <%= f.label :game_time %><br />
+      <%= f.datetime_select :game_time, autofocus: true, ampm: true, :default => { :hour => 20, :minute => 0 }, class: 'form-control' %>
+    </div>
+    <br />
 
-  <div class="form-group">
-    <%= f.label :location %><br />
-    <%= f.select :location, location_names(params[:team_id]), class: 'form-control' %>
-  </div>
+    <div class="input-lg form-group">
+      <%= f.label :location %><br />
+      <%= f.select :location, location_names(params[:team_id]), class: 'form-control' %>
+    </div>
+    <br />
 
-  <%= link_to "Not on the list? Add location", new_location_path %>
+    <%= link_to "Not on the list? Add location", new_location_path %>
 
-  <div class="actions">
-    <%= f.submit "Create Game", class: 'btn btn-success' %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Create Game", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
