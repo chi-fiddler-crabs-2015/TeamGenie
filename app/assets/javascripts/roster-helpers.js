@@ -120,12 +120,6 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
-  $(document).on('click', '.mark-unpaid', function(e){
-    e.stopPropagation();
-    e.preventDefault();
-    console.log(this);
-  });
-
   $(document).on('click', '.member', function() {
     var activePlayerId = this.id
 
