@@ -70,7 +70,7 @@
             <th>Payment Status</th>
         </tr>
     </thead>
-     <%= render partial: 'player_roster'%>
+     <%= render partial: 'player_roster', locals: {team: @team}%>
     
   </table>
 

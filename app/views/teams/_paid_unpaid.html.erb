@@ -1,0 +1,11 @@
+<% if membership.paid %>
+  <div class='col-xs-6 mark-paid-div'>
+    <span>Paid</span>
+  </div>  
+  <%= button_to 'Mark Unpaid', team_membership_mark_unpaid_path(membership.team, membership), method: 'put', remote: true, class: "btn btn-sm btn-danger mark-unpaid hidden #{membership.id}"%>
+  <% else %>
+  <div class='col-xs-6 mark-unpaid-div'>
+    <span>Unpaid</span>
+  </div> 
+  <%= button_to 'Mark Paid', team_membership_mark_paid_path(membership.team, membership), method: 'put', remote: true, class: "btn btn-sm btn-success mark-paid hidden #{membership.id}" %>
+<% end %>

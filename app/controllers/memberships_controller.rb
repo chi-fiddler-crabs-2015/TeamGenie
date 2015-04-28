@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-
+  # skip_before_filter :verify_authenticity_token, :only => :mark_paid
   before_action :current_user
 
   def mark_paid
@@ -8,7 +8,11 @@ class MembershipsController < ApplicationController
     team.paid_dues += membership.amount_owed
     membership.update_attributes(amount_owed: 0, paid: true, amount_paid: membership.amount_owed)
     team.save
-    redirect_to team_roster_path(membership.team) and return
+    respond_to do |format|
+      format.js do
+        render partial: 'teams/paid_unpaid', locals: {membership: membership}, layout: false
+      end
+    end
   end
 
   def mark_unpaid

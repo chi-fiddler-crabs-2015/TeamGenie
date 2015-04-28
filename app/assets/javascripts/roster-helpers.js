@@ -68,56 +68,30 @@ $(document).ready(function() {
   //   })
   // });
 
-  // $(document).on('click', '.show-new-player-invitation', function() {
-  //   $('.invite-players').removeClass('hidden')
-  // });
-
-  // $(document).on('click', '#invitation-submit-button', function () {
-  //   $('.invite-players').addClass('hidden')
-  // })
-
-  // $(document).on('click', '.show-new-email', function() {
-  //   $('.email-players').removeClass('hidden')
-  //   $(this).toggleClass('hidden')
-  // });
-
-  // $(document).on('click', '#email-submit-button', function() {
-  //   $('.email-players').addClass('hidden')
-  //   $('.show-new-email').toggleClass('hidden')
-  // });
-
-  // $(document).on('click', '.text-all-players', function() {
-  //   $('.text-players').removeClass('hidden')
-  //   $(this).addClass('hidden')
-  // });
-
-  // $(document).on('click', '.text-button', function(e) {
-  //   e.preventDefault();
-  //   var form = $('.text-button').closest('form')
-  //   var message = form.serializeArray()[1].value
-  //   var url = form.attr("action")
-  //   var team = $(this).attr("team");
-  //   $('.text-players').addClass('hidden')
-  //   $('.text-all-players').removeClass('hidden')
-  //   var data = {"message": message, "team": team}
-  //   var response = $.ajax({
-  //     url: url,
-  //     method: 'post',
-  //     data: data,
-  //     "success": function(response) {
-  //     }
-  //   })
-  // });
-
-
-
-  // $(document).on('click', '.edit-amount-owed-button', function() {
-  //   $(this).toggleClass('hidden')
-  //   $(this).next().removeClass('hidden')
-  // });
-
   $(document).on('click', '.edit-amount-owed', function(e) {
     e.stopPropagation();
+  });
+
+  $(document).on('click', '.mark-paid', function(e) {
+    e.preventDefault();
+
+    console.log($(this).parent().parent());
+
+    var form = $(this).parent();
+
+    $.ajax({
+      url: form.attr('action'),
+      method: 'put',
+      data: form.serialize(),
+      dataType: 'html',
+      success: function(response) {
+        console.log(response);
+        $(form.parent()).html(response)},
+      error: function(response) {
+          console.log(response);
+        }
+    });
+
   });
 
   $(document).on('click', '.member', function() {
