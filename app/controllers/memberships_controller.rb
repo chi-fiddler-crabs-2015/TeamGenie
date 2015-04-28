@@ -18,7 +18,11 @@ class MembershipsController < ApplicationController
   def mark_unpaid
     membership = Membership.find_by(id: params[:membership_id])
     membership.update_attributes(paid: false, amount_owed: membership.amount_paid, amount_paid: 0)
-    redirect_to team_roster_path(membership.team) and return
+    respond_to do |format|
+      format.js do
+        render partial: 'teams/paid_unpaid', locals: {membership: membership}, layout: false
+      end
+    end
   end
 
   def update

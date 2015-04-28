@@ -75,7 +75,25 @@ $(document).ready(function() {
   $(document).on('click', '.mark-paid', function(e) {
     e.preventDefault();
 
-    console.log($(this).parent().parent());
+    var form = $(this).parent();
+
+    $.ajax({
+      url: form.attr('action'),
+      method: 'put',
+      data: form.serialize(),
+      dataType: 'html',
+      success: function(response) {
+        // console.log(response);
+        $(form.parent()).html(response)},
+      error: function(response) {
+          console.log(response);
+        }
+    });
+
+  });
+
+  $(document).on('click', '.mark-unpaid', function(e) {
+    e.preventDefault();
 
     var form = $(this).parent();
 
@@ -85,7 +103,7 @@ $(document).ready(function() {
       data: form.serialize(),
       dataType: 'html',
       success: function(response) {
-        console.log(response);
+        // console.log(response);
         $(form.parent()).html(response)},
       error: function(response) {
           console.log(response);
