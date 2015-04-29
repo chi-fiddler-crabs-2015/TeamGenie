@@ -112,6 +112,19 @@ $(document).ready(function() {
 
   });
 
+$(document).on('click', '.remove-player', function(e) {
+    e.stopPropagation();
+  });
+
+$(document).bind('submit', '.remove-player', function(e) {
+
+    var confirmDelete = window.confirm("Are you sure you want to delete this player?");
+    if (confirmDelete == false) {
+      e.preventDefault();
+    };
+
+  });
+
   $(document).on('click', '.member', function() {
     var activePlayerId = this.id
 
