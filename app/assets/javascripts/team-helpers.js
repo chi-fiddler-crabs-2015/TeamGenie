@@ -108,10 +108,4 @@ $(document).ready( function() {
       }
     })
   });
-
-
-  $(document).on('click', '.edit-amount-owed-button', function() {
-    $(this).toggleClass('hidden')
-    $(this).next().removeClass('hidden')
-  });
 });
