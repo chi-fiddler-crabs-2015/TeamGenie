@@ -1,75 +1,14 @@
 $(document).ready(function() {
 
-  // $(document).on('click', '.game-time', function(e) {
-  //   $(this).siblings(':last').toggleClass('hidden')
-  // })
-
-  // $(document).on('click', '.change-rsvp-show', function(e) {
-  //   e.preventDefault();
-  //   $(this).find(">:first-child").addClass('hidden')
-  //   $(this).find(">:last-child").removeClass('hidden')
-  // })
-
-  // $(document).on('click', '.text-msg', function(e) {
-  //   e.preventDefault();
-  //   $('.text-msg').addClass('hidden');
-  //   $('.text-msg-box').removeClass('hidden');
-  // });
-
-  // $(document).on('click', '.captain-msg', function(e) {
-  //   e.preventDefault();
-  //   var player = $(this)
-  //   player_id = player.attr("id")
-  //   $('.' + player_id).removeClass('hidden');
-  // })
-
-  // $(document).on('click', '#text-submit-button', function(e){
-  //   e.preventDefault();
-  //   $('.' + player_id).addClass('hidden');
-  //   var message = { "body": $(".text-msg-box").val(), "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-  //   var response = $.ajax({
-  //     url: '/send_sms',
-  //     method: 'post',
-  //     data: message,
-  //     "success": function(response) {
-  //     }
-  //   })
-  // })
-
-  // $(document).on('click', '#text-player-button', function(e){
-  //   e.preventDefault();
-  //   $('.text-msg').removeClass('hidden');
-  //   $('.text-msg-box').addClass('hidden');
-  //   var data = $(this).closest("form").serializeArray()[1].value;
-  //   var message = { "body": data, "to": $(this).attr('to'), "from": $(this).attr('from'), "phone": $(this).attr('phone')}
-  //   $("textarea.text-msg-box").val('')
-  //   console.log(message)
-  //   var response = $.ajax({
-  //     url: '/send_sms',
-  //     method: 'post',
-  //     data: message,
-  //     "success": function(response) {
-  //     }
-  //   })
-  // })
-
-  // $(document).on('click', '.change-rsvp', function(e) {
-  //   e.preventDefault();
-  //   var partial = $(this)
-  //   var data = $(this).attr('data')
-  //   var route = $(this).parent().attr('action')
-  //   var response = $.ajax({
-  //     url: route,
-  //     method: "patch",
-  //     data: {attendance: data},
-  //     error: function(response) {
-  //       partial.closest('.game-view').replaceWith(response.responseText)
-  //     }
-  //   })
-  // });
-
   $(document).on('click', '.edit-amount-owed', function(e) {
     e.stopPropagation();
+  });
+
+  $('.edit-amount-owed').click(function(e) {
+    var confirmNewPayment = window.confirm("Are you sure you want to reset this players dues?");
+    if (confirmNewPayment == false) {
+      e.preventDefault();
+    };
   });
 
   $(document).on('click', '.mark-paid', function(e) {
@@ -116,8 +55,8 @@ $(document).on('click', '.remove-player', function(e) {
     e.stopPropagation();
   });
 
-$(document).bind('submit', '.remove-player', function(e) {
-
+$('.remove-player').on('click', function(e) {
+  console.log('clicked')
     var confirmDelete = window.confirm("Are you sure you want to delete this player?");
     if (confirmDelete == false) {
       e.preventDefault();
